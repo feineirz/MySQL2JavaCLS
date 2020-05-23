@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "MySQL2JavaCLS", "MySQL2JavaCLS\MySQL2JavaCLS.vbproj", "{0E3FE1F5-206E-45EC-960D-6E110AC829AC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E3FE1F5-206E-45EC-960D-6E110AC829AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E3FE1F5-206E-45EC-960D-6E110AC829AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E3FE1F5-206E-45EC-960D-6E110AC829AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E3FE1F5-206E-45EC-960D-6E110AC829AC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D2640685-64B3-4157-AD39-194A8C6E0749}
+	EndGlobalSection
+EndGlobal
