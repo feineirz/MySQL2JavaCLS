@@ -1,0 +1,142 @@
+import java.io.*;
+import java.sql.*;
+import java.util.*;
+import java.lang.*;
+
+public class @ClassName {	
+
+	//==================== Header ====================
+
+	private Connection conn;
+	public boolean holdConnection = false;
+
+	public boolean openConnection() {
+		try {
+			if(host != null || InitConnectionConfiguration()) {
+				Class.forName("com.mysql.jdbc.Driver");
+				conn = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database, user, password);
+				return true;
+				
+			}else{
+				return false;
+				
+			}
+			
+		}catch(Exception e) {
+			return false;
+			
+		}
+	}
+	
+	public boolean isConnectionValid() {
+		try {
+			return conn.isValid(0);
+			
+		} catch (SQLException e) {
+			return false;
+			
+		}
+	}
+	
+	public boolean isConnectionClose() {
+		try {
+			return conn.isClosed();
+			
+		}catch(SQLException e) {
+			return false;
+			
+		}
+	}
+	
+	public boolean closeConnection() {
+		try {
+			conn.close();
+			return true;
+			
+		}catch(Exception e) {
+			return false;
+			
+		}		
+	}	
+
+	//@Connection info.
+	private Properties props = new Properties();
+	private String host;
+	private String port;
+	private String database;
+	private String user;
+	private String password;
+	
+	//InternalVariable
+@InternalVariable
+	
+	public final String relName = "@RelationName";
+	public final String columns = "@Columns";
+	public final String columnsArr[] = {@ArrayColumns};
+
+	//Initialize
+	private boolean InitConnectionConfiguration() {
+		
+		String dbconf = "dbconf.conf";
+		try (InputStream inputStream = new FileInputStream(dbconf)) {
+			 
+			// Loading the properties.
+			props.load(inputStream);
+ 
+			// Getting properties 
+			host = props.getProperty("host");
+			port = props.getProperty("port");
+			database = props.getProperty("database");
+			user = props.getProperty("user");
+			password = props.getProperty("password");
+			/*
+			System.out.println("Host = " + host);
+			System.out.println("Port = " + port);
+			System.out.println("Database = " + database);
+			System.out.println("User = " + user);
+			System.out.println("Password = " + password);
+			*/
+			return true;
+			
+		} catch (IOException ex) {
+			System.out.println("Problem occurs when reading file !");
+			ex.printStackTrace();
+			return false;
+			
+		}
+	}
+
+	//Constructor
+	public @ClassName() {
+		if(host == null) InitConnectionConfiguration();
+	}
+
+	public @ClassName(@ConstructorPrimaryKeyParameter) {
+
+		if(host != null || InitConnectionConfiguration()) {
+			try{ 
+				if(conn == null || conn.isClosed()){
+					Class.forName("com.mysql.jdbc.Driver");
+					conn = DriverManager.getConnection("jdbc:mysql://"+host+":"+port+"/"+database, user, password);
+				}
+
+				Statement stmt = conn.createStatement();
+				String SQL = "SELECT * FROM "+relName+" WHERE @PrimaryKey = '"+@ConstructorPrimaryKeyName+"'";
+				ResultSet rs = stmt.executeQuery(SQL);
+				while(rs.next()) {
+@ConstructirVariableGetValue
+				}
+			
+			if(!holdConnection) conn.close();
+			
+			}catch(Exception e){ 
+				System.out.println(e);
+			
+			}					
+		}
+	}
+
+	//ClassInfo DataType
+	public class @ClassNameInfo {
+@ClassInfoVariable
+	}

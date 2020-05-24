@@ -1,12 +1,8 @@
-﻿Imports MySql.Data.MySqlClient
-
-Public Class MySQLConnector
-
-	'Connection String : Server=myServerAddress;Port=1234;Database=myDataBase;Uid=myUsername;Pwd=myPassword;
+﻿Public Class MySQLConnector
 
 	Private _connString As String
 
-	Structure ConnectionInfo
+	Public Structure ConnectionInfo
 		Dim Host As String
 		Dim Port As String
 		Dim Database As String
@@ -17,7 +13,16 @@ Public Class MySQLConnector
 	Public Shared Function getConnection(ConnectionInfo As ConnectionInfo) As MySqlConnection
 
 		Dim connString = "Server=" + ConnectionInfo.Host + ";Port=" + ConnectionInfo.Port + ";Database=" + ConnectionInfo.Database + ";Uid=" + ConnectionInfo.User + ";Pwd=" + ConnectionInfo.Password + ";"
-		Return New MySqlConnection(connString)
+		Dim conn = New MySqlConnection(connString)
+
+		Try
+			conn.Open()
+			conn.Close()
+		Catch ex As Exception
+			Return Nothing
+		End Try
+
+		Return conn
 
 	End Function
 
