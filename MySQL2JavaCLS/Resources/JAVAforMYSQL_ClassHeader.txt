@@ -1,0 +1,13 @@
+import java.sql.*;
+import java.util.*;
+import java.lang.*;
+
+public class @CLASSNAME@ {	
+
+	/************************** Class Header ***************************/
+	// Internal Properties //
+@CLASSHEADER_PRIVATE_PROPERTIES@
+	
+	// Public Properties //
+	public final String relName = "@CLASSHEADER_TABLENAME@";
+	public final String columnNames = "@CLASSHEADER_COLUMNLIST@";

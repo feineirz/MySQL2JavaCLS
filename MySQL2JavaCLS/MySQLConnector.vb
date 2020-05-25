@@ -12,7 +12,7 @@
 
 	Public Shared Function getConnection(ConnectionInfo As ConnectionInfo) As MySqlConnection
 
-		Dim connString = "Server=" + ConnectionInfo.Host + ";Port=" + ConnectionInfo.Port + ";Database=" + ConnectionInfo.Database + ";Uid=" + ConnectionInfo.User + ";Pwd=" + ConnectionInfo.Password + ";"
+		Dim connString = "Server=" + ConnectionInfo.Host + ";Port=" + ConnectionInfo.Port + ";Database=" + ConnectionInfo.Database + ";Uid=" + ConnectionInfo.User + ";Pwd=" + ConnectionInfo.Password + ";SslMode=none;"
 		Dim conn = New MySqlConnection(connString)
 
 		Try

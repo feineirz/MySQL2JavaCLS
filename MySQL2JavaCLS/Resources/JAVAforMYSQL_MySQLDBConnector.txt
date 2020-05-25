@@ -1,0 +1,29 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnector {
+	
+	public Connection conn = null;
+	
+	public MySQLDBConnector() {}
+	
+	public Connection getDBConnection() {
+		
+		try{
+			Class.forName("com.mysql.cj.jdbc.Driver");  
+			conn = DriverManager.getConnection(
+					"jdbc:mysql://@HOST@:@PORT@/@DATABASE@"
+					+ "?useUnicode=true"
+					+ "&useJDBCCompliantTimezoneShift=true"
+					+ "&useLegacyDatetimeCode=false&serverTimezone=UTC",
+					"@USER@",
+					"@PASS@" );
+		}catch(Exception e){
+			System.out.println(e);
+			
+		} 
+		
+		return conn;
+	}
+
+}

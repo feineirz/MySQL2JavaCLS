@@ -61,29 +61,75 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to import java.io.*;
-        '''import java.sql.*;
+        '''  Looks up a localized string similar to 	/************************** Constructor ***************************/
+        '''	public @CLASSNAME@() {}
+        '''	
+        '''	// Create a @CLASSNAME@ object from the given @PRIMARYKEY@.
+        '''	public @CLASSNAME@(int @PRIMARYKEY@) {
+        '''		
+        '''		Connection conn = new MySQLDBConnector().getDBConnection();
+        '''		try {
+        '''			String qry = &quot;SELECT *&quot;
+        '''					+ &quot; FROM &quot; + relName
+        '''					+ &quot; WHERE @PRIMARYKEY@=?&quot;;
+        '''			PreparedStatement stmt = conn.prepareStatement(qry);
+        '''			stmt.setInt(1, @PRIMARYKEY@);
+        '''			
+        '''			ResultSet rs = stmt.executeQuery();
+        '''			while( [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property JAVAforMYSQL_ClassConstructor() As String
+            Get
+                Return ResourceManager.GetString("JAVAforMYSQL_ClassConstructor", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to import java.sql.*;
         '''import java.util.*;
-        '''import java.util.Date;
         '''import java.lang.*;
         '''
-        '''public class @ClassName {	
+        '''public class @CLASSNAME@ {	
         '''
-        '''	//==================== Header ====================
-        '''
-        '''	private Connection conn;
-        '''	public boolean holdConnection = false;
-        '''
-        '''	public boolean openConnection() {
-        '''		try {
-        '''			if(host != null || InitConnectionConfiguration()) {
-        '''				Class.forName(&quot;com.mysql.jdbc.Driver&quot;);
-        '''				conn = DriverManager.getConnection(&quot;jdbc:mysql://&quot;+host+&quot;:&quot;+port+&quot;/&quot;+database, user, password);
-        '''			 [rest of string was truncated]&quot;;.
+        '''	/************************** Class Header ***************************/
+        '''	// Internal Properties //
+        '''@CLASSHEADER_PRIVATE_PROPERTIES@
+        '''	
+        '''	// Public Properties //
+        '''	public final String relName = &quot;@CLASSHEADER_TABLENAME@&quot;;
+        '''	public final String columnNames = &quot;@CLASSHEADER_COLUMNLIST@&quot;;.
         '''</summary>
-        Friend ReadOnly Property MySQL2JAVACLS_Header() As String
+        Friend ReadOnly Property JAVAforMYSQL_ClassHeader() As String
             Get
-                Return ResourceManager.GetString("MySQL2JAVACLS_Header", resourceCulture)
+                Return ResourceManager.GetString("JAVAforMYSQL_ClassHeader", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to import java.sql.Connection;
+        '''import java.sql.DriverManager;
+        '''
+        '''public class DBConnector {
+        '''	
+        '''	public Connection conn = null;
+        '''	
+        '''	public MySQLDBConnector() {}
+        '''	
+        '''	public Connection getDBConnection() {
+        '''		
+        '''		try{
+        '''			Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);  
+        '''			conn = DriverManager.getConnection(
+        '''					&quot;jdbc:mysql://@HOST@:@PORT@/@DATABASE@&quot;
+        '''					+ &quot;?useUnicode=true&quot;
+        '''					+ &quot;&amp;useJDBCCompliantTimezoneShift=true&quot;
+        '''					+ &quot;&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&quot;,
+        '''					&quot;@USER@&quot;,
+        '''					&quot;@PASS@&quot; [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property JAVAforMYSQL_MySQLDBConnector() As String
+            Get
+                Return ResourceManager.GetString("JAVAforMYSQL_MySQLDBConnector", resourceCulture)
             End Get
         End Property
     End Module

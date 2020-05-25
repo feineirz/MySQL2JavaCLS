@@ -30,6 +30,9 @@ Partial Class frmMain
 		Me.lblTitle = New System.Windows.Forms.Label()
 		Me.rtbSourceCode = New System.Windows.Forms.RichTextBox()
 		Me.pnlDatabaseConnection = New System.Windows.Forms.Panel()
+		Me.btnSaveProfile = New System.Windows.Forms.Button()
+		Me.Label9 = New System.Windows.Forms.Label()
+		Me.cmbConnectionProfile = New System.Windows.Forms.ComboBox()
 		Me.picLinkIcon = New System.Windows.Forms.PictureBox()
 		Me.tbxDatabase = New System.Windows.Forms.TextBox()
 		Me.Label6 = New System.Windows.Forms.Label()
@@ -43,28 +46,31 @@ Partial Class frmMain
 		Me.Label3 = New System.Windows.Forms.Label()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Label1 = New System.Windows.Forms.Label()
+		Me.btnGetDBConnector = New System.Windows.Forms.Button()
 		Me.picServerIcon = New System.Windows.Forms.PictureBox()
 		Me.pnlDatabaseProperties = New System.Windows.Forms.Panel()
-		Me.cmbTableList = New System.Windows.Forms.ComboBox()
-		Me.Label7 = New System.Windows.Forms.Label()
+		Me.Label13 = New System.Windows.Forms.Label()
+		Me.lblTableCollation = New System.Windows.Forms.Label()
+		Me.Label8 = New System.Windows.Forms.Label()
 		Me.lvwColumnList = New System.Windows.Forms.ListView()
 		Me.colColumnName = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.colDataType = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.colNullable = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
 		Me.colKey = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-		Me.Label8 = New System.Windows.Forms.Label()
-		Me.lblTableCollation = New System.Windows.Forms.Label()
-		Me.Label9 = New System.Windows.Forms.Label()
-		Me.cmbConnectionProfile = New System.Windows.Forms.ComboBox()
-		Me.btnSaveProfile = New System.Windows.Forms.Button()
+		Me.cmbTableList = New System.Windows.Forms.ComboBox()
+		Me.Label7 = New System.Windows.Forms.Label()
 		Me.btnBuild = New System.Windows.Forms.Button()
 		Me.pnlClassProperties = New System.Windows.Forms.Panel()
-		Me.Label10 = New System.Windows.Forms.Label()
+		Me.chkReadOnlyPrimaryKey = New System.Windows.Forms.CheckBox()
+		Me.cmbPrimaryKey = New System.Windows.Forms.ComboBox()
+		Me.picClassIcon = New System.Windows.Forms.PictureBox()
 		Me.tbxClassName = New System.Windows.Forms.TextBox()
 		Me.Label11 = New System.Windows.Forms.Label()
 		Me.Label12 = New System.Windows.Forms.Label()
-		Me.picClassIcon = New System.Windows.Forms.PictureBox()
-		Me.cmbPrimaryKey = New System.Windows.Forms.ComboBox()
+		Me.Label10 = New System.Windows.Forms.Label()
+		Me.pnlCommand = New System.Windows.Forms.Panel()
+		Me.Label14 = New System.Windows.Forms.Label()
+		Me.lblPrimaryKeyDataType = New System.Windows.Forms.Label()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDatabaseConnection.SuspendLayout()
@@ -73,6 +79,7 @@ Partial Class frmMain
 		Me.pnlDatabaseProperties.SuspendLayout()
 		Me.pnlClassProperties.SuspendLayout()
 		CType(Me.picClassIcon, System.ComponentModel.ISupportInitialize).BeginInit()
+		Me.pnlCommand.SuspendLayout()
 		Me.SuspendLayout()
 		'
 		'pnlHeader
@@ -136,9 +143,10 @@ Partial Class frmMain
 		'rtbSourceCode
 		'
 		Me.rtbSourceCode.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-			Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+						Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.rtbSourceCode.BorderStyle = System.Windows.Forms.BorderStyle.None
+		Me.rtbSourceCode.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.rtbSourceCode.Location = New System.Drawing.Point(12, 71)
 		Me.rtbSourceCode.Name = "rtbSourceCode"
 		Me.rtbSourceCode.ReadOnly = True
@@ -171,6 +179,41 @@ Partial Class frmMain
 		Me.pnlDatabaseConnection.Size = New System.Drawing.Size(368, 256)
 		Me.pnlDatabaseConnection.TabIndex = 0
 		'
+		'btnSaveProfile
+		'
+		Me.btnSaveProfile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnSaveProfile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnSaveProfile.Image = CType(resources.GetObject("btnSaveProfile.Image"), System.Drawing.Image)
+		Me.btnSaveProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnSaveProfile.Location = New System.Drawing.Point(141, 210)
+		Me.btnSaveProfile.Name = "btnSaveProfile"
+		Me.btnSaveProfile.Size = New System.Drawing.Size(116, 29)
+		Me.btnSaveProfile.TabIndex = 16
+		Me.btnSaveProfile.Text = "Save Profile"
+		Me.btnSaveProfile.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.btnSaveProfile.UseVisualStyleBackColor = True
+		'
+		'Label9
+		'
+		Me.Label9.AutoSize = True
+		Me.Label9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label9.Location = New System.Drawing.Point(127, 38)
+		Me.Label9.Name = "Label9"
+		Me.Label9.Size = New System.Drawing.Size(52, 13)
+		Me.Label9.TabIndex = 15
+		Me.Label9.Text = "Profile :"
+		'
+		'cmbConnectionProfile
+		'
+		Me.cmbConnectionProfile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.cmbConnectionProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.cmbConnectionProfile.FormattingEnabled = True
+		Me.cmbConnectionProfile.Location = New System.Drawing.Point(185, 35)
+		Me.cmbConnectionProfile.Name = "cmbConnectionProfile"
+		Me.cmbConnectionProfile.Size = New System.Drawing.Size(164, 21)
+		Me.cmbConnectionProfile.TabIndex = 14
+		'
 		'picLinkIcon
 		'
 		Me.picLinkIcon.Image = CType(resources.GetObject("picLinkIcon.Image"), System.Drawing.Image)
@@ -184,10 +227,10 @@ Partial Class frmMain
 		'tbxDatabase
 		'
 		Me.tbxDatabase.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxDatabase.Location = New System.Drawing.Point(155, 121)
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxDatabase.Location = New System.Drawing.Point(185, 121)
 		Me.tbxDatabase.Name = "tbxDatabase"
-		Me.tbxDatabase.Size = New System.Drawing.Size(194, 21)
+		Me.tbxDatabase.Size = New System.Drawing.Size(164, 21)
 		Me.tbxDatabase.TabIndex = 2
 		Me.tbxDatabase.Text = "feinznet_rmdb"
 		'
@@ -195,11 +238,11 @@ Partial Class frmMain
 		'
 		Me.Label6.AutoSize = True
 		Me.Label6.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label6.Location = New System.Drawing.Point(117, 124)
+		Me.Label6.Location = New System.Drawing.Point(109, 124)
 		Me.Label6.Name = "Label6"
-		Me.Label6.Size = New System.Drawing.Size(33, 13)
+		Me.Label6.Size = New System.Drawing.Size(70, 13)
 		Me.Label6.TabIndex = 11
-		Me.Label6.Text = "DB :"
+		Me.Label6.Text = "Database :"
 		'
 		'btnConnect
 		'
@@ -207,9 +250,9 @@ Partial Class frmMain
 		Me.btnConnect.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnConnect.Image = CType(resources.GetObject("btnConnect.Image"), System.Drawing.Image)
 		Me.btnConnect.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnConnect.Location = New System.Drawing.Point(262, 210)
+		Me.btnConnect.Location = New System.Drawing.Point(263, 210)
 		Me.btnConnect.Name = "btnConnect"
-		Me.btnConnect.Size = New System.Drawing.Size(87, 29)
+		Me.btnConnect.Size = New System.Drawing.Size(86, 29)
 		Me.btnConnect.TabIndex = 5
 		Me.btnConnect.Text = "Connect"
 		Me.btnConnect.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -218,40 +261,40 @@ Partial Class frmMain
 		'tbxPass
 		'
 		Me.tbxPass.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxPass.Location = New System.Drawing.Point(155, 175)
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxPass.Location = New System.Drawing.Point(185, 175)
 		Me.tbxPass.Name = "tbxPass"
 		Me.tbxPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
-		Me.tbxPass.Size = New System.Drawing.Size(194, 21)
+		Me.tbxPass.Size = New System.Drawing.Size(164, 21)
 		Me.tbxPass.TabIndex = 4
 		'
 		'tbxUser
 		'
 		Me.tbxUser.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxUser.Location = New System.Drawing.Point(155, 148)
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxUser.Location = New System.Drawing.Point(185, 148)
 		Me.tbxUser.Name = "tbxUser"
-		Me.tbxUser.Size = New System.Drawing.Size(194, 21)
+		Me.tbxUser.Size = New System.Drawing.Size(164, 21)
 		Me.tbxUser.TabIndex = 3
 		Me.tbxUser.Text = "feinznet_dbadmin"
 		'
 		'tbxPort
 		'
 		Me.tbxPort.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxPort.Location = New System.Drawing.Point(155, 94)
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxPort.Location = New System.Drawing.Point(185, 94)
 		Me.tbxPort.Name = "tbxPort"
-		Me.tbxPort.Size = New System.Drawing.Size(194, 21)
+		Me.tbxPort.Size = New System.Drawing.Size(164, 21)
 		Me.tbxPort.TabIndex = 1
 		Me.tbxPort.Text = "3306"
 		'
 		'tbxHost
 		'
 		Me.tbxHost.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxHost.Location = New System.Drawing.Point(155, 67)
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxHost.Location = New System.Drawing.Point(185, 67)
 		Me.tbxHost.Name = "tbxHost"
-		Me.tbxHost.Size = New System.Drawing.Size(194, 21)
+		Me.tbxHost.Size = New System.Drawing.Size(164, 21)
 		Me.tbxHost.TabIndex = 0
 		Me.tbxHost.Text = "feinz.net"
 		'
@@ -259,7 +302,7 @@ Partial Class frmMain
 		'
 		Me.Label5.AutoSize = True
 		Me.Label5.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label5.Location = New System.Drawing.Point(107, 178)
+		Me.Label5.Location = New System.Drawing.Point(136, 178)
 		Me.Label5.Name = "Label5"
 		Me.Label5.Size = New System.Drawing.Size(42, 13)
 		Me.Label5.TabIndex = 4
@@ -269,7 +312,7 @@ Partial Class frmMain
 		'
 		Me.Label4.AutoSize = True
 		Me.Label4.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label4.Location = New System.Drawing.Point(107, 151)
+		Me.Label4.Location = New System.Drawing.Point(136, 151)
 		Me.Label4.Name = "Label4"
 		Me.Label4.Size = New System.Drawing.Size(42, 13)
 		Me.Label4.TabIndex = 3
@@ -279,7 +322,7 @@ Partial Class frmMain
 		'
 		Me.Label3.AutoSize = True
 		Me.Label3.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label3.Location = New System.Drawing.Point(111, 97)
+		Me.Label3.Location = New System.Drawing.Point(140, 97)
 		Me.Label3.Name = "Label3"
 		Me.Label3.Size = New System.Drawing.Size(39, 13)
 		Me.Label3.TabIndex = 2
@@ -289,7 +332,7 @@ Partial Class frmMain
 		'
 		Me.Label2.AutoSize = True
 		Me.Label2.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label2.Location = New System.Drawing.Point(109, 70)
+		Me.Label2.Location = New System.Drawing.Point(138, 70)
 		Me.Label2.Name = "Label2"
 		Me.Label2.Size = New System.Drawing.Size(41, 13)
 		Me.Label2.TabIndex = 1
@@ -305,6 +348,20 @@ Partial Class frmMain
 		Me.Label1.TabIndex = 0
 		Me.Label1.Text = "Connection Properties"
 		'
+		'btnGetDBConnector
+		'
+		Me.btnGetDBConnector.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnGetDBConnector.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnGetDBConnector.Image = CType(resources.GetObject("btnGetDBConnector.Image"), System.Drawing.Image)
+		Me.btnGetDBConnector.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnGetDBConnector.Location = New System.Drawing.Point(18, 14)
+		Me.btnGetDBConnector.Name = "btnGetDBConnector"
+		Me.btnGetDBConnector.Size = New System.Drawing.Size(165, 29)
+		Me.btnGetDBConnector.TabIndex = 17
+		Me.btnGetDBConnector.Text = "Export DBConnector"
+		Me.btnGetDBConnector.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.btnGetDBConnector.UseVisualStyleBackColor = True
+		'
 		'picServerIcon
 		'
 		Me.picServerIcon.Image = CType(resources.GetObject("picServerIcon.Image"), System.Drawing.Image)
@@ -318,6 +375,7 @@ Partial Class frmMain
 		'pnlDatabaseProperties
 		'
 		Me.pnlDatabaseProperties.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlDatabaseProperties.Controls.Add(Me.Label13)
 		Me.pnlDatabaseProperties.Controls.Add(Me.lblTableCollation)
 		Me.pnlDatabaseProperties.Controls.Add(Me.Label8)
 		Me.pnlDatabaseProperties.Controls.Add(Me.lvwColumnList)
@@ -330,32 +388,39 @@ Partial Class frmMain
 		Me.pnlDatabaseProperties.Size = New System.Drawing.Size(368, 315)
 		Me.pnlDatabaseProperties.TabIndex = 2
 		'
-		'cmbTableList
+		'Label13
 		'
-		Me.cmbTableList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.cmbTableList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.cmbTableList.FormattingEnabled = True
-		Me.cmbTableList.Location = New System.Drawing.Point(155, 35)
-		Me.cmbTableList.Name = "cmbTableList"
-		Me.cmbTableList.Size = New System.Drawing.Size(194, 21)
-		Me.cmbTableList.TabIndex = 2
+		Me.Label13.AutoSize = True
+		Me.Label13.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label13.Location = New System.Drawing.Point(113, 68)
+		Me.Label13.Name = "Label13"
+		Me.Label13.Size = New System.Drawing.Size(66, 13)
+		Me.Label13.TabIndex = 13
+		Me.Label13.Text = "Callation :"
 		'
-		'Label7
+		'lblTableCollation
 		'
-		Me.Label7.AutoSize = True
-		Me.Label7.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label7.Location = New System.Drawing.Point(1, 1)
-		Me.Label7.Name = "Label7"
-		Me.Label7.Size = New System.Drawing.Size(142, 14)
-		Me.Label7.TabIndex = 1
-		Me.Label7.Text = "Database Properties"
+		Me.lblTableCollation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblTableCollation.Location = New System.Drawing.Point(185, 68)
+		Me.lblTableCollation.Name = "lblTableCollation"
+		Me.lblTableCollation.Size = New System.Drawing.Size(164, 16)
+		Me.lblTableCollation.TabIndex = 12
+		'
+		'Label8
+		'
+		Me.Label8.AutoSize = True
+		Me.Label8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label8.Location = New System.Drawing.Point(133, 38)
+		Me.Label8.Name = "Label8"
+		Me.Label8.Size = New System.Drawing.Size(46, 13)
+		Me.Label8.TabIndex = 11
+		Me.Label8.Text = "Table :"
 		'
 		'lvwColumnList
 		'
 		Me.lvwColumnList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-			Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+						Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lvwColumnList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colColumnName, Me.colDataType, Me.colNullable, Me.colKey})
 		Me.lvwColumnList.FullRowSelect = True
 		Me.lvwColumnList.GridLines = True
@@ -386,78 +451,48 @@ Partial Class frmMain
 		'
 		Me.colKey.Text = "Key"
 		'
-		'Label8
+		'cmbTableList
 		'
-		Me.Label8.AutoSize = True
-		Me.Label8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label8.Location = New System.Drawing.Point(103, 38)
-		Me.Label8.Name = "Label8"
-		Me.Label8.Size = New System.Drawing.Size(46, 13)
-		Me.Label8.TabIndex = 11
-		Me.Label8.Text = "Table :"
+		Me.cmbTableList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.cmbTableList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.cmbTableList.FormattingEnabled = True
+		Me.cmbTableList.Location = New System.Drawing.Point(185, 35)
+		Me.cmbTableList.Name = "cmbTableList"
+		Me.cmbTableList.Size = New System.Drawing.Size(164, 21)
+		Me.cmbTableList.TabIndex = 2
 		'
-		'lblTableCollation
+		'Label7
 		'
-		Me.lblTableCollation.AutoSize = True
-		Me.lblTableCollation.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblTableCollation.Location = New System.Drawing.Point(152, 74)
-		Me.lblTableCollation.Name = "lblTableCollation"
-		Me.lblTableCollation.Size = New System.Drawing.Size(57, 13)
-		Me.lblTableCollation.TabIndex = 12
-		Me.lblTableCollation.Text = "Collation"
-		'
-		'Label9
-		'
-		Me.Label9.AutoSize = True
-		Me.Label9.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label9.Location = New System.Drawing.Point(97, 38)
-		Me.Label9.Name = "Label9"
-		Me.Label9.Size = New System.Drawing.Size(52, 13)
-		Me.Label9.TabIndex = 15
-		Me.Label9.Text = "Profile :"
-		'
-		'cmbConnectionProfile
-		'
-		Me.cmbConnectionProfile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.cmbConnectionProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.cmbConnectionProfile.FormattingEnabled = True
-		Me.cmbConnectionProfile.Location = New System.Drawing.Point(155, 35)
-		Me.cmbConnectionProfile.Name = "cmbConnectionProfile"
-		Me.cmbConnectionProfile.Size = New System.Drawing.Size(194, 21)
-		Me.cmbConnectionProfile.TabIndex = 14
-		'
-		'btnSaveProfile
-		'
-		Me.btnSaveProfile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnSaveProfile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnSaveProfile.Image = CType(resources.GetObject("btnSaveProfile.Image"), System.Drawing.Image)
-		Me.btnSaveProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnSaveProfile.Location = New System.Drawing.Point(138, 210)
-		Me.btnSaveProfile.Name = "btnSaveProfile"
-		Me.btnSaveProfile.Size = New System.Drawing.Size(118, 29)
-		Me.btnSaveProfile.TabIndex = 16
-		Me.btnSaveProfile.Text = "Save Profile"
-		Me.btnSaveProfile.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-		Me.btnSaveProfile.UseVisualStyleBackColor = True
+		Me.Label7.AutoSize = True
+		Me.Label7.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label7.Location = New System.Drawing.Point(1, 1)
+		Me.Label7.Name = "Label7"
+		Me.Label7.Size = New System.Drawing.Size(142, 14)
+		Me.Label7.TabIndex = 1
+		Me.Label7.Text = "Database Properties"
 		'
 		'btnBuild
 		'
 		Me.btnBuild.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnBuild.Enabled = False
 		Me.btnBuild.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnBuild.Image = CType(resources.GetObject("btnBuild.Image"), System.Drawing.Image)
 		Me.btnBuild.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnBuild.Location = New System.Drawing.Point(1329, 859)
+		Me.btnBuild.Location = New System.Drawing.Point(244, 14)
 		Me.btnBuild.Name = "btnBuild"
-		Me.btnBuild.Size = New System.Drawing.Size(70, 29)
+		Me.btnBuild.Size = New System.Drawing.Size(105, 29)
 		Me.btnBuild.TabIndex = 17
-		Me.btnBuild.Text = "Build"
+		Me.btnBuild.Text = "Start Build"
 		Me.btnBuild.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnBuild.UseVisualStyleBackColor = True
 		'
 		'pnlClassProperties
 		'
 		Me.pnlClassProperties.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlClassProperties.Controls.Add(Me.lblPrimaryKeyDataType)
+		Me.pnlClassProperties.Controls.Add(Me.Label14)
+		Me.pnlClassProperties.Controls.Add(Me.chkReadOnlyPrimaryKey)
 		Me.pnlClassProperties.Controls.Add(Me.cmbPrimaryKey)
 		Me.pnlClassProperties.Controls.Add(Me.picClassIcon)
 		Me.pnlClassProperties.Controls.Add(Me.tbxClassName)
@@ -466,47 +501,31 @@ Partial Class frmMain
 		Me.pnlClassProperties.Controls.Add(Me.Label10)
 		Me.pnlClassProperties.Location = New System.Drawing.Point(1031, 654)
 		Me.pnlClassProperties.Name = "pnlClassProperties"
-		Me.pnlClassProperties.Size = New System.Drawing.Size(368, 120)
+		Me.pnlClassProperties.Size = New System.Drawing.Size(368, 171)
 		Me.pnlClassProperties.TabIndex = 18
 		'
-		'Label10
+		'chkReadOnlyPrimaryKey
 		'
-		Me.Label10.AutoSize = True
-		Me.Label10.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label10.Location = New System.Drawing.Point(1, 2)
-		Me.Label10.Name = "Label10"
-		Me.Label10.Size = New System.Drawing.Size(115, 14)
-		Me.Label10.TabIndex = 2
-		Me.Label10.Text = "Class Properties"
+		Me.chkReadOnlyPrimaryKey.AutoSize = True
+		Me.chkReadOnlyPrimaryKey.Checked = True
+		Me.chkReadOnlyPrimaryKey.CheckState = System.Windows.Forms.CheckState.Checked
+		Me.chkReadOnlyPrimaryKey.Location = New System.Drawing.Point(185, 128)
+		Me.chkReadOnlyPrimaryKey.Name = "chkReadOnlyPrimaryKey"
+		Me.chkReadOnlyPrimaryKey.Size = New System.Drawing.Size(156, 17)
+		Me.chkReadOnlyPrimaryKey.TabIndex = 12
+		Me.chkReadOnlyPrimaryKey.Text = "ReadOnly Primary Key"
+		Me.chkReadOnlyPrimaryKey.UseVisualStyleBackColor = True
 		'
-		'tbxClassName
+		'cmbPrimaryKey
 		'
-		Me.tbxClassName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxClassName.Location = New System.Drawing.Point(155, 36)
-		Me.tbxClassName.Name = "tbxClassName"
-		Me.tbxClassName.Size = New System.Drawing.Size(194, 21)
-		Me.tbxClassName.TabIndex = 3
-		'
-		'Label11
-		'
-		Me.Label11.AutoSize = True
-		Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label11.Location = New System.Drawing.Point(119, 66)
-		Me.Label11.Name = "Label11"
-		Me.Label11.Size = New System.Drawing.Size(31, 13)
-		Me.Label11.TabIndex = 6
-		Me.Label11.Text = "PK :"
-		'
-		'Label12
-		'
-		Me.Label12.AutoSize = True
-		Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label12.Location = New System.Drawing.Point(101, 39)
-		Me.Label12.Name = "Label12"
-		Me.Label12.Size = New System.Drawing.Size(49, 13)
-		Me.Label12.TabIndex = 5
-		Me.Label12.Text = "Name :"
+		Me.cmbPrimaryKey.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.cmbPrimaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+		Me.cmbPrimaryKey.FormattingEnabled = True
+		Me.cmbPrimaryKey.Location = New System.Drawing.Point(185, 63)
+		Me.cmbPrimaryKey.Name = "cmbPrimaryKey"
+		Me.cmbPrimaryKey.Size = New System.Drawing.Size(164, 21)
+		Me.cmbPrimaryKey.TabIndex = 11
 		'
 		'picClassIcon
 		'
@@ -518,16 +537,73 @@ Partial Class frmMain
 		Me.picClassIcon.TabIndex = 10
 		Me.picClassIcon.TabStop = False
 		'
-		'cmbPrimaryKey
+		'tbxClassName
 		'
-		Me.cmbPrimaryKey.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.cmbPrimaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.cmbPrimaryKey.FormattingEnabled = True
-		Me.cmbPrimaryKey.Location = New System.Drawing.Point(155, 63)
-		Me.cmbPrimaryKey.Name = "cmbPrimaryKey"
-		Me.cmbPrimaryKey.Size = New System.Drawing.Size(194, 21)
-		Me.cmbPrimaryKey.TabIndex = 11
+		Me.tbxClassName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxClassName.Location = New System.Drawing.Point(185, 36)
+		Me.tbxClassName.Name = "tbxClassName"
+		Me.tbxClassName.Size = New System.Drawing.Size(164, 21)
+		Me.tbxClassName.TabIndex = 3
+		'
+		'Label11
+		'
+		Me.Label11.AutoSize = True
+		Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label11.Location = New System.Drawing.Point(92, 66)
+		Me.Label11.Name = "Label11"
+		Me.Label11.Size = New System.Drawing.Size(87, 13)
+		Me.Label11.TabIndex = 6
+		Me.Label11.Text = "Primary Key :"
+		'
+		'Label12
+		'
+		Me.Label12.AutoSize = True
+		Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label12.Location = New System.Drawing.Point(95, 39)
+		Me.Label12.Name = "Label12"
+		Me.Label12.Size = New System.Drawing.Size(84, 13)
+		Me.Label12.TabIndex = 5
+		Me.Label12.Text = "Class Name :"
+		'
+		'Label10
+		'
+		Me.Label10.AutoSize = True
+		Me.Label10.Font = New System.Drawing.Font("Verdana", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label10.Location = New System.Drawing.Point(1, 2)
+		Me.Label10.Name = "Label10"
+		Me.Label10.Size = New System.Drawing.Size(115, 14)
+		Me.Label10.TabIndex = 2
+		Me.Label10.Text = "Class Properties"
+		'
+		'pnlCommand
+		'
+		Me.pnlCommand.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlCommand.Controls.Add(Me.btnGetDBConnector)
+		Me.pnlCommand.Controls.Add(Me.btnBuild)
+		Me.pnlCommand.Enabled = False
+		Me.pnlCommand.Location = New System.Drawing.Point(1031, 831)
+		Me.pnlCommand.Name = "pnlCommand"
+		Me.pnlCommand.Size = New System.Drawing.Size(368, 57)
+		Me.pnlCommand.TabIndex = 19
+		'
+		'Label14
+		'
+		Me.Label14.AutoSize = True
+		Me.Label14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label14.Location = New System.Drawing.Point(105, 90)
+		Me.Label14.Name = "Label14"
+		Me.Label14.Size = New System.Drawing.Size(74, 13)
+		Me.Label14.TabIndex = 13
+		Me.Label14.Text = "Data Type :"
+		'
+		'lblPrimaryKeyDataType
+		'
+		Me.lblPrimaryKeyDataType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.lblPrimaryKeyDataType.Location = New System.Drawing.Point(185, 90)
+		Me.lblPrimaryKeyDataType.Name = "lblPrimaryKeyDataType"
+		Me.lblPrimaryKeyDataType.Size = New System.Drawing.Size(164, 16)
+		Me.lblPrimaryKeyDataType.TabIndex = 14
 		'
 		'frmMain
 		'
@@ -535,8 +611,8 @@ Partial Class frmMain
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.ClientSize = New System.Drawing.Size(1411, 900)
+		Me.Controls.Add(Me.pnlCommand)
 		Me.Controls.Add(Me.pnlClassProperties)
-		Me.Controls.Add(Me.btnBuild)
 		Me.Controls.Add(Me.pnlDatabaseProperties)
 		Me.Controls.Add(Me.pnlDatabaseConnection)
 		Me.Controls.Add(Me.rtbSourceCode)
@@ -559,6 +635,7 @@ Partial Class frmMain
 		Me.pnlClassProperties.ResumeLayout(False)
 		Me.pnlClassProperties.PerformLayout()
 		CType(Me.picClassIcon, System.ComponentModel.ISupportInitialize).EndInit()
+		Me.pnlCommand.ResumeLayout(False)
 		Me.ResumeLayout(False)
 
 	End Sub
@@ -605,4 +682,10 @@ Partial Class frmMain
 	Friend WithEvents Label12 As Label
 	Friend WithEvents Label10 As Label
 	Friend WithEvents cmbPrimaryKey As ComboBox
+	Friend WithEvents btnGetDBConnector As Button
+	Friend WithEvents chkReadOnlyPrimaryKey As CheckBox
+	Friend WithEvents Label13 As Label
+	Friend WithEvents pnlCommand As Panel
+	Friend WithEvents lblPrimaryKeyDataType As Label
+	Friend WithEvents Label14 As Label
 End Class

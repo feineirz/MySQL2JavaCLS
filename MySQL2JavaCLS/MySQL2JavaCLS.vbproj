@@ -134,7 +134,9 @@
   <ItemGroup>
     <Content Include="codingai.ico" />
     <Content Include="database.ico" />
-    <None Include="Resources\JAVAforMYSQL_Header.txt" />
+    <None Include="Resources\JAVAforMYSQL_MySQLDBConnector.txt" />
+    <None Include="Resources\JAVAforMYSQL_ClassHeader.txt" />
+    <None Include="Resources\JAVAforMYSQL_ClassConstructor.txt" />
     <Content Include="result.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
