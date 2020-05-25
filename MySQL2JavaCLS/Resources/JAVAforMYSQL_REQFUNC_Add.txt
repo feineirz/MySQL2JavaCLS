@@ -1,0 +1,39 @@
+	// Add //
+	// Add @CLASSNAME@ to database by giving a raw information.
+	public static boolean add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
+		
+		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
+@STRUCTURED_COLUMNLIST@
+		
+		return add@CLASSNAME@(@CLASSNAMELOWER@Info);
+		
+	}
+	
+	// Add @CLASSNAME@ to database by giving a structured information.
+	public static boolean add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
+		
+		Connection conn = new MySQLDBConnector().getDBConnection();
+		try {
+			String qry = "INSERT INTO @TABLENAME@"
+					+ " (@COLUMNLIST@)"
+					+ " VALUES(@STATEMENTHOLDER@)";
+			PreparedStatement stmt = conn.prepareStatement(qry);
+@STATEMENT_COLUMNLIST@
+			
+			stmt.execute();			
+			conn.close();
+			return true;
+			
+		} catch (SQLException e) {
+			try {
+				conn.close();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	

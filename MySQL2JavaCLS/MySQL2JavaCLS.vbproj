@@ -137,6 +137,10 @@
     <None Include="Resources\JAVAforMYSQL_MySQLDBConnector.txt" />
     <None Include="Resources\JAVAforMYSQL_ClassHeader.txt" />
     <None Include="Resources\JAVAforMYSQL_ClassConstructor.txt" />
+    <None Include="Resources\JAVAforMYSQL_ClassProperties.txt" />
+    <None Include="Resources\JAVAforMYSQL_REQFUNC_List.txt" />
+    <None Include="Resources\JAVAforMYSQL_REQFUNC_Add.txt" />
+    <None Include="Resources\JAVAforMYSQL_REQFUNC_Update.txt" />
     <Content Include="result.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

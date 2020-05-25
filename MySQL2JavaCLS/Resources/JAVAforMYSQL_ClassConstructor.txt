@@ -1,8 +1,10 @@
-	/************************** Constructor ***************************/
+	/*==================================================================*/
+	/*============================[ Class Constructor ]========================*/
+	/*==================================================================*/
 	public @CLASSNAME@() {}
 	
 	// Create a @CLASSNAME@ object from the given @PRIMARYKEY@.
-	public @CLASSNAME@(@PRIMARYKEYDATATYPE@ @CLASSNAME@_@PRIMARYKEY@) {
+	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
@@ -10,11 +12,11 @@
 					+ " FROM " + relName
 					+ " WHERE @PRIMARYKEY@=?";
 			PreparedStatement stmt = conn.prepareStatement(qry);
-			stmt.setInt(1, @CLASSNAME@_@PRIMARYKEY@);
+			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @CLASSNAME@_@PRIMARYKEY@);
 			
 			ResultSet rs = stmt.executeQuery();
 			while(rs.next()) {
-@CLASSCONSTRUCTORPROPERTYLIST@
+@CLASSCONSTRUCTOR_PROPERTYLIST@
 			}
 			
 			conn.close();
@@ -29,3 +31,7 @@
 		}
 		
 	}
+	/*==================================================================*/
+	/*==========================[ END Class Constructor ]=======================*/
+	/*==================================================================*/
+

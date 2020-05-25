@@ -1,0 +1,44 @@
+	// List //
+	// List @CLASSNAME@ in database as a @CLASSNAME@ objects.
+	/// Overload ///
+	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(){
+		return list@CLASSNAME@("","");
+	}
+	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(String condition){
+		return list@CLASSNAME@(condition,"");
+	}	
+	/// Main ///
+	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(String condition, String order) {
+		
+		ArrayList<@CLASSNAME@> buff = new ArrayList<@CLASSNAME@>();
+		
+		if(condition != "") condition = " WHERE " + condition;
+		if(order != "") order = " ORDER BY " + order;
+		
+		Connection conn = new MySQLDBConnector().getDBConnection();
+		try {
+			String qry = "SELECT *"
+					+ " FROM @TABLENAME@"
+					+ condition
+					+ order;
+			Statement stmt = conn.createStatement();			
+			ResultSet rs = stmt.executeQuery(qry);
+			while(rs.next()) {
+				buff.add(new @CLASSNAME@(rs.get@PRIMARYKEY_DATATYTPE@("@PRIMARYKEY@")));
+			}
+			
+			conn.close();
+			
+		} catch (SQLException e) {
+			try {
+				conn.close();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		}
+		
+		return buff;
+		
+	}
+
