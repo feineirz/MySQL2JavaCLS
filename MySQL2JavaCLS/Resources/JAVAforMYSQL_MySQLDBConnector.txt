@@ -9,7 +9,7 @@ public class MySQLDBConnector {
 	public Connection getDBConnection() {
 		
 		try{
-			Class.forName("com.mysql.cj.jdbc.Driver");  
+			Class.forName("com.@MySQLVersionShift@.jdbc.Driver");  
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://@HOST@:@PORT@/@DATABASE@"
 					+ "?useUnicode=true"

@@ -42,9 +42,9 @@ Public Class frmMain
 		ElseIf tbxUser.Text.Trim = "" Then
 			tbxUser.Focus()
 			Return False
-		ElseIf tbxPass.Text.Trim = "" Then
-			tbxPass.Focus()
-			Return False
+			'ElseIf tbxPass.Text.Trim = "" Then
+			'	tbxPass.Focus()
+			'	Return False
 		End If
 
 		Return True
@@ -108,7 +108,7 @@ Public Class frmMain
 
 		If cmbTableList.Text = "" Then Return
 
-		btnBuild.Enabled = True
+		pnlClassProperties.Enabled = True
 
 		Dim dti As MySQLDB.DataTableInfo = mysqlDB.getTableInfo(cmbTableList.Text)
 		currentDataTableInfo = dti
@@ -157,6 +157,11 @@ Public Class frmMain
 		dlg.FileName = "MySQLDBConnector.java"
 
 		Dim content = MySQL2JavaCLSBuilder.getMySQLDBConnector(ConnectionInfo)
+		If rdbForVersion5.Checked Then
+			content = content.Replace("@MySQLVersionShift@", "mysql")
+		Else
+			content = content.Replace("@MySQLVersionShift@", "mysql.cj")
+		End If
 
 		If dlg.ShowDialog = DialogResult.OK Then
 			IO.File.WriteAllText(dlg.FileName, content)

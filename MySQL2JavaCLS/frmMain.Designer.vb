@@ -24,6 +24,7 @@ Partial Class frmMain
 	Private Sub InitializeComponent()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
 		Me.pnlHeader = New System.Windows.Forms.Panel()
+		Me.Label16 = New System.Windows.Forms.Label()
 		Me.btnExit = New System.Windows.Forms.Button()
 		Me.picIcon = New System.Windows.Forms.PictureBox()
 		Me.lblSubTitle = New System.Windows.Forms.Label()
@@ -71,8 +72,11 @@ Partial Class frmMain
 		Me.Label12 = New System.Windows.Forms.Label()
 		Me.Label10 = New System.Windows.Forms.Label()
 		Me.pnlCommand = New System.Windows.Forms.Panel()
+		Me.rdbForVersion8 = New System.Windows.Forms.RadioButton()
+		Me.rdbForVersion5 = New System.Windows.Forms.RadioButton()
 		Me.btnSaveClassFile = New System.Windows.Forms.Button()
 		Me.Label15 = New System.Windows.Forms.Label()
+		Me.Label17 = New System.Windows.Forms.Label()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDatabaseConnection.SuspendLayout()
@@ -87,6 +91,7 @@ Partial Class frmMain
 		'pnlHeader
 		'
 		Me.pnlHeader.BackColor = System.Drawing.Color.DimGray
+		Me.pnlHeader.Controls.Add(Me.Label16)
 		Me.pnlHeader.Controls.Add(Me.btnExit)
 		Me.pnlHeader.Controls.Add(Me.picIcon)
 		Me.pnlHeader.Controls.Add(Me.lblSubTitle)
@@ -96,6 +101,17 @@ Partial Class frmMain
 		Me.pnlHeader.Name = "pnlHeader"
 		Me.pnlHeader.Size = New System.Drawing.Size(1500, 60)
 		Me.pnlHeader.TabIndex = 0
+		'
+		'Label16
+		'
+		Me.Label16.AutoSize = True
+		Me.Label16.Font = New System.Drawing.Font("Verdana", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label16.ForeColor = System.Drawing.Color.White
+		Me.Label16.Location = New System.Drawing.Point(399, 13)
+		Me.Label16.Name = "Label16"
+		Me.Label16.Size = New System.Drawing.Size(76, 18)
+		Me.Label16.TabIndex = 100
+		Me.Label16.Text = "(Beta 1)"
 		'
 		'btnExit
 		'
@@ -360,9 +376,10 @@ Partial Class frmMain
 		Me.btnGetDBConnector.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
 		Me.btnGetDBConnector.Location = New System.Drawing.Point(18, 14)
 		Me.btnGetDBConnector.Name = "btnGetDBConnector"
-		Me.btnGetDBConnector.Size = New System.Drawing.Size(185, 29)
+		Me.btnGetDBConnector.Size = New System.Drawing.Size(164, 29)
 		Me.btnGetDBConnector.TabIndex = 0
 		Me.btnGetDBConnector.Text = "Export DBConnector"
+		Me.btnGetDBConnector.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnGetDBConnector.UseVisualStyleBackColor = True
 		'
 		'picServerIcon
@@ -414,11 +431,11 @@ Partial Class frmMain
 		'
 		Me.Label8.AutoSize = True
 		Me.Label8.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label8.Location = New System.Drawing.Point(133, 38)
+		Me.Label8.Location = New System.Drawing.Point(94, 38)
 		Me.Label8.Name = "Label8"
-		Me.Label8.Size = New System.Drawing.Size(46, 13)
+		Me.Label8.Size = New System.Drawing.Size(85, 13)
 		Me.Label8.TabIndex = 11
-		Me.Label8.Text = "Table :"
+		Me.Label8.Text = "Select Table :"
 		'
 		'lvwColumnList
 		'
@@ -484,9 +501,9 @@ Partial Class frmMain
 		Me.btnBuild.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnBuild.Image = CType(resources.GetObject("btnBuild.Image"), System.Drawing.Image)
 		Me.btnBuild.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnBuild.Location = New System.Drawing.Point(209, 14)
+		Me.btnBuild.Location = New System.Drawing.Point(188, 14)
 		Me.btnBuild.Name = "btnBuild"
-		Me.btnBuild.Size = New System.Drawing.Size(140, 29)
+		Me.btnBuild.Size = New System.Drawing.Size(161, 29)
 		Me.btnBuild.TabIndex = 1
 		Me.btnBuild.Text = "Start Build"
 		Me.btnBuild.UseVisualStyleBackColor = True
@@ -504,6 +521,7 @@ Partial Class frmMain
 		Me.pnlClassProperties.Controls.Add(Me.Label11)
 		Me.pnlClassProperties.Controls.Add(Me.Label12)
 		Me.pnlClassProperties.Controls.Add(Me.Label10)
+		Me.pnlClassProperties.Enabled = False
 		Me.pnlClassProperties.Location = New System.Drawing.Point(1120, 654)
 		Me.pnlClassProperties.Name = "pnlClassProperties"
 		Me.pnlClassProperties.Size = New System.Drawing.Size(368, 143)
@@ -605,6 +623,9 @@ Partial Class frmMain
 		'
 		Me.pnlCommand.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlCommand.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlCommand.Controls.Add(Me.Label17)
+		Me.pnlCommand.Controls.Add(Me.rdbForVersion8)
+		Me.pnlCommand.Controls.Add(Me.rdbForVersion5)
 		Me.pnlCommand.Controls.Add(Me.btnSaveClassFile)
 		Me.pnlCommand.Controls.Add(Me.btnGetDBConnector)
 		Me.pnlCommand.Controls.Add(Me.btnBuild)
@@ -614,6 +635,28 @@ Partial Class frmMain
 		Me.pnlCommand.Size = New System.Drawing.Size(368, 93)
 		Me.pnlCommand.TabIndex = 3
 		'
+		'rdbForVersion8
+		'
+		Me.rdbForVersion8.AutoSize = True
+		Me.rdbForVersion8.Location = New System.Drawing.Point(141, 49)
+		Me.rdbForVersion8.Name = "rdbForVersion8"
+		Me.rdbForVersion8.Size = New System.Drawing.Size(42, 17)
+		Me.rdbForVersion8.TabIndex = 4
+		Me.rdbForVersion8.Text = "V.8"
+		Me.rdbForVersion8.UseVisualStyleBackColor = True
+		'
+		'rdbForVersion5
+		'
+		Me.rdbForVersion5.AutoSize = True
+		Me.rdbForVersion5.Checked = True
+		Me.rdbForVersion5.Location = New System.Drawing.Point(88, 49)
+		Me.rdbForVersion5.Name = "rdbForVersion5"
+		Me.rdbForVersion5.Size = New System.Drawing.Size(42, 17)
+		Me.rdbForVersion5.TabIndex = 3
+		Me.rdbForVersion5.TabStop = True
+		Me.rdbForVersion5.Text = "V.5"
+		Me.rdbForVersion5.UseVisualStyleBackColor = True
+		'
 		'btnSaveClassFile
 		'
 		Me.btnSaveClassFile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -621,9 +664,9 @@ Partial Class frmMain
 		Me.btnSaveClassFile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnSaveClassFile.Image = CType(resources.GetObject("btnSaveClassFile.Image"), System.Drawing.Image)
 		Me.btnSaveClassFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnSaveClassFile.Location = New System.Drawing.Point(18, 49)
+		Me.btnSaveClassFile.Location = New System.Drawing.Point(188, 49)
 		Me.btnSaveClassFile.Name = "btnSaveClassFile"
-		Me.btnSaveClassFile.Size = New System.Drawing.Size(185, 29)
+		Me.btnSaveClassFile.Size = New System.Drawing.Size(161, 29)
 		Me.btnSaveClassFile.TabIndex = 2
 		Me.btnSaveClassFile.Text = "Save Class File"
 		Me.btnSaveClassFile.UseVisualStyleBackColor = True
@@ -634,9 +677,19 @@ Partial Class frmMain
 		Me.Label15.ForeColor = System.Drawing.Color.Gray
 		Me.Label15.Location = New System.Drawing.Point(1267, 905)
 		Me.Label15.Name = "Label15"
-		Me.Label15.Size = New System.Drawing.Size(221, 13)
+		Me.Label15.Size = New System.Drawing.Size(227, 13)
 		Me.Label15.TabIndex = 4
-		Me.Label15.Text = "Any idea? > feineirz@live.com (feinz)"
+		Me.Label15.Text = "Any ideas? > feineirz@live.com (feinz)"
+		'
+		'Label17
+		'
+		Me.Label17.AutoSize = True
+		Me.Label17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label17.Location = New System.Drawing.Point(16, 51)
+		Me.Label17.Name = "Label17"
+		Me.Label17.Size = New System.Drawing.Size(66, 13)
+		Me.Label17.TabIndex = 14
+		Me.Label17.Text = "for MySQL"
 		'
 		'frmMain
 		'
@@ -670,6 +723,7 @@ Partial Class frmMain
 		Me.pnlClassProperties.PerformLayout()
 		CType(Me.picClassIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlCommand.ResumeLayout(False)
+		Me.pnlCommand.PerformLayout()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -725,4 +779,8 @@ Partial Class frmMain
 	Friend WithEvents Label14 As Label
 	Friend WithEvents btnSaveClassFile As Button
 	Friend WithEvents Label15 As Label
+	Friend WithEvents Label16 As Label
+	Friend WithEvents rdbForVersion8 As RadioButton
+	Friend WithEvents rdbForVersion5 As RadioButton
+	Friend WithEvents Label17 As Label
 End Class
