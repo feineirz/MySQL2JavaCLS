@@ -61,9 +61,8 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 	/*==================================================================*/
-        '''	/*============================[ Class Constructor ]========================*/
-        '''	/*==================================================================*/
+        '''  Looks up a localized string similar to @SECTIONSTART@
+        '''
         '''	public @CLASSNAME@() {}
         '''	
         '''	// Create a @CLASSNAME@ object from the given @PRIMARYKEY@.
@@ -72,7 +71,12 @@ Namespace My.Resources
         '''		Connection conn = new MySQLDBConnector().getDBConnection();
         '''		try {
         '''			String qry = &quot;SELECT *&quot;
-        '''					+ &quot; FROM &quot; + re [rest of string was truncated]&quot;;.
+        '''					+ &quot; FROM &quot; + relName
+        '''					+ &quot; WHERE @PRIMARYKEY@=?&quot;;
+        '''			PreparedStatement stmt = conn.prepareStatement(qry);
+        '''			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @CLASSNAME@_@PRIMARYKEY@);
+        '''			
+        '''			ResultSet rs = stmt.executeQuery( [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_ClassConstructor() As String
             Get
@@ -86,17 +90,23 @@ Namespace My.Resources
         '''import java.util.Date;
         '''import java.lang.*;
         '''
-        '''public class @CLASSNAME@ {	
+        '''////////////////////////////// CLASS START //////////////////////////////
+        '''
+        '''public class @CLASSNAME@ {
+        '''
+        '''@SECTIONSTART@
         '''	
-        '''	/*==================================================================*/
-        '''	/*===========================[ Class Header ]============================*/
-        '''	/*==================================================================*/
         '''	// Private Properties //
         '''@CLASSHEADER_PRIVATE_PROPERTIES@
         '''	
         '''	// Public Properties //
         '''	public final String relName = &quot;@CLASSHEADER_TABLENAME@&quot;;
-        '''	public final Strin [rest of string was truncated]&quot;;.
+        '''	public final String columnNames = &quot;&quot;
+        '''@CLASSHEADER_COLUMNLIST@;
+        '''
+        '''	// Class Structure //
+        '''	public static class @CLASSNAME@Info {
+        '''@CLASSHEADER_STRU [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_ClassHeader() As String
             Get
@@ -105,13 +115,11 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 	/*==================================================================*/
-        '''	/*==========================[ Class Properties ]===========================*/
-        '''	/*==================================================================*/
+        '''  Looks up a localized string similar to @SECTIONSTART@
+        '''
         '''@GET_PROPERTIYLIST@
-        '''	/*==================================================================*/
-        '''	/*========================[ END Class Properties ]==========================*/
-        '''	/*==================================================================*/
+        '''
+        '''@SECTIONEND@
         '''
         '''.
         '''</summary>
@@ -173,6 +181,57 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Looks up a localized string similar to 	// Delete //
+        '''	// Delete @CLASSNAME@ from a database.
+        '''	public static boolean delete@CLASSNAME@(@PRIMARYKEY_DATATYPE@ @PRIMARYKEY@) {
+        '''		
+        '''		Connection conn = new MySQLDBConnector().getDBConnection();
+        '''		try {
+        '''			String qry = &quot;DELETE FROM @TABLENAME@&quot;
+        '''					+ &quot; WHERE @PRIMARYKEY@=?&quot;;
+        '''			PreparedStatement stmt = conn.prepareStatement(qry);
+        '''			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @PRIMARYKEY@);
+        '''			
+        '''			stmt.execute();			
+        '''			conn.close();
+        '''			return true;
+        '''			
+        '''		} catch (SQLException e) {
+        '''			try {
+        '''	 [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property JAVAforMYSQL_REQFUNC_Delete() As String
+            Get
+                Return ResourceManager.GetString("JAVAforMYSQL_REQFUNC_Delete", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 	// IsExist //
+        '''	// Check if record(s) from the given condition is exist in a database.
+        '''	public static boolean isExist(String condition) {
+        '''		
+        '''		Connection conn = new MySQLDBConnector().getDBConnection();
+        '''		
+        '''		if(condition != &quot;&quot;) condition = &quot; WHERE &quot; + condition;
+        '''		try {
+        '''			String qry = &quot;SELECT *&quot; 
+        '''					+ &quot; FROM @TABLENAME@&quot;
+        '''					+ condition;
+        '''			Statement stmt = conn.createStatement();
+        '''			ResultSet rs = stmt.executeQuery(qry);
+        '''			while (rs.next()) {
+        '''				conn.close();
+        '''				return true;
+        '''			}			        ''' [rest of string was truncated]&quot;;.
+        '''</summary>
+        Friend ReadOnly Property JAVAforMYSQL_REQFUNC_IsExist() As String
+            Get
+                Return ResourceManager.GetString("JAVAforMYSQL_REQFUNC_IsExist", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Looks up a localized string similar to 	// List //
         '''	// List @CLASSNAME@ in database as a @CLASSNAME@ objects.
         '''	/// Overload ///
@@ -197,24 +256,37 @@ Namespace My.Resources
         
         '''<summary>
         '''  Looks up a localized string similar to 	// Update //
-        '''	// Update @CLASSNAME@ information to database.
+        '''	// Update @CLASSNAME@ information in database by giving a raw information.
         '''	public static boolean update@CLASSNAME@Info(@COLUMNLIST_WITHDATATYPE@) {
         '''		
         '''		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
         '''@STRUCTURED_COLUMNLIST@
         '''		
-        '''		return update@CLASSNAME@(@CLASSNAMELOWER@Info);
+        '''		return update@CLASSNAME@Info(@CLASSNAMELOWER@Info);
         '''		
         '''	}
         '''	
-        '''	// Update customer information to the database by giving a structured information.
+        '''	// Update @CLASSNAME@ information in database by giving a structured information.
         '''	public static boolean update@CLASSNAME@Info(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
         '''		
-        '''		Connection conn = new MySQLDBConnect [rest of string was truncated]&quot;;.
+        '''		Conne [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_REQFUNC_Update() As String
             Get
                 Return ResourceManager.GetString("JAVAforMYSQL_REQFUNC_Update", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to 
+        '''
+        '''@USER CUSTOM FUNCTIONS@
+        '''
+        '''.
+        '''</summary>
+        Friend ReadOnly Property JAVAforMYSQL_UCFUNC() As String
+            Get
+                Return ResourceManager.GetString("JAVAforMYSQL_UCFUNC", resourceCulture)
             End Get
         End Property
     End Module

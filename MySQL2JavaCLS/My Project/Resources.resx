@@ -133,10 +133,19 @@
   <data name="JAVAforMYSQL_REQFUNC_Add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JAVAforMYSQL_REQFUNC_Add.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="JAVAforMYSQL_REQFUNC_Delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JAVAforMYSQL_REQFUNC_Delete.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-874</value>
+  </data>
+  <data name="JAVAforMYSQL_REQFUNC_IsExist" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JAVAforMYSQL_REQFUNC_IsExist.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-874</value>
+  </data>
   <data name="JAVAforMYSQL_REQFUNC_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JAVAforMYSQL_REQFUNC_List.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
   <data name="JAVAforMYSQL_REQFUNC_Update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JAVAforMYSQL_REQFUNC_Update.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
+  </data>
+  <data name="JAVAforMYSQL_UCFUNC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JAVAforMYSQL_UCFUNC.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-874</value>
   </data>
 </root>

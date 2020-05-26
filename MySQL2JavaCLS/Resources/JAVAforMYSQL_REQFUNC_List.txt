@@ -24,7 +24,7 @@
 			Statement stmt = conn.createStatement();			
 			ResultSet rs = stmt.executeQuery(qry);
 			while(rs.next()) {
-				buff.add(new @CLASSNAME@(rs.get@PRIMARYKEY_DATATYTPE@("@PRIMARYKEY@")));
+				buff.add(new @CLASSNAME@(rs.get@PRIMARYKEY_GETSETDATATYPE@("@PRIMARYKEY@")));
 			}
 			
 			conn.close();
@@ -32,8 +32,8 @@
 		} catch (SQLException e) {
 			try {
 				conn.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
 			}
 			e.printStackTrace();
 		}

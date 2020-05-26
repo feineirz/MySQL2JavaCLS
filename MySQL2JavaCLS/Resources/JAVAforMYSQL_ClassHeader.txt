@@ -3,23 +3,24 @@ import java.util.*;
 import java.util.Date;
 import java.lang.*;
 
-public class @CLASSNAME@ {	
+/*********************************************{{{ CLASS START }}}*********************************************/
+
+public class @CLASSNAME@ {
+
+@SECTIONSTART@
 	
-	/*==================================================================*/
-	/*===========================[ Class Header ]============================*/
-	/*==================================================================*/
 	// Private Properties //
 @CLASSHEADER_PRIVATE_PROPERTIES@
 	
 	// Public Properties //
 	public final String relName = "@CLASSHEADER_TABLENAME@";
-	public final String columnNames = "@CLASSHEADER_COLUMNLIST@";
+	public final String columnNames = ""
+@CLASSHEADER_COLUMNLIST@;
 
 	// Class Structure //
 	public static class @CLASSNAME@Info {
 @CLASSHEADER_STRUCTURE_PROPERTIES@
 	}
-	/*==================================================================*/
-	/*=========================[ END Class Header ]==========================*/
-	/*==================================================================*/
+
+@SECTIONEND@
 

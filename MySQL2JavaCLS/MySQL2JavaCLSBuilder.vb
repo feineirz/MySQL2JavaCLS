@@ -46,6 +46,31 @@ Public Class MySQL2JavaCLSBuilder
 
 	End Function
 
+	Public Shared Function SectionHeader(Header As String, Optional UseSingleLine As Boolean = False) As String
+
+		Header = Header.Trim
+
+		Dim content As String = ""
+		Dim fixedLength As Integer = 100
+		Dim FullLine As String = ""
+		Dim SubLine As String = ""
+
+		For i = 1 To fixedLength
+			FullLine += "/"
+		Next
+
+		For i = 1 To (fixedLength - (Header.Length + 4)) / 2
+			SubLine += "/"
+		Next
+		If Not UseSingleLine Then content += FullLine + vbCrLf
+		content += SubLine + "[ " + Header + " ]" + SubLine + vbCrLf
+		If Not UseSingleLine Then content += FullLine + vbCrLf
+
+		Return content
+
+
+	End Function
+
 	Shared Function ConvertDataType(SQLServerDataType As String) As String
 
 		Select Case SQLServerDataType.ToLower
@@ -173,7 +198,8 @@ Public Class MySQL2JavaCLSBuilder
 		Dim chPrivateProperties As String = ""
 		Dim chStructureProperties As String = ""
 		Dim chColumnList As String = ""
-		For Each dci In DataTableInfo.ColumnList
+		For i = 0 To DataTableInfo.ColumnList.Count - 1
+			Dim dci = DataTableInfo.ColumnList(i)
 
 			' CLASSHEADER_PRIVATE_PROPERTIES
 			If Not chPrivateProperties = "" Then chPrivateProperties += vbCrLf
@@ -183,16 +209,22 @@ Public Class MySQL2JavaCLSBuilder
 			If Not chStructureProperties = "" Then chStructureProperties += vbCrLf
 			chStructureProperties += cTAB(2) + ConvertDataType(dci.DataType) + " " + dci.ColumnName + ";"
 
-			If Not chColumnList = "" Then chColumnList += ", "
-			chColumnList += dci.ColumnName
+			If Not chColumnList = "" Then chColumnList += vbCrLf
+			If i < DataTableInfo.ColumnList.Count - 1 Then
+				chColumnList += cTAB(2) + "+ " + dblQuote() + " " + dci.ColumnName + "," + dblQuote()
+			Else
+				chColumnList += cTAB(2) + "+ " + dblQuote() + " " + dci.ColumnName + dblQuote()
+			End If
 		Next
 
 		Dim ClassHeader = My.Resources.JAVAforMYSQL_ClassHeader
+		ClassHeader = ClassHeader.Replace("@SECTIONSTART@", SectionHeader("CLASS HEADER"))
 		ClassHeader = ClassHeader.Replace("@CLASSNAME@", FirstCaps(ClassInfo.ClassName))
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_PRIVATE_PROPERTIES@", chPrivateProperties)
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_STRUCTURE_PROPERTIES@", chStructureProperties)
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_TABLENAME@", DataTableInfo.TableName)
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_COLUMNLIST@", chColumnList)
+		ClassHeader = ClassHeader.Replace("@SECTIONEND@", SectionHeader("END CLASS HEADER", True))
 
 		sb.AppendLine(ClassHeader)
 
@@ -203,34 +235,48 @@ Public Class MySQL2JavaCLSBuilder
 			chClassConstructorPropertyLst += cTAB(4) + "this." + dci.ColumnName + " = rs.get" + ConvertGetSetDataType(dci.DataType) + "(" + dblQuote() + dci.ColumnName + dblQuote() + ");"
 		Next
 		Dim ClassConstructor As String = My.Resources.JAVAforMYSQL_ClassConstructor
+		ClassConstructor = ClassConstructor.Replace("@SECTIONSTART@", SectionHeader("CLASS CONSTRUCTOR"))
 		ClassConstructor = ClassConstructor.Replace("@CLASSNAME@", FirstCaps(ClassInfo.ClassName))
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
 		ClassConstructor = ClassConstructor.Replace("@CLASSCONSTRUCTOR_PROPERTYLIST@", chClassConstructorPropertyLst)
+		ClassConstructor = ClassConstructor.Replace("@SECTIONEND@", SectionHeader("END CLASS CONSTRUCTOR", True))
 
 		sb.AppendLine(ClassConstructor)
 
 		'---------- Class Properties ----------'
 		Dim ClassProperties As String = My.Resources.JAVAforMYSQL_ClassProperties
-		Dim chClassPropertyList As String = ""
+		Dim chClassGetPropertyList As String = ""
+		Dim chClassSetPropertyList As String = ""
 		For Each dci In DataTableInfo.ColumnList
-			If Not chClassPropertyList = "" Then chClassPropertyList += vbCrLf
-			chClassPropertyList += cTAB() + "public " + ConvertDataType(dci.DataType) + " get" + dci.ColumnName + "() { return this." + dci.ColumnName + "; }"
-			' Waiting for set
+			' chClassGetPropertyList
+			If Not chClassGetPropertyList = "" Then chClassGetPropertyList += vbCrLf
+			chClassGetPropertyList += cTAB() + "public " + ConvertDataType(dci.DataType) + " get" + dci.ColumnName + "() { return this." + dci.ColumnName + "; }"
+
+			' chClassSetPropertyList
+			'public void set@ColumnName@(@DataType@ value) {	if(update@ClassName@Property(@ColumnName@, value))  this.@ColumnName@ = value;	}
+			If Not chClassSetPropertyList = "" Then chClassSetPropertyList += vbCrLf
+			chClassSetPropertyList += cTAB() + "public void" + " set" + dci.ColumnName + "(" + ConvertDataType(dci.DataType) + " value) {	if(update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value))  this." + dci.ColumnName + " = value;	}"
 
 		Next
 
-		ClassProperties = ClassProperties.Replace("@GET_PROPERTIYLIST@", chClassPropertyList)
+		ClassProperties = ClassProperties.Replace("@SECTIONSTART@", SectionHeader("CLASS PROPERTIES"))
+		ClassProperties = ClassProperties.Replace("@GET_PROPERTIYLIST@", chClassGetPropertyList)
+		ClassProperties = ClassProperties.Replace("@SET_PROPERTYLIST@", chClassSetPropertyList)
+		ClassProperties = ClassProperties.Replace("@SECTIONEND@", SectionHeader("END CLASS PROPERTIES", True))
 		sb.AppendLine(ClassProperties)
 
 		'---------- Required Functions ----------'
+
+		sb.AppendLine(SectionHeader("REQUIRED FUNCTIONS"))
+
 		' List '
 		Dim rfListContents As String = My.Resources.JAVAforMYSQL_REQFUNC_List
 		rfListContents = rfListContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfListContents = rfListContents.Replace("@TABLENAME@", DataTableInfo.TableName)
 		rfListContents = rfListContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
-		rfListContents = rfListContents.Replace("@PRIMARYKEY_DATATYTPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
+		rfListContents = rfListContents.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
 
 		sb.AppendLine(rfListContents)
 
@@ -261,7 +307,9 @@ Public Class MySQL2JavaCLSBuilder
 
 			' rfAdd_Statement_ColumnList
 			If Not rfAdd_Statement_ColumnList = "" Then rfAdd_Statement_ColumnList += vbCrLf
-			rfAdd_Statement_ColumnList += cTAB(3) + "stmt.set" + ConvertGetSetDataType(dci.DataType) + "(" + rfAdd_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + dci.ColumnName + ");"
+			rfAdd_Statement_ColumnList += cTAB(3) + "stmt.set" + ConvertGetSetDataType(dci.DataType) _
+				+ "(" + rfAdd_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + dci.ColumnName + ");"
+
 			rfAdd_StatementCount += 1
 		Next
 
@@ -279,17 +327,29 @@ Public Class MySQL2JavaCLSBuilder
 		' Update '
 		Dim rfUpdateContents As String = My.Resources.JAVAforMYSQL_REQFUNC_Update
 		Dim rfUpdate_UpdateColumnListNonePrimaryKey As String = ""
+		Dim rfUpdate_StatementColumnListNonePrimaryKey As String = ""
+		Dim rfUpdate_StatementCount As Integer = 1
 		For i = 0 To DataTableInfo.ColumnList.Count - 1
 			Dim dci = DataTableInfo.ColumnList(i)
 			If Not dci.ColumnName = ClassInfo.ClassPrimaryKey Then
+				' rfUpdate_UpdateColumnListNonePrimaryKey
 				If Not rfUpdate_UpdateColumnListNonePrimaryKey = "" Then rfUpdate_UpdateColumnListNonePrimaryKey += vbCrLf
 				If i < DataTableInfo.ColumnList.Count - 1 Then
 					rfUpdate_UpdateColumnListNonePrimaryKey += cTAB(5) + "+ " + dblQuote() + "  " + dci.ColumnName + " = ?," + dblQuote()
 				Else
 					rfUpdate_UpdateColumnListNonePrimaryKey += cTAB(5) + "+ " + dblQuote() + "  " + dci.ColumnName + " = ?" + dblQuote()
 				End If
+
+				' rfUpdate_StatementColumnListNonePrimaryKey
+				rfUpdate_StatementColumnListNonePrimaryKey += cTAB(3) + "stmt.set" + ConvertGetSetDataType(dci.DataType) + "(" _
+				+ rfUpdate_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + dci.ColumnName + ");" + vbCrLf
+
+				rfUpdate_StatementCount += 1
 			End If
 		Next
+
+		rfUpdate_StatementColumnListNonePrimaryKey += cTAB(3) + "stmt.set" + ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType) + "(" _
+			+ rfUpdate_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + ClassInfo.ClassPrimaryKey + ");" + vbCrLf
 
 		rfUpdateContents = rfUpdateContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfUpdateContents = rfUpdateContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
@@ -297,12 +357,38 @@ Public Class MySQL2JavaCLSBuilder
 		rfUpdateContents = rfUpdateContents.Replace("@STRUCTURED_COLUMNLIST@", rfAdd_StructuredColomnList)
 		rfUpdateContents = rfUpdateContents.Replace("@TABLENAME@", DataTableInfo.TableName)
 		rfUpdateContents = rfUpdateContents.Replace("@UPDATE_COLUMNLIST_NONE_PRIMARYKEY@", rfUpdate_UpdateColumnListNonePrimaryKey)
+		rfUpdateContents = rfUpdateContents.Replace("@STATEMENT_COLUMNLIST_NONE_PRIMARYKEY@", rfUpdate_StatementColumnListNonePrimaryKey)
 		rfUpdateContents = rfUpdateContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 
 		sb.AppendLine(rfUpdateContents)
 
+		' Delete '
+		Dim rfDeleteContents As String = My.Resources.JAVAforMYSQL_REQFUNC_Delete
+		rfDeleteContents = rfDeleteContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
+		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
+		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
+		rfDeleteContents = rfDeleteContents.Replace("@TABLENAME@", DataTableInfo.TableName)
 
-		sb.AppendLine("}" + vbCrLf + "/////////////////////////// END CLASS ///////////////////////////")
+		sb.AppendLine(rfDeleteContents)
+
+		' IsExist '
+		Dim rfIsExistContents As String = My.Resources.JAVAforMYSQL_REQFUNC_IsExist
+		rfIsExistContents = rfIsExistContents.Replace("@TABLENAME@", DataTableInfo.TableName)
+
+		sb.AppendLine(rfIsExistContents)
+
+		sb.AppendLine(SectionHeader("END REQUIRED FUNCTIONS", True))
+
+		'---------- User Custom Functions ----------' 
+		Dim ucFunctionContents As String = My.Resources.JAVAforMYSQL_UCFUNC
+		ucFunctionContents = ucFunctionContents.Replace("@SECTIONSTART@", SectionHeader("USER CUSTOM FUNCTIONS"))
+		ucFunctionContents = ucFunctionContents.Replace("@SECTIONEND@", SectionHeader("END USER CUSTOM FUNCTIONS", True))
+
+		sb.AppendLine(ucFunctionContents)
+
+
+		sb.AppendLine("}" + vbCrLf + vbCrLf + "/*********************************************{{{ CLASS END }}}*********************************************/")
 		Return sb.ToString
 
 	End Function

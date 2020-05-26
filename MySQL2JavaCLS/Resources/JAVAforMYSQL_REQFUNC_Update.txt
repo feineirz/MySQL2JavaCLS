@@ -5,7 +5,7 @@
 		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
 @STRUCTURED_COLUMNLIST@
 		
-		return update@CLASSNAME@(@CLASSNAMELOWER@Info);
+		return update@CLASSNAME@Info(@CLASSNAMELOWER@Info);
 		
 	}
 	
@@ -19,7 +19,7 @@
 @UPDATE_COLUMNLIST_NONE_PRIMARYKEY@
 					+ " WHERE @PRIMARYKEY@ = ?";
 			PreparedStatement stmt = conn.prepareStatement(qry);
-@STATEMENT_COLUMNLIST@
+@STATEMENT_COLUMNLIST_NONE_PRIMARYKEY@
 			
 			stmt.execute();			
 			conn.close();
@@ -28,8 +28,97 @@
 		} catch (SQLException e) {
 			try {
 				conn.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+
+	// Update Property //
+	// Update single property in database by the given ColumnName and Value.
+	public boolean update@CLASSNAME@Property(String columnName, String value) {
+		
+		Connection conn = new MySQLDBConnector().getDBConnection();
+		try {
+			String qry = "UPDATE tbRMRequest"
+					+ " SET " + columnName + " = ?"
+					+ " WHERE @PRIMARYKEY@ = '" + this.@PRIMARYKEY@ + "'";
+			PreparedStatement stmt = conn.prepareStatement(qry);
+			stmt.setString(1, value);
+			
+			stmt.execute();			
+			conn.close();
+			return true;
+			
+		} catch (SQLException e) {
+			try {
+				conn.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	public boolean update@CLASSNAME@Property(String columnName, Short value) {
+		return update@CLASSNAME@Property(columnName, new Long(value));
+	}
+	public boolean update@CLASSNAME@Property(String columnName, int value) {
+		return update@CLASSNAME@Property(columnName, new Long(value));
+	}
+	public boolean update@CLASSNAME@Property(String columnName, long value) {
+		
+		Connection conn = new MySQLDBConnector().getDBConnection();
+		try {
+			String qry = "UPDATE tbRMRequest"
+					+ " SET " + columnName + " = ?"
+					+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
+			PreparedStatement stmt = conn.prepareStatement(qry);
+			stmt.setLong(1, value);
+			
+			stmt.execute();			
+			conn.close();
+			return true;
+			
+		} catch (SQLException e) {
+			try {
+				conn.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+			e.printStackTrace();
+			return false;
+		}
+		
+	}
+	
+	public boolean update@CLASSNAME@Property(String columnName, Float value) {
+		return update@CLASSNAME@Property(columnName, new Double(value));
+	}
+	public boolean update@CLASSNAME@Property(String columnName, Double value) {
+		
+		Connection conn = new MySQLDBConnector().getDBConnection();
+		try {
+			String qry = "UPDATE tbRMRequest"
+					+ " SET " + columnName + " = ?"
+					+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
+			PreparedStatement stmt = conn.prepareStatement(qry);
+			stmt.setDouble(1, value);
+			
+			stmt.execute();			
+			conn.close();
+			return true;
+			
+		} catch (SQLException e) {
+			try {
+				conn.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
 			}
 			e.printStackTrace();
 			return false;

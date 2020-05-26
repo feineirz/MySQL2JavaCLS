@@ -141,6 +141,9 @@
     <None Include="Resources\JAVAforMYSQL_REQFUNC_List.txt" />
     <None Include="Resources\JAVAforMYSQL_REQFUNC_Add.txt" />
     <None Include="Resources\JAVAforMYSQL_REQFUNC_Update.txt" />
+    <None Include="Resources\JAVAforMYSQL_REQFUNC_Delete.txt" />
+    <None Include="Resources\JAVAforMYSQL_REQFUNC_IsExist.txt" />
+    <None Include="Resources\JAVAforMYSQL_UCFUNC.txt" />
     <Content Include="result.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

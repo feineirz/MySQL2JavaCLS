@@ -1,0 +1,32 @@
+	// IsExist //
+	// Check if record(s) from the given condition is exist in a database.
+	public static boolean isExist(String condition) {
+		
+		Connection conn = new MySQLDBConnector().getDBConnection();
+		
+		if(condition != "") condition = " WHERE " + condition;
+		try {
+			String qry = "SELECT *" 
+					+ " FROM @TABLENAME@"
+					+ condition;
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(qry);
+			while (rs.next()) {
+				conn.close();
+				return true;
+			}			
+			conn.close();
+			return false;
+			
+		} catch (SQLException e) {
+			try {
+				conn.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+			e.printStackTrace();
+			return true;
+		}
+
+	}
+
