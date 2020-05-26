@@ -257,7 +257,7 @@ Public Class MySQL2JavaCLSBuilder
 			' chClassSetPropertyList
 			'public void set@ColumnName@(@DataType@ value) {	if(update@ClassName@Property(@ColumnName@, value))  this.@ColumnName@ = value;	}
 			If Not chClassSetPropertyList = "" Then chClassSetPropertyList += vbCrLf
-			chClassSetPropertyList += cTAB() + "public void" + " set" + dci.ColumnName + "(" + ConvertDataType(dci.DataType) + " value) {	if(update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value))  this." + dci.ColumnName + " = value;	}"
+			chClassSetPropertyList += cTAB() + "public boolean" + " set" + dci.ColumnName + "(" + ConvertDataType(dci.DataType) + " value) {	if(update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value)) { this." + dci.ColumnName + " = value; return true;	} else { return false; }}"
 
 		Next
 

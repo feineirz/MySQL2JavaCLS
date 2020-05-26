@@ -60,6 +60,12 @@ Public Class frmMain
 
 	End Sub
 
+	Private Function ValidateClassData() As Boolean
+		If tbxClassName.Text.Trim = "" Then Return False
+		If cmbPrimaryKey.Items.Count = 0 Then Return False
+		Return True
+	End Function
+
 	Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
 
 		If validateConnectionInfo() Then
@@ -108,25 +114,34 @@ Public Class frmMain
 		currentDataTableInfo = dti
 
 		lblTableCollation.Text = dti.Collation
-		tbxClassName.Text = dti.TableName
+		tbxClassName.Text = FirstCaps(dti.TableName)
 
 		lvwColumnList.Items.Clear()
 		cmbPrimaryKey.Items.Clear()
 
+		Dim PrimayKey As String = ""
 		Try
 			If dti.ColumnList.Count > 0 Then
 				Dim lvi As ListViewItem
+
 				For Each dci In dti.ColumnList
 					lvi = lvwColumnList.Items.Add(dci.ColumnName)
 					lvi.SubItems.Add(dci.DataType)
 					lvi.SubItems.Add(dci.IsNullable)
 					lvi.SubItems.Add(dci.Key)
 
+					If dci.Key = "PRI" Then PrimayKey = dci.ColumnName
+
 					cmbPrimaryKey.Items.Add(dci.ColumnName)
 				Next
 			End If
 
-			cmbPrimaryKey.SelectedItem = cmbPrimaryKey.Items(0)
+			Dim idx As Integer = 0
+			For i = 0 To cmbPrimaryKey.Items.Count - 1
+				Dim s As String = cmbPrimaryKey.Items(i)
+				If s = PrimayKey Then idx = i
+			Next
+			cmbPrimaryKey.SelectedItem = cmbPrimaryKey.Items(idx)
 
 		Catch ex As Exception
 			Console.WriteLine(ex.Message)
@@ -172,11 +187,55 @@ Public Class frmMain
 
 		If cmbPrimaryKey.Text = "" Then Return
 
+		If ValidateClassData() Then
+			btnBuild.Enabled = True
+		Else
+			btnBuild.Enabled = False
+		End If
+
 		For Each dci In currentDataTableInfo.ColumnList
 			If dci.ColumnName = cmbPrimaryKey.Text Then
 				lblPrimaryKeyDataType.Text = dci.DataType
 			End If
 		Next
+
+	End Sub
+
+	Private Sub btnSaveClassFile_Click(sender As Object, e As EventArgs) Handles btnSaveClassFile.Click
+
+		If rtbSourceCode.Text.Trim = "" Then Return
+
+		Dim dlg As New SaveFileDialog
+		dlg.FileName = tbxClassName.Text.Trim + ".java"
+		If dlg.ShowDialog = DialogResult.OK Then
+			IO.File.WriteAllText(dlg.FileName, rtbSourceCode.Text.ToString)
+		End If
+
+	End Sub
+
+	Private Sub rtbSourceCode_TextChanged(sender As Object, e As EventArgs) Handles rtbSourceCode.TextChanged
+
+		If rtbSourceCode.Text.Trim = "" Then
+			btnSaveClassFile.Enabled = False
+		Else
+			btnSaveClassFile.Enabled = True
+		End If
+
+	End Sub
+
+	Private Sub tbxClassName_LostFocus(sender As Object, e As EventArgs) Handles tbxClassName.LostFocus
+
+		tbxClassName.Text = FirstCaps(tbxClassName.Text.Trim)
+
+	End Sub
+
+	Private Sub tbxClassName_TextChanged(sender As Object, e As EventArgs) Handles tbxClassName.TextChanged
+
+		If ValidateClassData() Then
+			btnBuild.Enabled = True
+		Else
+			btnBuild.Enabled = False
+		End If
 
 	End Sub
 End Class

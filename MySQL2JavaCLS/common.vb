@@ -1,6 +1,6 @@
 ﻿Module common
 
-	Public Function FirstLetterToUpperCase(src As String) As String
+	Public Function FirstCaps(src As String) As String
 
 		Dim rt As String = ""
 		If src.Length > 0 Then

@@ -9,10 +9,10 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("MySQL2JavaCLS")>
-<Assembly: AssemblyDescription("")>
+<Assembly: AssemblyDescription("Generate Java class file for MySQL databases.")>
 <Assembly: AssemblyCompany("")>
 <Assembly: AssemblyProduct("MySQL2JavaCLS")>
-<Assembly: AssemblyCopyright("Copyright ©  2020")>
+<Assembly: AssemblyCopyright("Copyright ©  2020 feinz.net")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>

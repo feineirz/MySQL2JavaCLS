@@ -1761,6 +1761,17 @@
         AElFTkSuQmCC
 </value>
   </data>
+  <data name="btnSaveClassFile.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        dgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD+SURBVDhPYwCB
+        N3u129/s1fl/Z7PpP1Wn2f9BWMVh6jU5k+r/omqRKPhybeS/J22R/2EYqFm3GaQZbMAmU7BmvAbUITRD
+        DYBoRjdAx3XiA4oMcApu+0ORAS4hLf9JNuD1Ht3/D7YZgfH9rUB6q8H/a/WR/280IPDjVjwGYMPIirFh
+        2hnw/mr7/8/vn/1/dvf9/6cbFmLVDMJYDXh3OvH/ly+/wfjp038QPK+JeAM+3OgHa54wa///ktplEAM2
+        ryDegHdn0jBc8GRBG/EGgPCHm5P+f/n04f/TB9/+P9myCqtmEMZpABjv0/v/pD0Kq0YYxm8AEGPThIwp
+        NCDyPwB30K6gJdKprAAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAAAAAAEAIAD2BwAAFgAAAIlQTkcNChoKAAAADUlIRFIAAAEAAAABAAgGAAAAXHKoZgAAB71J
