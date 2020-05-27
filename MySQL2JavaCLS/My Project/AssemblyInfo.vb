@@ -10,9 +10,9 @@ Imports System.Runtime.InteropServices
 
 <Assembly: AssemblyTitle("MySQL2JavaCLS")>
 <Assembly: AssemblyDescription("Generate Java class file for MySQL databases.")>
-<Assembly: AssemblyCompany("")>
+<Assembly: AssemblyCompany("feinz.net")>
 <Assembly: AssemblyProduct("MySQL2JavaCLS")>
-<Assembly: AssemblyCopyright("Copyright ©  2020 feinz.net")>
+<Assembly: AssemblyCopyright("Copyright © feinz.net  2020")>
 <Assembly: AssemblyTrademark("")>
 
 <Assembly: ComVisible(False)>
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
+<Assembly: AssemblyVersion("1.0.0.1")>
+<Assembly: AssemblyFileVersion("1.0.0.1")>

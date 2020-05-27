@@ -50,6 +50,7 @@ Partial Class frmMain
 		Me.btnGetDBConnector = New System.Windows.Forms.Button()
 		Me.picServerIcon = New System.Windows.Forms.PictureBox()
 		Me.pnlDatabaseProperties = New System.Windows.Forms.Panel()
+		Me.chkLowercaseColumnName = New System.Windows.Forms.CheckBox()
 		Me.Label13 = New System.Windows.Forms.Label()
 		Me.lblTableCollation = New System.Windows.Forms.Label()
 		Me.Label8 = New System.Windows.Forms.Label()
@@ -77,9 +78,9 @@ Partial Class frmMain
 		Me.rdbForVersion5 = New System.Windows.Forms.RadioButton()
 		Me.btnSaveClassFile = New System.Windows.Forms.Button()
 		Me.Label15 = New System.Windows.Forms.Label()
-		Me.chkLowercaseColumnName = New System.Windows.Forms.CheckBox()
 		Me.btnChangeFont = New System.Windows.Forms.Button()
 		Me.lblAppVersion = New System.Windows.Forms.Label()
+		Me.btnEnableEditing = New System.Windows.Forms.Button()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDatabaseConnection.SuspendLayout()
@@ -166,7 +167,7 @@ Partial Class frmMain
 		Me.rtbSourceCode.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
 						Or System.Windows.Forms.AnchorStyles.Left) _
 						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.rtbSourceCode.BackColor = System.Drawing.Color.WhiteSmoke
+		Me.rtbSourceCode.BackColor = System.Drawing.Color.Gainsboro
 		Me.rtbSourceCode.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.rtbSourceCode.Font = New System.Drawing.Font("Source Code Pro", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.rtbSourceCode.ForeColor = System.Drawing.Color.Black
@@ -414,6 +415,18 @@ Partial Class frmMain
 		Me.pnlDatabaseProperties.Name = "pnlDatabaseProperties"
 		Me.pnlDatabaseProperties.Size = New System.Drawing.Size(368, 315)
 		Me.pnlDatabaseProperties.TabIndex = 1
+		'
+		'chkLowercaseColumnName
+		'
+		Me.chkLowercaseColumnName.AutoSize = True
+		Me.chkLowercaseColumnName.Checked = True
+		Me.chkLowercaseColumnName.CheckState = System.Windows.Forms.CheckState.Checked
+		Me.chkLowercaseColumnName.Location = New System.Drawing.Point(185, 92)
+		Me.chkLowercaseColumnName.Name = "chkLowercaseColumnName"
+		Me.chkLowercaseColumnName.Size = New System.Drawing.Size(171, 17)
+		Me.chkLowercaseColumnName.TabIndex = 14
+		Me.chkLowercaseColumnName.Text = "Lowercase column name."
+		Me.chkLowercaseColumnName.UseVisualStyleBackColor = True
 		'
 		'Label13
 		'
@@ -697,18 +710,6 @@ Partial Class frmMain
 		Me.Label15.TabIndex = 4
 		Me.Label15.Text = "Any ideas? > feineirz@live.com (feinz)"
 		'
-		'chkLowercaseColumnName
-		'
-		Me.chkLowercaseColumnName.AutoSize = True
-		Me.chkLowercaseColumnName.Checked = True
-		Me.chkLowercaseColumnName.CheckState = System.Windows.Forms.CheckState.Checked
-		Me.chkLowercaseColumnName.Location = New System.Drawing.Point(185, 92)
-		Me.chkLowercaseColumnName.Name = "chkLowercaseColumnName"
-		Me.chkLowercaseColumnName.Size = New System.Drawing.Size(171, 17)
-		Me.chkLowercaseColumnName.TabIndex = 14
-		Me.chkLowercaseColumnName.Text = "Lowercase column name."
-		Me.chkLowercaseColumnName.UseVisualStyleBackColor = True
-		'
 		'btnChangeFont
 		'
 		Me.btnChangeFont.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -732,12 +733,27 @@ Partial Class frmMain
 		Me.lblAppVersion.TabIndex = 6
 		Me.lblAppVersion.Text = "ver."
 		'
+		'btnEnableEditing
+		'
+		Me.btnEnableEditing.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnEnableEditing.Image = CType(resources.GetObject("btnEnableEditing.Image"), System.Drawing.Image)
+		Me.btnEnableEditing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnEnableEditing.Location = New System.Drawing.Point(861, 905)
+		Me.btnEnableEditing.Name = "btnEnableEditing"
+		Me.btnEnableEditing.Size = New System.Drawing.Size(130, 29)
+		Me.btnEnableEditing.TabIndex = 7
+		Me.btnEnableEditing.Text = "Enable Editing"
+		Me.btnEnableEditing.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.btnEnableEditing.UseVisualStyleBackColor = True
+		Me.btnEnableEditing.Visible = False
+		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.ClientSize = New System.Drawing.Size(1500, 940)
+		Me.Controls.Add(Me.btnEnableEditing)
 		Me.Controls.Add(Me.lblAppVersion)
 		Me.Controls.Add(Me.btnChangeFont)
 		Me.Controls.Add(Me.Label15)
@@ -829,4 +845,5 @@ Partial Class frmMain
 	Friend WithEvents chkLowercaseColumnName As CheckBox
 	Friend WithEvents btnChangeFont As Button
 	Friend WithEvents lblAppVersion As Label
+	Friend WithEvents btnEnableEditing As Button
 End Class

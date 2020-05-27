@@ -252,12 +252,20 @@ Public Class MySQL2JavaCLSBuilder
 		For Each dci In DataTableInfo.ColumnList
 			' chClassGetPropertyList
 			If Not chClassGetPropertyList = "" Then chClassGetPropertyList += vbCrLf
-			chClassGetPropertyList += cTAB() + "public " + ConvertDataType(dci.DataType) + " get" + dci.ColumnName + "() { return this." + dci.ColumnName + "; }"
+			chClassGetPropertyList += cTAB() + "public " + ConvertDataType(dci.DataType) + " get" + FirstCaps(dci.ColumnName) + "() { " + vbCrLf
+			chClassGetPropertyList += cTAB(2) + "return this." + dci.ColumnName + ";" + vbCrLf
+			chClassGetPropertyList += cTAB() + "}" + vbCrLf
 
 			' chClassSetPropertyList
-			'public void set@ColumnName@(@DataType@ value) {	if(update@ClassName@Property(@ColumnName@, value))  this.@ColumnName@ = value;	}
 			If Not chClassSetPropertyList = "" Then chClassSetPropertyList += vbCrLf
-			chClassSetPropertyList += cTAB() + "public boolean" + " set" + dci.ColumnName + "(" + ConvertDataType(dci.DataType) + " value) {	if(update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value)) { this." + dci.ColumnName + " = value; return true;	} else { return false; }}"
+			chClassSetPropertyList += cTAB() + "public boolean" + " set" + FirstCaps(dci.ColumnName) + "(" + ConvertDataType(dci.DataType) + " value) {" + vbCrLf
+			chClassSetPropertyList += cTAB(2) + "if (update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value)) {" + vbCrLf
+			chClassSetPropertyList += cTAB(3) + "this." + dci.ColumnName + " = value;" + vbCrLf
+			chClassSetPropertyList += cTAB(3) + "return true;" + vbCrLf
+			chClassSetPropertyList += cTAB(2) + "} else { " + vbCrLf
+			chClassSetPropertyList += cTAB(3) + "return false;" + vbCrLf
+			chClassSetPropertyList += cTAB(2) + "}" + vbCrLf
+			chClassSetPropertyList += cTAB() + "}" + vbCrLf
 
 		Next
 

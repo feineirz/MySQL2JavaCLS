@@ -250,4 +250,16 @@ Public Class frmMain
 		End If
 
 	End Sub
+
+	Private Sub btnEnableEditing_Click(sender As Object, e As EventArgs) Handles btnEnableEditing.Click
+
+		If rtbSourceCode.ReadOnly = True Then
+			rtbSourceCode.ReadOnly = False
+			btnEnableEditing.Text = "Disable Editing"
+		Else
+			rtbSourceCode.ReadOnly = True
+			btnEnableEditing.Text = "Enable Editing"
+		End If
+
+	End Sub
 End Class
