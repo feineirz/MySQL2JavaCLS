@@ -13,6 +13,7 @@ public class MySQLDBConnector {
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://@HOST@:@PORT@/@DATABASE@"
 					+ "?useUnicode=true"
+					+ "&characterEncoding=utf-8"
 					+ "&useJDBCCompliantTimezoneShift=true"
 					+ "&useLegacyDatetimeCode=false&serverTimezone=UTC"
 					+ "&autoReconnect=true"
