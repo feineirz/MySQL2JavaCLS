@@ -1,5 +1,6 @@
-	// Add //
-	// Add @CLASSNAME@ to database by giving a raw information.
+	//////////////////////////////[ Add ]//////////////////////////////
+	// Add @CLASSNAME@ to database by giving a raw information. //
+	///////////////////////////////////////////////////////////////////
 	public static boolean add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
 		
 		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
@@ -9,7 +10,7 @@
 		
 	}
 	
-	// Add @CLASSNAME@ to database by giving a structured information.
+	// Add @CLASSNAME@ to database by giving a structured information. //
 	public static boolean add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
@@ -35,5 +36,6 @@
 		}
 		
 	}
+	///////////////////////////////////////////////////////////////////
 	
 	

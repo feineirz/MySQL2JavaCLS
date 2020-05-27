@@ -42,9 +42,6 @@ Public Class frmMain
 		ElseIf tbxUser.Text.Trim = "" Then
 			tbxUser.Focus()
 			Return False
-			'ElseIf tbxPass.Text.Trim = "" Then
-			'	tbxPass.Focus()
-			'	Return False
 		End If
 
 		Return True
@@ -110,7 +107,7 @@ Public Class frmMain
 
 		pnlClassProperties.Enabled = True
 
-		Dim dti As MySQLDB.DataTableInfo = mysqlDB.getTableInfo(cmbTableList.Text)
+		Dim dti As MySQLDB.DataTableInfo = mysqlDB.getTableInfo(cmbTableList.Text, chkLowercaseColumnName.Checked)
 		currentDataTableInfo = dti
 
 		lblTableCollation.Text = dti.Collation
@@ -185,6 +182,7 @@ Public Class frmMain
 	Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 		rtbSourceCode.SelectionTabs = New Integer() {40, 80, 120, 160}
+		lblAppVersion.Text = "ver." + Application.ProductVersion
 
 	End Sub
 
@@ -240,6 +238,15 @@ Public Class frmMain
 			btnBuild.Enabled = True
 		Else
 			btnBuild.Enabled = False
+		End If
+
+	End Sub
+
+	Private Sub btnChangeFont_Click(sender As Object, e As EventArgs) Handles btnChangeFont.Click
+
+		Dim dlg As New FontDialog
+		If dlg.ShowDialog = DialogResult.OK Then
+			rtbSourceCode.Font = dlg.Font
 		End If
 
 	End Sub

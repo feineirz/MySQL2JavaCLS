@@ -1,5 +1,6 @@
-	// IsExist //
-	// Check if record(s) from the given condition is exist in a database.
+	//////////////////////////////[ IsExist ]//////////////////////////////
+	// Check if record(s) from the given condition is exist in a database. //
+	///////////////////////////////////////////////////////////////////////
 	public static boolean isExist(String condition) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
@@ -29,4 +30,5 @@
 		}
 
 	}
-
+	///////////////////////////////////////////////////////////////////////
+	
