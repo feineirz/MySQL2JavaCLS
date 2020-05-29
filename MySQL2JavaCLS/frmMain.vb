@@ -150,19 +150,7 @@ Public Class frmMain
 
 	Private Sub btnGetDBConnector_Click(sender As Object, e As EventArgs) Handles btnGetDBConnector.Click
 
-		Dim dlg As New SaveFileDialog
-		dlg.FileName = "MySQLDBConnector.java"
-
-		Dim content = MySQL2JavaCLSBuilder.getMySQLDBConnector(ConnectionInfo)
-		If rdbForVersion5.Checked Then
-			content = content.Replace("@MySQLVersionShift@", "mysql")
-		Else
-			content = content.Replace("@MySQLVersionShift@", "mysql.cj")
-		End If
-
-		If dlg.ShowDialog = DialogResult.OK Then
-			IO.File.WriteAllText(dlg.FileName, content)
-		End If
+		frmExportConnectionSettings.ShowDialog()
 
 	End Sub
 

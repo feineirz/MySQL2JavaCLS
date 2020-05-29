@@ -82,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common.vb" />
+    <Compile Include="frmExportConnectionSettings.Designer.vb">
+      <DependentUpon>frmExportConnectionSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmExportConnectionSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmMain.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -109,6 +115,9 @@
     <Compile Include="MySQLConnector.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmExportConnectionSettings.resx">
+      <DependentUpon>frmExportConnectionSettings.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.vb</DependentUpon>
     </EmbeddedResource>
