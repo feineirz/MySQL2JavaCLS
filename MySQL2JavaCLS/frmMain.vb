@@ -251,14 +251,16 @@ Public Class frmMain
 
 	End Sub
 
-	Private Sub btnEnableEditing_Click(sender As Object, e As EventArgs) Handles btnEnableEditing.Click
+	Private Sub chkLowercaseColumnName_CheckedChanged(sender As Object, e As EventArgs) Handles chkLowercaseColumnName.CheckedChanged
 
-		If rtbSourceCode.ReadOnly = True Then
-			rtbSourceCode.ReadOnly = False
-			btnEnableEditing.Text = "Disable Editing"
-		Else
-			rtbSourceCode.ReadOnly = True
-			btnEnableEditing.Text = "Enable Editing"
+		cmbTableList_SelectedIndexChanged(Nothing, Nothing)
+
+	End Sub
+
+	Private Sub btnSaveProfile_Click(sender As Object, e As EventArgs) Handles btnSaveProfile.Click
+
+		If validateConnectionInfo() Then
+
 		End If
 
 	End Sub

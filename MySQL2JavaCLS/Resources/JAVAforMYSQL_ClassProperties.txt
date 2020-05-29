@@ -1,9 +1,9 @@
 @SECTIONSTART@
 
-	// GET //
+	/// GET ///
 @GET_PROPERTIYLIST@
 
-	// SET //
+	/// SET ///
 @SET_PROPERTYLIST@
 
 @SECTIONEND@

@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frmMain
 	Inherits System.Windows.Forms.Form
 
 	'Form overrides dispose to clean up the component list.
-	<System.Diagnostics.DebuggerNonUserCode()> _
+	<System.Diagnostics.DebuggerNonUserCode()>
 	Protected Overrides Sub Dispose(ByVal disposing As Boolean)
 		Try
 			If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frmMain
 	'NOTE: The following procedure is required by the Windows Form Designer
 	'It can be modified using the Windows Form Designer.  
 	'Do not modify it using the code editor.
-	<System.Diagnostics.DebuggerStepThrough()> _
+	<System.Diagnostics.DebuggerStepThrough()>
 	Private Sub InitializeComponent()
 		Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMain))
 		Me.pnlHeader = New System.Windows.Forms.Panel()
@@ -80,7 +80,6 @@ Partial Class frmMain
 		Me.Label15 = New System.Windows.Forms.Label()
 		Me.btnChangeFont = New System.Windows.Forms.Button()
 		Me.lblAppVersion = New System.Windows.Forms.Label()
-		Me.btnEnableEditing = New System.Windows.Forms.Button()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDatabaseConnection.SuspendLayout()
@@ -715,7 +714,7 @@ Partial Class frmMain
 		Me.btnChangeFont.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnChangeFont.Image = CType(resources.GetObject("btnChangeFont.Image"), System.Drawing.Image)
 		Me.btnChangeFont.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnChangeFont.Location = New System.Drawing.Point(997, 905)
+		Me.btnChangeFont.Location = New System.Drawing.Point(997, 71)
 		Me.btnChangeFont.Name = "btnChangeFont"
 		Me.btnChangeFont.Size = New System.Drawing.Size(117, 29)
 		Me.btnChangeFont.TabIndex = 5
@@ -727,33 +726,18 @@ Partial Class frmMain
 		'
 		Me.lblAppVersion.AutoSize = True
 		Me.lblAppVersion.ForeColor = System.Drawing.Color.Gray
-		Me.lblAppVersion.Location = New System.Drawing.Point(12, 913)
+		Me.lblAppVersion.Location = New System.Drawing.Point(12, 905)
 		Me.lblAppVersion.Name = "lblAppVersion"
 		Me.lblAppVersion.Size = New System.Drawing.Size(28, 13)
 		Me.lblAppVersion.TabIndex = 6
 		Me.lblAppVersion.Text = "ver."
-		'
-		'btnEnableEditing
-		'
-		Me.btnEnableEditing.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnEnableEditing.Image = CType(resources.GetObject("btnEnableEditing.Image"), System.Drawing.Image)
-		Me.btnEnableEditing.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnEnableEditing.Location = New System.Drawing.Point(861, 905)
-		Me.btnEnableEditing.Name = "btnEnableEditing"
-		Me.btnEnableEditing.Size = New System.Drawing.Size(130, 29)
-		Me.btnEnableEditing.TabIndex = 7
-		Me.btnEnableEditing.Text = "Enable Editing"
-		Me.btnEnableEditing.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-		Me.btnEnableEditing.UseVisualStyleBackColor = True
-		Me.btnEnableEditing.Visible = False
 		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.WhiteSmoke
-		Me.ClientSize = New System.Drawing.Size(1500, 940)
-		Me.Controls.Add(Me.btnEnableEditing)
+		Me.ClientSize = New System.Drawing.Size(1500, 930)
 		Me.Controls.Add(Me.lblAppVersion)
 		Me.Controls.Add(Me.btnChangeFont)
 		Me.Controls.Add(Me.Label15)
@@ -845,5 +829,4 @@ Partial Class frmMain
 	Friend WithEvents chkLowercaseColumnName As CheckBox
 	Friend WithEvents btnChangeFont As Button
 	Friend WithEvents lblAppVersion As Label
-	Friend WithEvents btnEnableEditing As Button
 End Class

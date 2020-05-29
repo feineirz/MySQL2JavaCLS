@@ -9,15 +9,15 @@ public class @CLASSNAME@ {
 
 @SECTIONSTART@
 	
-	// Private Properties //
+	/// PRIVATE PROPERTIES ///
 @CLASSHEADER_PRIVATE_PROPERTIES@
 	
-	// Public Properties //
+	/// PUBLIC PROPERTIES ///
 	public final String relName = "@CLASSHEADER_TABLENAME@";
 	public final String columnNames = ""
 @CLASSHEADER_COLUMNLIST@;
 
-	// Class Structure //
+	/// CLASS STRUCTURE ///
 	public static class @CLASSNAME@Info {
 @CLASSHEADER_STRUCTURE_PROPERTIES@
 	}
