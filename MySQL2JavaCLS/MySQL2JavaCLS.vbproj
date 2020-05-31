@@ -55,6 +55,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -69,6 +72,7 @@
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="MySql.Data.MySqlClient" />
+    <Import Include="Newtonsoft.Json" />
     <Import Include="System" />
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
@@ -143,6 +147,7 @@
   <ItemGroup>
     <Content Include="codingai.ico" />
     <Content Include="database.ico" />
+    <None Include="packages.config" />
     <None Include="Resources\JAVAforMYSQL_MySQLDBConnector.txt" />
     <None Include="Resources\JAVAforMYSQL_ClassHeader.txt" />
     <None Include="Resources\JAVAforMYSQL_ClassConstructor.txt" />
