@@ -26,9 +26,29 @@
 		} catch (SQLException e) {
 			try {
 				conn.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
 			}
+			e.printStackTrace();
+		}
+		
+	} /////////////////////////////////////////////////////////////////////////
+
+	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn) {
+		
+		try {
+			String qry = "SELECT *"
+					+ " FROM " + relName
+					+ " WHERE @PRIMARYKEY@=?";
+			PreparedStatement stmt = conn.prepareStatement(qry);
+			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @CLASSNAME@_@PRIMARYKEY@);
+			
+			ResultSet rs = stmt.executeQuery();
+			while(rs.next()) {
+@CLASSCONSTRUCTOR_PROPERTYLIST@
+			}
+			
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
