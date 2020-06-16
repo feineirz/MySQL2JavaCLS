@@ -73,9 +73,6 @@ Partial Class frmMain
 		Me.Label12 = New System.Windows.Forms.Label()
 		Me.Label10 = New System.Windows.Forms.Label()
 		Me.pnlCommand = New System.Windows.Forms.Panel()
-		Me.Label17 = New System.Windows.Forms.Label()
-		Me.rdbForVersion8 = New System.Windows.Forms.RadioButton()
-		Me.rdbForVersion5 = New System.Windows.Forms.RadioButton()
 		Me.btnSaveClassFile = New System.Windows.Forms.Button()
 		Me.Label15 = New System.Windows.Forms.Label()
 		Me.btnChangeFont = New System.Windows.Forms.Button()
@@ -164,8 +161,8 @@ Partial Class frmMain
 		'rtbSourceCode
 		'
 		Me.rtbSourceCode.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-						Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.rtbSourceCode.BackColor = System.Drawing.Color.Gainsboro
 		Me.rtbSourceCode.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.rtbSourceCode.Font = New System.Drawing.Font("Source Code Pro", 8.999999!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -230,7 +227,7 @@ Partial Class frmMain
 		'cmbConnectionProfile
 		'
 		Me.cmbConnectionProfile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.cmbConnectionProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.cmbConnectionProfile.Enabled = False
 		Me.cmbConnectionProfile.FormattingEnabled = True
@@ -252,7 +249,7 @@ Partial Class frmMain
 		'tbxDatabase
 		'
 		Me.tbxDatabase.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxDatabase.Location = New System.Drawing.Point(185, 121)
 		Me.tbxDatabase.Name = "tbxDatabase"
 		Me.tbxDatabase.Size = New System.Drawing.Size(164, 21)
@@ -286,7 +283,7 @@ Partial Class frmMain
 		'tbxPass
 		'
 		Me.tbxPass.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxPass.Location = New System.Drawing.Point(185, 175)
 		Me.tbxPass.Name = "tbxPass"
 		Me.tbxPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
@@ -296,7 +293,7 @@ Partial Class frmMain
 		'tbxUser
 		'
 		Me.tbxUser.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxUser.Location = New System.Drawing.Point(185, 148)
 		Me.tbxUser.Name = "tbxUser"
 		Me.tbxUser.Size = New System.Drawing.Size(164, 21)
@@ -306,7 +303,7 @@ Partial Class frmMain
 		'tbxPort
 		'
 		Me.tbxPort.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxPort.Location = New System.Drawing.Point(185, 94)
 		Me.tbxPort.Name = "tbxPort"
 		Me.tbxPort.Size = New System.Drawing.Size(164, 21)
@@ -316,7 +313,7 @@ Partial Class frmMain
 		'tbxHost
 		'
 		Me.tbxHost.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxHost.Location = New System.Drawing.Point(185, 67)
 		Me.tbxHost.Name = "tbxHost"
 		Me.tbxHost.Size = New System.Drawing.Size(164, 21)
@@ -458,8 +455,8 @@ Partial Class frmMain
 		'lvwColumnList
 		'
 		Me.lvwColumnList.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-						Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.lvwColumnList.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.colColumnName, Me.colDataType, Me.colNullable, Me.colKey})
 		Me.lvwColumnList.FullRowSelect = True
 		Me.lvwColumnList.GridLines = True
@@ -493,7 +490,7 @@ Partial Class frmMain
 		'cmbTableList
 		'
 		Me.cmbTableList.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.cmbTableList.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.cmbTableList.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.cmbTableList.FormattingEnabled = True
@@ -579,7 +576,7 @@ Partial Class frmMain
 		'cmbPrimaryKey
 		'
 		Me.cmbPrimaryKey.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.cmbPrimaryKey.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.cmbPrimaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.cmbPrimaryKey.FormattingEnabled = True
@@ -601,7 +598,7 @@ Partial Class frmMain
 		'tbxClassName
 		'
 		Me.tbxClassName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-						Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.tbxClassName.Location = New System.Drawing.Point(185, 36)
 		Me.tbxClassName.Name = "tbxClassName"
 		Me.tbxClassName.Size = New System.Drawing.Size(164, 21)
@@ -641,9 +638,6 @@ Partial Class frmMain
 		'
 		Me.pnlCommand.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlCommand.BackColor = System.Drawing.Color.Gainsboro
-		Me.pnlCommand.Controls.Add(Me.Label17)
-		Me.pnlCommand.Controls.Add(Me.rdbForVersion8)
-		Me.pnlCommand.Controls.Add(Me.rdbForVersion5)
 		Me.pnlCommand.Controls.Add(Me.btnSaveClassFile)
 		Me.pnlCommand.Controls.Add(Me.btnGetDBConnector)
 		Me.pnlCommand.Controls.Add(Me.btnBuild)
@@ -652,38 +646,6 @@ Partial Class frmMain
 		Me.pnlCommand.Name = "pnlCommand"
 		Me.pnlCommand.Size = New System.Drawing.Size(368, 93)
 		Me.pnlCommand.TabIndex = 3
-		'
-		'Label17
-		'
-		Me.Label17.AutoSize = True
-		Me.Label17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label17.Location = New System.Drawing.Point(16, 51)
-		Me.Label17.Name = "Label17"
-		Me.Label17.Size = New System.Drawing.Size(66, 13)
-		Me.Label17.TabIndex = 14
-		Me.Label17.Text = "for MySQL"
-		'
-		'rdbForVersion8
-		'
-		Me.rdbForVersion8.AutoSize = True
-		Me.rdbForVersion8.Location = New System.Drawing.Point(141, 49)
-		Me.rdbForVersion8.Name = "rdbForVersion8"
-		Me.rdbForVersion8.Size = New System.Drawing.Size(42, 17)
-		Me.rdbForVersion8.TabIndex = 4
-		Me.rdbForVersion8.Text = "V.8"
-		Me.rdbForVersion8.UseVisualStyleBackColor = True
-		'
-		'rdbForVersion5
-		'
-		Me.rdbForVersion5.AutoSize = True
-		Me.rdbForVersion5.Checked = True
-		Me.rdbForVersion5.Location = New System.Drawing.Point(88, 49)
-		Me.rdbForVersion5.Name = "rdbForVersion5"
-		Me.rdbForVersion5.Size = New System.Drawing.Size(42, 17)
-		Me.rdbForVersion5.TabIndex = 3
-		Me.rdbForVersion5.TabStop = True
-		Me.rdbForVersion5.Text = "V.5"
-		Me.rdbForVersion5.UseVisualStyleBackColor = True
 		'
 		'btnSaveClassFile
 		'
@@ -714,7 +676,7 @@ Partial Class frmMain
 		Me.btnChangeFont.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnChangeFont.Image = CType(resources.GetObject("btnChangeFont.Image"), System.Drawing.Image)
 		Me.btnChangeFont.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnChangeFont.Location = New System.Drawing.Point(997, 71)
+		Me.btnChangeFont.Location = New System.Drawing.Point(997, 897)
 		Me.btnChangeFont.Name = "btnChangeFont"
 		Me.btnChangeFont.Size = New System.Drawing.Size(117, 29)
 		Me.btnChangeFont.TabIndex = 5
@@ -766,7 +728,6 @@ Partial Class frmMain
 		Me.pnlClassProperties.PerformLayout()
 		CType(Me.picClassIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlCommand.ResumeLayout(False)
-		Me.pnlCommand.PerformLayout()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -823,9 +784,6 @@ Partial Class frmMain
 	Friend WithEvents btnSaveClassFile As Button
 	Friend WithEvents Label15 As Label
 	Friend WithEvents Label16 As Label
-	Friend WithEvents rdbForVersion8 As RadioButton
-	Friend WithEvents rdbForVersion5 As RadioButton
-	Friend WithEvents Label17 As Label
 	Friend WithEvents chkLowercaseColumnName As CheckBox
 	Friend WithEvents btnChangeFont As Button
 	Friend WithEvents lblAppVersion As Label

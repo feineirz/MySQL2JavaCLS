@@ -12,7 +12,7 @@
 		try {
 			String qry = "SELECT *"
 					+ " FROM " + relName
-					+ " WHERE @PRIMARYKEY@=?";
+					+ " WHERE @PRIMARYKEY@ = ?";
 			PreparedStatement stmt = conn.prepareStatement(qry);
 			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @CLASSNAME@_@PRIMARYKEY@);
 			

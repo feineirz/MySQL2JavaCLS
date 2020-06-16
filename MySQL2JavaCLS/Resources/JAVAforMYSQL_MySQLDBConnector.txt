@@ -12,12 +12,13 @@ public class MySQLDBConnector {
 			Class.forName("com.@MySQLVersionShift@.jdbc.Driver");  
 			conn = DriverManager.getConnection(
 					"jdbc:mysql://@HOST@:@PORT@/@DATABASE@"
-					+ "?useUnicode=true"
-					+ "&characterEncoding=utf-8"
-					+ "&useJDBCCompliantTimezoneShift=true"
-					+ "&useLegacyDatetimeCode=false&serverTimezone=UTC"
-					+ "&autoReconnect=true"
-					+ "&useSSL=false",
+					+ "?useJDBCCompliantTimezoneShift=@useJDBCCompliantTimezoneShiftOption@"
+					+ "&useLegacyDatetimeCode=@useLegacyDatetimeCodeOption@"
+					+ "&useSSL=@useSSLOption@"
+					+ "&autoReconnect=@autoReconnectOption@"
+					+ "&useUnicode=@useUnicodeOption@"
+					+ "&characterEncoding=@characterEncodingOption@"
+					+ "&serverTimezone=@serverTimezoneOption@",
 					"@USER@",
 					"@PASS@" );
 

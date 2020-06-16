@@ -1,6 +1,6 @@
-	//////////////////////////////[ Update ]//////////////////////////////
+	//////////////////////////////////[ Update ]/////////////////////////////////
 	// Update @CLASSNAME@ information in database by giving a raw information. //
-	//////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////
 	public static boolean update@CLASSNAME@Info(@COLUMNLIST_WITHDATATYPE@) {
 		
 		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
@@ -10,7 +10,9 @@
 		
 	}
 	
+	////////////////////////////////////////////////////////////////////////////////////
 	// Update @CLASSNAME@ information in database by giving a structured information. //
+	////////////////////////////////////////////////////////////////////////////////////
 	public static boolean update@CLASSNAME@Info(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
@@ -39,14 +41,14 @@
 	} ////////////////////////////////////////////////////////////////////
 	
 
-	//////////////////////////////[ Update Property //////////////////////////////
-	// Update single property in database by the given ColumnName and Value. //
-	//////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////[ Update Property ]//////////////////////////////
+	// Update a single property in database by the given ColumnName and Value. ////
+	///////////////////////////////////////////////////////////////////////////////
 	public boolean update@CLASSNAME@Property(String columnName, String value) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "UPDATE tbRMRequest"
+			String qry = "UPDATE @TABLENAME@"
 					+ " SET " + columnName + " = ?"
 					+ " WHERE @PRIMARYKEY@ = '" + this.@PRIMARYKEY@ + "'";
 			PreparedStatement stmt = conn.prepareStatement(qry);
@@ -66,7 +68,7 @@
 			return false;
 		}
 		
-	} ////////////////////////////////////////////////////////////////////////////
+	} /////////////////////////////////////////////////////////////////////////////
 	
 	
 	/// Overload ///
@@ -84,7 +86,7 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "UPDATE tbRMRequest"
+			String qry = "UPDATE @TABLENAME@"
 					+ " SET " + columnName + " = ?"
 					+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
 			PreparedStatement stmt = conn.prepareStatement(qry);

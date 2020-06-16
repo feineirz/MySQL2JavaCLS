@@ -259,6 +259,8 @@ Public Class MySQL2JavaCLSBuilder
 			chClassGetPropertyList += cTAB() + "}" + vbCrLf
 
 			' chClassSetPropertyList
+			If ClassInfo.IsPrimaryKeyReadOnly And dci.ColumnName = ClassInfo.ClassPrimaryKey Then Continue For
+
 			If Not chClassSetPropertyList = "" Then chClassSetPropertyList += vbCrLf
 			chClassSetPropertyList += cTAB() + "public boolean" + " set" + FirstCaps(dci.ColumnName) + "(" + ConvertDataType(dci.DataType) + " value) {" + vbCrLf
 			chClassSetPropertyList += cTAB(2) + "if (update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value)) {" + vbCrLf
