@@ -48,6 +48,23 @@ Public Class frmMain
 
 	End Function
 
+	Sub listProfiles()
+
+		If My.Settings.Profiles Is Nothing Then My.Settings.Profiles = New ArrayList()
+
+		If My.Settings.Profiles.Count > 0 Then
+
+			Dim profiles = My.Settings.Profiles
+
+			cmbConnectionProfile.Items.Clear()
+			For Each profile As List(Of String) In profiles
+				cmbConnectionProfile.Items.Add(profile(0))
+			Next
+
+		End If
+
+	End Sub
+
 
 #End Region
 
@@ -169,6 +186,7 @@ Public Class frmMain
 
 	Private Sub frmMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+		listProfiles()
 		rtbSourceCode.SelectionTabs = New Integer() {40, 80, 120, 160}
 		lblAppVersion.Text = "ver." + Application.ProductVersion
 
@@ -248,6 +266,24 @@ Public Class frmMain
 	Private Sub btnSaveProfile_Click(sender As Object, e As EventArgs) Handles btnSaveProfile.Click
 
 		If validateConnectionInfo() Then
+
+			If My.Settings.Profiles Is Nothing Then My.Settings.Profiles = New ArrayList()
+			Dim member As New List(Of String)
+
+			Dim pname As String = tbxUser.Text.Trim + "_" + tbxDatabase.Text.Trim + "@" + tbxHost.Text.Trim
+			member.Add(pname)
+			member.Add(tbxHost.Text.Trim)
+			member.Add(tbxPort.Text.Trim)
+			member.Add(tbxDatabase.Text.Trim)
+			member.Add(tbxUser.Text.Trim)
+			member.Add(tbxPass.Text.Trim)
+
+			My.Settings.Profiles.Add(member)
+			My.Settings.Save()
+
+			listProfiles()
+
+			MsgBox("Successful. [" + My.Settings.Profiles.Count.ToString + "]")
 
 		End If
 

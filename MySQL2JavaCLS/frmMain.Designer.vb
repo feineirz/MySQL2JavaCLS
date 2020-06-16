@@ -202,7 +202,6 @@ Partial Class frmMain
 		'btnSaveProfile
 		'
 		Me.btnSaveProfile.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnSaveProfile.Enabled = False
 		Me.btnSaveProfile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnSaveProfile.Image = CType(resources.GetObject("btnSaveProfile.Image"), System.Drawing.Image)
 		Me.btnSaveProfile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -229,7 +228,6 @@ Partial Class frmMain
 		Me.cmbConnectionProfile.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.cmbConnectionProfile.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-		Me.cmbConnectionProfile.Enabled = False
 		Me.cmbConnectionProfile.FormattingEnabled = True
 		Me.cmbConnectionProfile.Location = New System.Drawing.Point(185, 35)
 		Me.cmbConnectionProfile.Name = "cmbConnectionProfile"
