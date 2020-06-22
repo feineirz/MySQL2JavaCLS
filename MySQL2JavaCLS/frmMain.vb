@@ -50,18 +50,12 @@ Public Class frmMain
 
 	Sub listProfiles()
 
-		If My.Settings.Profiles Is Nothing Then My.Settings.Profiles = New ArrayList()
+		Dim profiles = ConnProfiles.ListProfile
 
-		If My.Settings.Profiles.Count > 0 Then
-
-			Dim profiles = My.Settings.Profiles
-
-			cmbConnectionProfile.Items.Clear()
-			For Each profile As List(Of String) In profiles
-				cmbConnectionProfile.Items.Add(profile(0))
-			Next
-
-		End If
+		cmbConnectionProfile.Items.Clear()
+		For Each profile In profiles
+			cmbConnectionProfile.Items.Add(profile.ProfileName)
+		Next
 
 	End Sub
 
@@ -267,23 +261,38 @@ Public Class frmMain
 
 		If validateConnectionInfo() Then
 
-			If My.Settings.Profiles Is Nothing Then My.Settings.Profiles = New ArrayList()
-			Dim member As New List(Of String)
+			Dim profile As ConnProfiles.ProfileInfo
 
-			Dim pname As String = tbxUser.Text.Trim + "_" + tbxDatabase.Text.Trim + "@" + tbxHost.Text.Trim
-			member.Add(pname)
-			member.Add(tbxHost.Text.Trim)
-			member.Add(tbxPort.Text.Trim)
-			member.Add(tbxDatabase.Text.Trim)
-			member.Add(tbxUser.Text.Trim)
-			member.Add(tbxPass.Text.Trim)
+			Dim pname As String = tbxUser.Text.Trim + ":" + tbxDatabase.Text.Trim + "@" + tbxHost.Text.Trim
+			profile.ProfileName = (pname)
+			profile.Host = (tbxHost.Text.Trim)
+			profile.Port = (tbxPort.Text.Trim)
+			profile.Database = (tbxDatabase.Text.Trim)
+			profile.Username = (tbxUser.Text.Trim)
+			profile.Password = (tbxPass.Text.Trim)
 
-			My.Settings.Profiles.Add(member)
-			My.Settings.Save()
+			ConnProfiles.AddProfile(profile)
 
 			listProfiles()
 
-			MsgBox("Successful. [" + My.Settings.Profiles.Count.ToString + "]")
+			MsgBox("Successful.")
+
+		End If
+
+	End Sub
+
+	Private Sub cmbConnectionProfile_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbConnectionProfile.SelectedIndexChanged
+
+		If Not cmbConnectionProfile.Text = "" Then
+
+			Dim profileName As String = cmbConnectionProfile.Text
+			Dim pfi = ConnProfiles.GetProfile(profileName)
+
+			tbxHost.Text = pfi.Host
+			tbxPort.Text = pfi.Port
+			tbxDatabase.Text = pfi.Database
+			tbxUser.Text = pfi.Username
+			tbxPass.Text = pfi.Password
 
 		End If
 

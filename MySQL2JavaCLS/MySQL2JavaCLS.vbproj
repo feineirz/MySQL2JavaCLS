@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="common.vb" />
+    <Compile Include="ConnProfiles.vb" />
     <Compile Include="frmExportConnectionSettings.Designer.vb">
       <DependentUpon>frmExportConnectionSettings.vb</DependentUpon>
     </Compile>
