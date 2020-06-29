@@ -59,6 +59,20 @@ Public Class frmMain
 
 	End Sub
 
+	Private Sub SetConnectionInput(State As Boolean)
+
+		Dim tbx As TextBox
+
+		For Each ctrl As Control In pnlDatabaseConnection.Controls
+			If TypeOf ctrl Is TextBox Then
+				tbx = DirectCast(ctrl, TextBox)
+				tbx.ReadOnly = Not State
+			End If
+
+		Next
+
+	End Sub
+
 
 #End Region
 
@@ -76,43 +90,58 @@ Public Class frmMain
 
 	Private Sub btnConnect_Click(sender As Object, e As EventArgs) Handles btnConnect.Click
 
-		If validateConnectionInfo() Then
-			Dim connectionInfoA As MySQLConnector.ConnectionInfo
-			connectionInfoA.Host = tbxHost.Text.Trim
-			connectionInfoA.Port = tbxPort.Text.Trim
-			connectionInfoA.Database = tbxDatabase.Text.Trim
-			connectionInfoA.User = tbxUser.Text.Trim
-			connectionInfoA.Password = tbxPass.Text.Trim
+		If btnConnect.Text = "Connect" Then
 
-			If MySQLConnector.getConnection(connectionInfoA) IsNot Nothing Then
+			If validateConnectionInfo() Then
+				Dim connectionInfoA As MySQLConnector.ConnectionInfo
+				connectionInfoA.Host = tbxHost.Text.Trim
+				connectionInfoA.Port = tbxPort.Text.Trim
+				connectionInfoA.Database = tbxDatabase.Text.Trim
+				connectionInfoA.User = tbxUser.Text.Trim
+				connectionInfoA.Password = tbxPass.Text.Trim
 
-				ConnectionInfo = connectionInfoA
-				mysqlDB = New MySQLDB(connectionInfoA)
+				If MySQLConnector.getConnection(connectionInfoA) IsNot Nothing Then
 
-				Dim res As MySQLDB.DatabaseInfo = mysqlDB.getDatabaseInfo
+					ConnectionInfo = connectionInfoA
+					mysqlDB = New MySQLDB(connectionInfoA)
 
-				If res.TableList.Count > 0 Then
-					For Each t In res.TableList
-						cmbTableList.Items.Add(t.TableName)
-					Next
+					Dim res As MySQLDB.DatabaseInfo = mysqlDB.getDatabaseInfo
+
+					cmbTableList.Items.Clear()
+
+					If res.TableList.Count > 0 Then
+						For Each t In res.TableList
+							cmbTableList.Items.Add(t.TableName)
+						Next
+					End If
+
+					SetConnectionInput(False)
+					pnlDatabaseProperties.Enabled = True
+					pnlCommand.Enabled = True
+					btnGetDBConnector.Enabled = True
+
+					MsgBox("Connection successful.")
+					btnConnect.Text = "Disconnect"
+				Else
+					MsgBox("Connection failed.")
 				End If
 
-				pnlDatabaseConnection.Enabled = False
-				pnlDatabaseProperties.Enabled = True
-				pnlCommand.Enabled = True
-
-				btnGetDBConnector.Enabled = True
-
-				MsgBox("Connection successful.")
-			Else
-				MsgBox("Connection failed.")
 			End If
+
+		Else
+			SetConnectionInput(True)
+			pnlDatabaseProperties.Enabled = False
+			pnlCommand.Enabled = False
+			btnGetDBConnector.Enabled = False
+			btnConnect.Text = "Connect"
 
 		End If
 
 	End Sub
 
 	Private Sub cmbTableList_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbTableList.SelectedIndexChanged
+
+		rtbSourceCode.Text = ""
 
 		If cmbTableList.Text = "" Then Return
 

@@ -5,6 +5,8 @@
 		Dim rt As String = ""
 		If OtherIsLower Then src = src.ToLower
 
+		If src = Nothing Then Return ""
+
 		If src.Length > 0 Then
 
 			Dim c() As Char = src.ToCharArray
