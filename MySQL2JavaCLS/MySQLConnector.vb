@@ -1,4 +1,6 @@
-﻿Public Class MySQLConnector
+﻿Imports MySql.Data.MySqlClient
+
+Public Class MySQLConnector
 
 	Private _connString As String
 

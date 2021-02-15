@@ -9,16 +9,16 @@
 	public @CLASSNAME@() {}
 
 	/// OVERLOAD CONSTRUCTOR ///
-	public RawMaterials(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@) {		
+	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@) {		
 		this(@CLASSNAME@_@PRIMARYKEY@, new MySQLDBConnector().getDBConnection(), true);		
 	}
 	
-	public RawMaterials(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn) {
+	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn) {
 		this(@CLASSNAME@_@PRIMARYKEY@, conn, false);
 	} /////////////////////////////////////////////////////////////////////////
 	
 	/// MAIN CONSTRUCTOR ///
-	public RawMaterials(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn, boolean autoCloseConnection) {
+	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn, boolean autoCloseConnection) {
 		
 		try {
 			String qry = "SELECT *"
