@@ -209,7 +209,7 @@ Public Class MySQL2JavaCLSBuilder
 
 			' CLASSHEADER_STRUCTURE_PROPERTIES
 			If Not chStructureProperties = "" Then chStructureProperties += vbCrLf
-			chStructureProperties += cTAB(2) + ConvertDataType(dci.DataType) + " " + dci.ColumnName + ";"
+			chStructureProperties += cTAB(2) + "public " + ConvertDataType(dci.DataType) + " " + dci.ColumnName + ";"
 
 			If Not chColumnList = "" Then chColumnList += vbCrLf
 			If i < DataTableInfo.ColumnList.Count - 1 Then

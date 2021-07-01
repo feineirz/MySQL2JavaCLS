@@ -118,7 +118,7 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "UPDATE tbRMRequest"
+			String qry = "UPDATE @TABLENAME@"
 					+ " SET " + columnName + " = ?"
 					+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
 			PreparedStatement stmt = conn.prepareStatement(qry);
