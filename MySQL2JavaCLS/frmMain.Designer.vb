@@ -165,7 +165,7 @@ Partial Class frmMain
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.rtbSourceCode.BackColor = System.Drawing.Color.Gainsboro
 		Me.rtbSourceCode.BorderStyle = System.Windows.Forms.BorderStyle.None
-		Me.rtbSourceCode.Font = New System.Drawing.Font("JetBrains Mono", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.rtbSourceCode.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.rtbSourceCode.ForeColor = System.Drawing.Color.Black
 		Me.rtbSourceCode.Location = New System.Drawing.Point(12, 71)
 		Me.rtbSourceCode.Name = "rtbSourceCode"

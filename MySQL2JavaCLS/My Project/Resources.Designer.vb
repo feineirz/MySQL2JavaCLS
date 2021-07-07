@@ -63,20 +63,20 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to @SECTIONSTART@
         '''
-        '''	public @CLASSNAME@() {}
         '''	
-        '''	// Create a @CLASSNAME@ object from the given @PRIMARYKEY@.
-        '''	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@) {
-        '''		
-        '''		Connection conn = new MySQLDBConnector().getDBConnection();
-        '''		try {
-        '''			String qry = &quot;SELECT *&quot;
-        '''					+ &quot; FROM &quot; + relName
-        '''					+ &quot; WHERE @PRIMARYKEY@=?&quot;;
-        '''			PreparedStatement stmt = conn.prepareStatement(qry);
-        '''			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @CLASSNAME@_@PRIMARYKEY@);
-        '''			
-        '''			ResultSet rs = stmt.executeQuery( [rest of string was truncated]&quot;;.
+        '''	//////////////////////////////[ CONSTRUCTOR ]//////////////////////////////
+        '''	// Create a @CLASSNAME@ object from the given @PRIMARYKEY@. //
+        '''	///////////////////////////////////////////////////////////////////////////
+        '''
+        '''	/// DEFAULT CONSTRUCTOR ///
+        '''	public @CLASSNAME@() {}
+        '''
+        '''	/// OVERLOAD CONSTRUCTOR ///
+        '''	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@) {		
+        '''		this(@CLASSNAME@_@PRIMARYKEY@, new MySQLDBConnector().getDBConnection(), true);		
+        '''	}
+        '''	
+        '''	public @CLASS [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_ClassConstructor() As String
             Get
@@ -90,23 +90,22 @@ Namespace My.Resources
         '''import java.util.Date;
         '''import java.lang.*;
         '''
-        '''////////////////////////////// CLASS START //////////////////////////////
+        '''/*********************************************{{{ CLASS START }}}*********************************************/
         '''
         '''public class @CLASSNAME@ {
         '''
         '''@SECTIONSTART@
         '''	
-        '''	// Private Properties //
+        '''	/// PRIVATE PROPERTIES ///
         '''@CLASSHEADER_PRIVATE_PROPERTIES@
         '''	
-        '''	// Public Properties //
+        '''	/// PUBLIC PROPERTIES ///
         '''	public final String relName = &quot;@CLASSHEADER_TABLENAME@&quot;;
         '''	public final String columnNames = &quot;&quot;
         '''@CLASSHEADER_COLUMNLIST@;
         '''
-        '''	// Class Structure //
-        '''	public static class @CLASSNAME@Info {
-        '''@CLASSHEADER_STRU [rest of string was truncated]&quot;;.
+        '''	/// CLASS STRUCTURE ///
+        '''	public stati [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_ClassHeader() As String
             Get
@@ -117,7 +116,11 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to @SECTIONSTART@
         '''
+        '''	/// GET ///
         '''@GET_PROPERTIYLIST@
+        '''
+        '''	/// SET ///
+        '''@SET_PROPERTYLIST@
         '''
         '''@SECTIONEND@
         '''
@@ -126,6 +129,21 @@ Namespace My.Resources
         Friend ReadOnly Property JAVAforMYSQL_ClassProperties() As String
             Get
                 Return ResourceManager.GetString("JAVAforMYSQL_ClassProperties", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Looks up a localized string similar to /////////////////////////////////////////////////////////////////////
+        '''/*******************************************************************/
+        '''////////////////////// MySQL2JavaCLS Generator //////////////////////
+        '''/*******************************************************************/
+        '''/*************** Created by feinz(feineirz@live.com) ***************/
+        '''/*******************************************************************/
+        '''/////////////////////////////////////////////////////////////////////.
+        '''</summary>
+        Friend ReadOnly Property JAVAforMYSQL_Credits() As String
+            Get
+                Return ResourceManager.GetString("JAVAforMYSQL_Credits", resourceCulture)
             End Get
         End Property
         
@@ -141,15 +159,13 @@ Namespace My.Resources
         '''	public Connection getDBConnection() {
         '''		
         '''		try{
-        '''			Class.forName(&quot;com.mysql.cj.jdbc.Driver&quot;);  
+        '''			Class.forName(&quot;com.@MySQLVersionShift@.jdbc.Driver&quot;);  
         '''			conn = DriverManager.getConnection(
         '''					&quot;jdbc:mysql://@HOST@:@PORT@/@DATABASE@&quot;
-        '''					+ &quot;?useUnicode=true&quot;
-        '''					+ &quot;&amp;useJDBCCompliantTimezoneShift=true&quot;
-        '''					+ &quot;&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC&quot;
-        '''					+ &quot;&amp;autoReconnect=true&quot;
-        '''					+ &quot;&amp;useSSL=false&quot;,
-        '''					&quot;@USER [rest of string was truncated]&quot;;.
+        '''					+ &quot;?useJDBCCompliantTimezoneShift=@useJDBCCompliantTimezoneShiftOption@&quot;
+        '''					+ &quot;&amp;useLegacyDatetimeCode=@useLegacyDatetimeCodeOption@&quot;
+        '''					+ &quot;&amp;useSSL=@useSSLOption@&quot;
+        '''					+ &quot;&amp;au [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_MySQLDBConnector() As String
             Get
@@ -158,9 +174,10 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 	// Add //
-        '''	// Add @CLASSNAME@ to database by giving a raw information.
-        '''	public static boolean add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
+        '''  Looks up a localized string similar to 	//////////////////////////////[ Add ]//////////////////////////////
+        '''	// Add @CLASSNAME@ to database by giving a raw information. //
+        '''	///////////////////////////////////////////////////////////////////
+        '''	public static @CLASSNAME@ add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
         '''		
         '''		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
         '''@STRUCTURED_COLUMNLIST@
@@ -169,10 +186,8 @@ Namespace My.Resources
         '''		
         '''	}
         '''	
-        '''	// Add @CLASSNAME@ to database by giving a structured information.
-        '''	public static boolean add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
-        '''		
-        '''		Connection conn = new MySQLDBConnector().getDBConnection(); [rest of string was truncated]&quot;;.
+        '''	/////////////////////////////////////////////////////////////////////
+        '''	// Ad [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_REQFUNC_Add() As String
             Get
@@ -181,8 +196,9 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 	// Delete //
-        '''	// Delete @CLASSNAME@ from a database.
+        '''  Looks up a localized string similar to 	//////////////////////////////[ Delete ]//////////////////////////////
+        '''	// Delete @CLASSNAME@ from database. //
+        '''	//////////////////////////////////////////////////////////////////////
         '''	public static boolean delete@CLASSNAME@(@PRIMARYKEY_DATATYPE@ @PRIMARYKEY@) {
         '''		
         '''		Connection conn = new MySQLDBConnector().getDBConnection();
@@ -190,15 +206,7 @@ Namespace My.Resources
         '''			String qry = &quot;DELETE FROM @TABLENAME@&quot;
         '''					+ &quot; WHERE @PRIMARYKEY@=?&quot;;
         '''			PreparedStatement stmt = conn.prepareStatement(qry);
-        '''			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @PRIMARYKEY@);
-        '''			
-        '''			stmt.execute();			
-        '''			conn.close();
-        '''			return true;
-        '''			
-        '''		} catch (SQLException e) {
-        '''			try {
-        '''	 [rest of string was truncated]&quot;;.
+        '''			stmt.set@PRIMARYKEY_GETSETDATATY [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_REQFUNC_Delete() As String
             Get
@@ -207,9 +215,10 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 	// IsExist //
-        '''	// Check if record(s) from the given condition is exist in a database.
-        '''	public static boolean isExist(String condition) {
+        '''  Looks up a localized string similar to 	//////////////////////////////[ IsExist ]//////////////////////////////
+        '''	// Check if record(s) from the given condition is exist in a database. //
+        '''	///////////////////////////////////////////////////////////////////////
+        '''	public static @CLASSNAME@ isExist(String condition) {
         '''		
         '''		Connection conn = new MySQLDBConnector().getDBConnection();
         '''		
@@ -218,12 +227,7 @@ Namespace My.Resources
         '''			String qry = &quot;SELECT *&quot; 
         '''					+ &quot; FROM @TABLENAME@&quot;
         '''					+ condition;
-        '''			Statement stmt = conn.createStatement();
-        '''			ResultSet rs = stmt.executeQuery(qry);
-        '''			while (rs.next()) {
-        '''				conn.close();
-        '''				return true;
-        '''			}			        ''' [rest of string was truncated]&quot;;.
+        '''			Statement stmt  [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_REQFUNC_IsExist() As String
             Get
@@ -232,8 +236,9 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 	// List //
-        '''	// List @CLASSNAME@ in database as a @CLASSNAME@ objects.
+        '''  Looks up a localized string similar to 	//////////////////////////////[ List ]//////////////////////////////
+        '''	// List @CLASSNAME@ in database as @CLASSNAME@ objects. //
+        '''	////////////////////////////////////////////////////////////////////
         '''	/// Overload ///
         '''	public static ArrayList&lt;@CLASSNAME@&gt; list@CLASSNAME@(){
         '''		return list@CLASSNAME@(&quot;&quot;,&quot;&quot;);
@@ -242,11 +247,7 @@ Namespace My.Resources
         '''		return list@CLASSNAME@(condition,&quot;&quot;);
         '''	}	
         '''	/// Main ///
-        '''	public static ArrayList&lt;@CLASSNAME@&gt; list@CLASSNAME@(String condition, String order) {
-        '''		
-        '''		ArrayList&lt;@CLASSNAME@&gt; buff = new ArrayList&lt;@CLASSNAME@&gt;();
-        '''		
-        '''		if(condition != &quot;&quot;) conditi [rest of string was truncated]&quot;;.
+        '''	public static ArrayList&lt;@CLASSNAME@&gt; list@CLASSNAME@(Strin [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_REQFUNC_List() As String
             Get
@@ -255,8 +256,9 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Looks up a localized string similar to 	// Update //
-        '''	// Update @CLASSNAME@ information in database by giving a raw information.
+        '''  Looks up a localized string similar to 	//////////////////////////////////[ Update ]/////////////////////////////////
+        '''	// Update @CLASSNAME@ information in database by giving a raw information. //
+        '''	/////////////////////////////////////////////////////////////////////////////
         '''	public static boolean update@CLASSNAME@Info(@COLUMNLIST_WITHDATATYPE@) {
         '''		
         '''		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
@@ -266,10 +268,7 @@ Namespace My.Resources
         '''		
         '''	}
         '''	
-        '''	// Update @CLASSNAME@ information in database by giving a structured information.
-        '''	public static boolean update@CLASSNAME@Info(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
-        '''		
-        '''		Conne [rest of string was truncated]&quot;;.
+        '''	//////////////////////////////// [rest of string was truncated]&quot;;.
         '''</summary>
         Friend ReadOnly Property JAVAforMYSQL_REQFUNC_Update() As String
             Get
@@ -280,7 +279,12 @@ Namespace My.Resources
         '''<summary>
         '''  Looks up a localized string similar to 
         '''
-        '''@USER CUSTOM FUNCTIONS@
+        '''@SECTIONSTART@
+        '''
+        '''// @USER CUSTOM FUNCTIONS@ //
+        '''// PLACE YOUR CUSTOM FUNCTIONS HERE //
+        '''
+        '''@SECTIONEND@
         '''
         '''.
         '''</summary>

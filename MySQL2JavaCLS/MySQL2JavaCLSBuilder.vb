@@ -196,6 +196,10 @@ Public Class MySQL2JavaCLSBuilder
 
 		Dim sb As New StringBuilder
 
+		'------------- Credits ------------'
+		Dim Credits = My.Resources.JAVAforMYSQL_Credits
+		sb.AppendLine(Credits)
+
 		'---------- Class Header ----------'
 		Dim chPrivateProperties As String = ""
 		Dim chStructureProperties As String = ""
@@ -333,6 +337,8 @@ Public Class MySQL2JavaCLSBuilder
 		rfAddContents = rfAddContents.Replace("@COLUMNLIST@", rfAdd_ColumnList)
 		rfAddContents = rfAddContents.Replace("@STATEMENTHOLDER@", rfAdd_StatementHolder)
 		rfAddContents = rfAddContents.Replace("@STATEMENT_COLUMNLIST@", rfAdd_Statement_ColumnList)
+		rfAddContents = rfAddContents.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
+
 
 		sb.AppendLine(rfAddContents)
 
@@ -387,6 +393,7 @@ Public Class MySQL2JavaCLSBuilder
 		' IsExist '
 		Dim rfIsExistContents As String = My.Resources.JAVAforMYSQL_REQFUNC_IsExist
 		rfIsExistContents = rfIsExistContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfIsExistContents = rfIsExistContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
 		rfIsExistContents = rfIsExistContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		rfIsExistContents = rfIsExistContents.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
 		rfIsExistContents = rfIsExistContents.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))

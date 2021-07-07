@@ -13,9 +13,9 @@
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(qry);
 			while (rs.next()) {
-				@CLASSNAME@ buff = new @CLASSNAME@(rs.get@PRIMARYKEY_GETSETDATATYPE@("@PRIMARYKEY@"), conn);
+				@CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(rs.get@PRIMARYKEY_GETSETDATATYPE@("@PRIMARYKEY@"), conn);
 				conn.close();
-				return buff;
+				return @CLASSNAMELOWER@;
 			}			
 			conn.close();
 			return null;

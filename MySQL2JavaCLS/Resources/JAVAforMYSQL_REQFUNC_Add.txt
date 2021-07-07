@@ -1,7 +1,7 @@
 	//////////////////////////////[ Add ]//////////////////////////////
 	// Add @CLASSNAME@ to database by giving a raw information. //
 	///////////////////////////////////////////////////////////////////
-	public static boolean add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
+	public static @CLASSNAME@ add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
 		
 		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
 @STRUCTURED_COLUMNLIST@
@@ -13,19 +13,25 @@
 	/////////////////////////////////////////////////////////////////////
 	// Add @CLASSNAME@ to database by giving a structured information. //
 	/////////////////////////////////////////////////////////////////////
-	public static boolean add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
+	public static @CLASSNAME@ add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
 			String qry = "INSERT INTO @TABLENAME@"
 					+ " (@COLUMNLIST@)"
 					+ " VALUES(@STATEMENTHOLDER@)";
-			PreparedStatement stmt = conn.prepareStatement(qry);
+			PreparedStatement stmt = conn.prepareStatement(qry, Statement.RETURN_GENERATED_KEYS);
 @STATEMENT_COLUMNLIST@
 			
-			stmt.execute();			
-			conn.close();
-			return true;
+			int afr = stmt.executeUpdate();
+			if (afr > 0) {
+				ResultSet rs = stmt.getGeneratedKeys();
+				if (rs.next()) {
+					@CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(rs.get@PRIMARYKEY_GETSETDATATYPE@(1), conn);			
+					conn.close();
+					return @CLASSNAMELOWER@;
+				}
+			}
 			
 		} catch (SQLException e) {
 			try {
@@ -34,8 +40,8 @@
 				ex.printStackTrace();
 			}
 			e.printStackTrace();
-			return false;
 		}
+		return null;
 		
 	} /////////////////////////////////////////////////////////////////
 	

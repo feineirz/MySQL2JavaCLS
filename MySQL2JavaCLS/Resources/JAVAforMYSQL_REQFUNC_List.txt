@@ -1,5 +1,5 @@
 	//////////////////////////////[ List ]//////////////////////////////
-	// List @CLASSNAME@ in database as a @CLASSNAME@ objects. //
+	// List @CLASSNAME@ in database as @CLASSNAME@ objects. //
 	////////////////////////////////////////////////////////////////////
 	/// Overload ///
 	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(){
