@@ -1,7 +1,7 @@
 	//////////////////////////////[ IsExist ]//////////////////////////////
 	// Check if record(s) from the given condition is exist in a database. //
 	///////////////////////////////////////////////////////////////////////
-	public static boolean isExist(String condition) {
+	public static @CLASSNAME@ isExist(String condition) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		
@@ -13,11 +13,12 @@
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(qry);
 			while (rs.next()) {
+				@CLASSNAME@ buff = new @CLASSNAME@(rs.get@PRIMARYKEY_GETSETDATATYPE@("@PRIMARYKEY@"), conn);
 				conn.close();
-				return true;
+				return buff;
 			}			
 			conn.close();
-			return false;
+			return null;
 			
 		} catch (SQLException e) {
 			try {
@@ -26,7 +27,7 @@
 				ex.printStackTrace();
 			}
 			e.printStackTrace();
-			return true;
+			return null;
 		}
 
 	} /////////////////////////////////////////////////////////////////////
