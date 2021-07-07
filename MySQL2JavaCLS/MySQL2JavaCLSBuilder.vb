@@ -386,6 +386,10 @@ Public Class MySQL2JavaCLSBuilder
 
 		' IsExist '
 		Dim rfIsExistContents As String = My.Resources.JAVAforMYSQL_REQFUNC_IsExist
+		rfIsExistContents = rfIsExistContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfIsExistContents = rfIsExistContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
+		rfIsExistContents = rfIsExistContents.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
+		rfIsExistContents = rfIsExistContents.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
 		rfIsExistContents = rfIsExistContents.Replace("@TABLENAME@", DataTableInfo.TableName)
 
 		sb.AppendLine(rfIsExistContents)
