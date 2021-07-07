@@ -1,4 +1,5 @@
-﻿Imports System
+﻿Imports System.Resources
+Imports System
 Imports System.Reflection
 Imports System.Runtime.InteropServices
 
@@ -9,7 +10,7 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("MySQL2JavaCLS")>
-<Assembly: AssemblyDescription("Generate Java class file for MySQL databases.")>
+<Assembly: AssemblyDescription("Generate Java class file form MySQL databases.")>
 <Assembly: AssemblyCompany("feinz.net")>
 <Assembly: AssemblyProduct("MySQL2JavaCLS")>
 <Assembly: AssemblyCopyright("Copyright © feinz.net  2020")>
@@ -31,5 +32,6 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")>
 
-<Assembly: AssemblyVersion("1.0.0.2")>
-<Assembly: AssemblyFileVersion("1.0.0.2")>
+<Assembly: AssemblyVersion("1.0.0.12")>
+<Assembly: AssemblyFileVersion("1.0.0.12")>
+<Assembly: NeutralResourcesLanguage("en-US")>
