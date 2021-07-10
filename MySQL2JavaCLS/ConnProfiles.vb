@@ -91,6 +91,8 @@ Public Class ConnProfiles
 
 		File.AppendAllText(profilePath, Content)
 
+		Return True
+
 	End Function
 
 	Public Shared Function IsExist(ProfileName As String) As Boolean

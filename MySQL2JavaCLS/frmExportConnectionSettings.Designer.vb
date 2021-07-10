@@ -266,7 +266,7 @@ Partial Class frmExportConnectionSettings
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-		Me.BackColor = System.Drawing.Color.WhiteSmoke
+		Me.BackColor = System.Drawing.Color.Silver
 		Me.ClientSize = New System.Drawing.Size(372, 359)
 		Me.Controls.Add(Me.btnGetDBConnector)
 		Me.Controls.Add(Me.Panel1)
