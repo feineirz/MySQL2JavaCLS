@@ -6,18 +6,39 @@
 	///////////////////////////////////////////////////////////////////////////
 
 	/// DEFAULT CONSTRUCTOR ///
+	/**
+         * Default @CLASSNAME@ class to use a private helpful methods.
+         */
 	public @CLASSNAME@() {}
 
 	/// OVERLOAD CONSTRUCTOR ///
+	/**
+         * 
+         * @param @CLASSNAME@_@PRIMARYKEY@ A Primary key of @CLASSNAME@ to be instances.
+         */       
 	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@) {		
 		this(@CLASSNAME@_@PRIMARYKEY@, new MySQLDBConnector().getDBConnection(), true);		
 	}
 	
+	/**
+         * 
+         * @param @CLASSNAME@_@PRIMARYKEY@ A Primary key of @CLASSNAME@ to be instances.
+         *
+         * @param conn MySQL Connection to be connected to the database.
+         */
 	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn) {
 		this(@CLASSNAME@_@PRIMARYKEY@, conn, false);
 	} /////////////////////////////////////////////////////////////////////////
 	
 	/// MAIN CONSTRUCTOR ///
+	/**
+         * 
+         * @param @CLASSNAME@_@PRIMARYKEY@ A Primary key of @CLASSNAME@ to be instances.
+         *
+         * @param conn MySQL Connection to be connected to the database.
+         *
+         * @param autoCloseConnection Auto close the given connection after query successful.
+         */
 	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn, boolean autoCloseConnection) {
 		
 		try {
