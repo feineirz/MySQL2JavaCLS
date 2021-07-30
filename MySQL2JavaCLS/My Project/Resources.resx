@@ -145,6 +145,9 @@
   <data name="JAVAforMYSQL_REQFUNC_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JAVAforMYSQL_REQFUNC_List.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>
+  <data name="JAVAforMYSQL_REQFUNC_ToClassInfo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JAVAforMYSQL_ToClassInfo.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-874</value>
+  </data>
   <data name="JAVAforMYSQL_REQFUNC_Update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\JAVAforMYSQL_REQFUNC_Update.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;Windows-1252</value>
   </data>

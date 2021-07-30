@@ -29,7 +29,7 @@
 	/// Main ///
 	/**
          * 
-         * @param condition The condition to specify the record to return.
+         * @param condition The condition to specify the record to be return.
          * 
          *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
          * 

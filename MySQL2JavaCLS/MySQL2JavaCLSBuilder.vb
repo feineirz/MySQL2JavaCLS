@@ -403,6 +403,18 @@ Public Class MySQL2JavaCLSBuilder
 
 		sb.AppendLine(rfIsExistContents)
 
+		' ToClassInfo '
+		Dim rfToClassInfo As String = My.Resources.JAVAforMYSQL_REQFUNC_ToClassInfo
+		Dim rfToClassInfo_ConvertList As String = ""
+		For Each dci In DataTableInfo.ColumnList
+			rfToClassInfo_ConvertList &= cTAB(2) & "ci." & dci.ColumnName & " = this." + dci.ColumnName & ";" & vbCrLf
+		Next
+
+		rfToClassInfo = rfToClassInfo.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfToClassInfo = rfToClassInfo.Replace("@TOCLASSINFO_CONVERTLIST@", rfToClassInfo_ConvertList)
+
+		sb.AppendLine(rfToClassInfo)
+
 		sb.AppendLine(SectionHeader("END REQUIRED FUNCTIONS", True))
 
 		'---------- User Custom Functions ----------' 
