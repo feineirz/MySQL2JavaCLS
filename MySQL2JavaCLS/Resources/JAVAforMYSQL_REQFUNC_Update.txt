@@ -2,9 +2,9 @@
 	// Update @CLASSNAME@ information in database by giving a raw information. //
 	/////////////////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @return True if update successful.
+	 */
 	public static boolean update@CLASSNAME@Info(@COLUMNLIST_WITHDATATYPE@) {
 		
 		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
@@ -18,11 +18,11 @@
 	// Update @CLASSNAME@ information in database by giving a structured information. //
 	////////////////////////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure contains all @CLASSNAME@'s information.
-		 *
-         * @return True if update successful.
-         */
+	 * 
+	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure contains all @CLASSNAME@'s information.
+	 *
+	 * @return True if update successful.
+	 */
 	public static boolean update@CLASSNAME@Info(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
@@ -55,12 +55,12 @@
 	// Update a single property in database by the given ColumnName and Value. ////
 	///////////////////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @param columnName Column name in database's table to be update.
-         * @param value The value to be update to the given column name.
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @param columnName Column name in database's table to be update.
+	 * @param value The value to be update to the given column name.
+	 * 
+	 * @return True if update successful.
+	 */
 	public boolean update@CLASSNAME@Property(String columnName, String value) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
@@ -90,43 +90,43 @@
 	
 	/// Overload ///
 	/**
-         * 
-         * @param columnName Column name in database's table to be update.
-         * @param value The value to be update to the given column name.
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @param columnName Column name in database's table to be update.
+	 * @param value The value to be update to the given column name.
+	 * 
+	 * @return True if update successful.
+	 */
 	public boolean update@CLASSNAME@Property(String columnName, byte value) {
 		return update@CLASSNAME@Property(columnName, new Long(value));
 	}
 	/**
-         * 
-         * @param columnName Column name in database's table to be update.
-         * @param value The value to be update to the given column name.
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @param columnName Column name in database's table to be update.
+	 * @param value The value to be update to the given column name.
+	 * 
+	 * @return True if update successful.
+	 */
 	public boolean update@CLASSNAME@Property(String columnName, Short value) {
 		return update@CLASSNAME@Property(columnName, new Long(value));
 	}
 	/**
-         * 
-         * @param columnName Column name in database's table to be update.
-         * @param value The value to be update to the given column name.
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @param columnName Column name in database's table to be update.
+	 * @param value The value to be update to the given column name.
+	 * 
+	 * @return True if update successful.
+	 */
 	public boolean update@CLASSNAME@Property(String columnName, int value) {
 		return update@CLASSNAME@Property(columnName, new Long(value));
 	}
 	/// Main ///
 	/**
-         * 
-         * @param columnName Column name in database's table to be update.
-         * @param value The value to be update to the given column name.
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @param columnName Column name in database's table to be update.
+	 * @param value The value to be update to the given column name.
+	 * 
+	 * @return True if update successful.
+	 */
 	public boolean update@CLASSNAME@Property(String columnName, long value) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
@@ -156,23 +156,23 @@
 	
 	/// Overload ///
 	/**
-         * 
-         * @param columnName Column name in database's table to be update.
-         * @param value The value to be update to the given column name.
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @param columnName Column name in database's table to be update.
+	 * @param value The value to be update to the given column name.
+	 * 
+	 * @return True if update successful.
+	 */
 	public boolean update@CLASSNAME@Property(String columnName, Float value) {
 		return update@CLASSNAME@Property(columnName, new Double(value));
 	}
 	/// Main ///
 	/**
-         * 
-         * @param columnName Column name in database's table to be update.
-         * @param value The value to be update to the given column name.
-         * 
-         * @return True if update successful.
-         */
+	 * 
+	 * @param columnName Column name in database's table to be update.
+	 * @param value The value to be update to the given column name.
+	 * 
+	 * @return True if update successful.
+	 */
 	public boolean update@CLASSNAME@Property(String columnName, Double value) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();

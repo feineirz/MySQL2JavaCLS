@@ -2,9 +2,9 @@
 	// Convert @CLASSNAME@ class to the @CLASSNAME@Info class. //
 	///////////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @return @CLASSNAME@info object.
-         */
+	 * 
+	 * @return @CLASSNAME@info object.
+	 */
 	private @CLASSNAME@Info to@CLASSNAME@Info() {
         
 		@CLASSNAME@Info ci = new @CLASSNAME@Info();

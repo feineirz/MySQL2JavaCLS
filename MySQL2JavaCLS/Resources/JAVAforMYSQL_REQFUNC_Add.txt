@@ -2,9 +2,9 @@
 	// Add @CLASSNAME@ to database by giving a raw information. //
 	///////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @return @CLASSNAME@ object of new created @CLASSNAME@.
-         */
+	 * 
+	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
+	 */
 	public static @CLASSNAME@ add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
 		
 		@CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
@@ -18,10 +18,10 @@
 	// Add @CLASSNAME@ to database by giving a structured information. //
 	/////////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure that contains all @CLASSNAME@'s information.
-         * @return @CLASSNAME@ object of new created @CLASSNAME@.
-         */
+	 * 
+	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure that contains all @CLASSNAME@'s information.
+	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
+	 */
 	public static @CLASSNAME@ add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();

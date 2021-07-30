@@ -2,20 +2,20 @@
 	// Delete @CLASSNAME@ from database. //
 	//////////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @return True if deletion successful.
-         */
+	 * 
+	 * @return True if deletion successful.
+	 */
 	private boolean delete@CLASSNAME@() {
 		
 		return delete@CLASSNAME@(this.@PRIMARYKEY@);
 		
 	} ////////////////////////////////////////////////////////////////////
 	/**
-         * 
-         * @param @PRIMARYKEY@ @CLASSNAME@ @PRIMARYKEY@ to be delete.
-		 *
-         * @return  True if deletion successful.
-         */
+	 * 
+	 * @param @PRIMARYKEY@ @CLASSNAME@ @PRIMARYKEY@ to be delete.
+	 *
+	 * @return  True if deletion successful.
+	 */
 	public static boolean delete@CLASSNAME@(@PRIMARYKEY_DATATYPE@ @PRIMARYKEY@) {
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();

@@ -66,6 +66,9 @@ Public Class MySQL2JavaCLSBuilder
 		Next
 		If Not UseSingleLine Then content += FullLine + vbCrLf
 		content += SubLine + "[ " + Header + " ]" + SubLine + vbCrLf
+		If content.Length < fixedLength Then
+			content = "/" + content
+		End If
 		If Not UseSingleLine Then content += FullLine + vbCrLf
 
 		Return content

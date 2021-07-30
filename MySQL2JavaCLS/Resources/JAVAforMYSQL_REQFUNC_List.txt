@@ -3,43 +3,43 @@
 	////////////////////////////////////////////////////////////////////
 	/// Overload ///
 	/**
-         * 
-         * Default List method to list all record of @CLASSNAME@ in the database.
-         * 
-         * @return ArrayList of @CLASSNAME@ objects.
-         * 
-         */
+	 * 
+	 * Default List method to list all record of @CLASSNAME@ in the database.
+	 * 
+	 * @return ArrayList of @CLASSNAME@ objects.
+	 * 
+	 */
 	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(){
 		return list@CLASSNAME@("","");
 	}
 
 	/**
-         * 
-         * @param condition The condition to specify the record to be return.
-         * 
-         *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
-         * 
-         * @return ArrayList of @CLASSNAME@ objects matches to the given condition.
-         * 
-         */
+	 * 
+	 * @param condition The condition to specify the record to be return.
+	 * 
+	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
+	 * 
+	 * @return ArrayList of @CLASSNAME@ objects matches to the given condition.
+	 * 
+	 */
 	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(String condition){
 		return list@CLASSNAME@(condition,"");
 	}
 	
 	/// Main ///
 	/**
-         * 
-         * @param condition The condition to specify the record to be return.
-         * 
-         *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
-         * 
-         * @param order The order to sort the returned list.
-         * 
-         *  Ex. "name desc"
-         * 
-         * @return ArrayList of @CLASSNAME@ objects matches to the given condition.
-         * 
-         */
+	 * 
+	 * @param condition The condition to specify the record to be return.
+	 * 
+	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
+	 * 
+	 * @param order The order to sort the returned list.
+	 * 
+	 *  Ex. "name desc"
+	 * 
+	 * @return ArrayList of @CLASSNAME@ objects matches to the given condition.
+	 * 
+	 */
 	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(String condition, String order) {
 		
 		ArrayList<@CLASSNAME@> buff = new ArrayList<@CLASSNAME@>();
