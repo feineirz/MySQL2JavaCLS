@@ -1,10 +1,6 @@
 @SECTIONSTART@
 
-	
-	//////////////////////////////[ CONSTRUCTOR ]//////////////////////////////
-	// Create a @CLASSNAME@ object from the given @PRIMARYKEY@. //
-	///////////////////////////////////////////////////////////////////////////
-
+@TITLE@
 	/// DEFAULT CONSTRUCTOR ///
 	/**
 	 * Default @CLASSNAME@ class to use a private helpful methods.
@@ -28,7 +24,7 @@
 	 */
 	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn) {
 		this(@CLASSNAME@_@PRIMARYKEY@, conn, false);
-	} /////////////////////////////////////////////////////////////////////////
+	}
 	
 	/// MAIN CONSTRUCTOR ///
 	/**
@@ -42,9 +38,10 @@
 	public @CLASSNAME@(@PRIMARYKEY_DATATYPE@ @CLASSNAME@_@PRIMARYKEY@, Connection conn, boolean autoCloseConnection) {
 		
 		try {
-			String qry = "SELECT *"
-					+ " FROM " + relName
-					+ " WHERE @PRIMARYKEY@=?";
+			String qry = ""
+				+ "SELECT *"
+				+ " FROM " + relName
+				+ " WHERE @PRIMARYKEY@=?";
 			PreparedStatement stmt = conn.prepareStatement(qry);
 			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @CLASSNAME@_@PRIMARYKEY@);
 			
@@ -65,7 +62,7 @@
 			}
 		}
 		
-	} /////////////////////////////////////////////////////////////////////////
+	}
 
 @SECTIONEND@
 

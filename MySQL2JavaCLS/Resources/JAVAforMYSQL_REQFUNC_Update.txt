@@ -1,6 +1,4 @@
-	//////////////////////////////////[ Update ]/////////////////////////////////
-	// Update @CLASSNAME@ information in database by giving a raw information. //
-	/////////////////////////////////////////////////////////////////////////////
+@TITLE_A@
 	/**
 	 * 
 	 * @return True if update successful.
@@ -14,9 +12,7 @@
 		
 	}
 	
-	////////////////////////////////////////////////////////////////////////////////////
-	// Update @CLASSNAME@ information in database by giving a structured information. //
-	////////////////////////////////////////////////////////////////////////////////////
+@TITLE_B@
 	/**
 	 * 
 	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure contains all @CLASSNAME@'s information.
@@ -27,10 +23,11 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "UPDATE @TABLENAME@"
-					+ " SET"
+			String qry = ""
+				+ "UPDATE @TABLENAME@"
+				+ " SET"
 @UPDATE_COLUMNLIST_NONE_PRIMARYKEY@
-					+ " WHERE @PRIMARYKEY@ = ?";
+				+ " WHERE @PRIMARYKEY@ = ?";
 			PreparedStatement stmt = conn.prepareStatement(qry);
 @STATEMENT_COLUMNLIST_NONE_PRIMARYKEY@
 			
@@ -48,12 +45,10 @@
 			return false;
 		}
 		
-	} ////////////////////////////////////////////////////////////////////
+	}
 	
 
-	//////////////////////////////[ Update Property ]//////////////////////////////
-	// Update a single property in database by the given ColumnName and Value. ////
-	///////////////////////////////////////////////////////////////////////////////
+@TITLE_C@
 	/**
 	 * 
 	 * @param columnName Column name in database's table to be update.
@@ -65,9 +60,10 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "UPDATE @TABLENAME@"
-					+ " SET " + columnName + " = ?"
-					+ " WHERE @PRIMARYKEY@ = '" + this.@PRIMARYKEY@ + "'";
+			String qry = ""
+				+ "UPDATE @TABLENAME@"
+				+ " SET " + columnName + " = ?"
+				+ " WHERE @PRIMARYKEY@ = '" + this.@PRIMARYKEY@ + "'";
 			PreparedStatement stmt = conn.prepareStatement(qry);
 			stmt.setString(1, value);
 			
@@ -85,10 +81,10 @@
 			return false;
 		}
 		
-	} /////////////////////////////////////////////////////////////////////////////
+	}
 	
 	
-	/// Overload ///
+	/// Overload Integer ///
 	/**
 	 * 
 	 * @param columnName Column name in database's table to be update.
@@ -119,7 +115,8 @@
 	public boolean update@CLASSNAME@Property(String columnName, int value) {
 		return update@CLASSNAME@Property(columnName, new Long(value));
 	}
-	/// Main ///
+
+	/// Main Integer ///
 	/**
 	 * 
 	 * @param columnName Column name in database's table to be update.
@@ -131,9 +128,10 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "UPDATE @TABLENAME@"
-					+ " SET " + columnName + " = ?"
-					+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
+			String qry = ""
+				+ "UPDATE @TABLENAME@"
+				+ " SET " + columnName + " = ?"
+				+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
 			PreparedStatement stmt = conn.prepareStatement(qry);
 			stmt.setLong(1, value);
 			
@@ -151,10 +149,10 @@
 			return false;
 		}
 		
-	} ////////////////////////////////////////////////////////////////////////////
+	}
 	
 	
-	/// Overload ///
+	/// Overload Decimal ///
 	/**
 	 * 
 	 * @param columnName Column name in database's table to be update.
@@ -165,7 +163,7 @@
 	public boolean update@CLASSNAME@Property(String columnName, Float value) {
 		return update@CLASSNAME@Property(columnName, new Double(value));
 	}
-	/// Main ///
+	/// Main Decimal ///
 	/**
 	 * 
 	 * @param columnName Column name in database's table to be update.
@@ -177,9 +175,10 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "UPDATE @TABLENAME@"
-					+ " SET " + columnName + " = ?"
-					+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
+			String qry = ""
+				+ "UPDATE @TABLENAME@"
+				+ " SET " + columnName + " = ?"
+				+ " WHERE @PRIMARYKEY@ = " + this.@PRIMARYKEY@;
 			PreparedStatement stmt = conn.prepareStatement(qry);
 			stmt.setDouble(1, value);
 			
@@ -197,5 +196,5 @@
 			return false;
 		}
 		
-	} ////////////////////////////////////////////////////////////////////////////
+	}
 	

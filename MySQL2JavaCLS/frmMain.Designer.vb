@@ -672,7 +672,7 @@ Partial Class frmMain
 		Me.btnChangeFont.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnChangeFont.Image = CType(resources.GetObject("btnChangeFont.Image"), System.Drawing.Image)
 		Me.btnChangeFont.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnChangeFont.Location = New System.Drawing.Point(997, 897)
+		Me.btnChangeFont.Location = New System.Drawing.Point(997, 902)
 		Me.btnChangeFont.Name = "btnChangeFont"
 		Me.btnChangeFont.Size = New System.Drawing.Size(117, 29)
 		Me.btnChangeFont.TabIndex = 5
@@ -695,7 +695,7 @@ Partial Class frmMain
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.Silver
-		Me.ClientSize = New System.Drawing.Size(1500, 881)
+		Me.ClientSize = New System.Drawing.Size(1500, 937)
 		Me.Controls.Add(Me.lblAppVersion)
 		Me.Controls.Add(Me.btnChangeFont)
 		Me.Controls.Add(Me.Label15)

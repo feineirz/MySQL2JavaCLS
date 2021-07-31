@@ -1,6 +1,4 @@
-	//////////////////////////////[ Add ]//////////////////////////////
-	// Add @CLASSNAME@ to database by giving a raw information. //
-	///////////////////////////////////////////////////////////////////
+@TITLE_A@
 	/**
 	 * 
 	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
@@ -14,9 +12,7 @@
 		
 	}
 	
-	/////////////////////////////////////////////////////////////////////
-	// Add @CLASSNAME@ to database by giving a structured information. //
-	/////////////////////////////////////////////////////////////////////
+@TITLE_B@
 	/**
 	 * 
 	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure that contains all @CLASSNAME@'s information.
@@ -26,9 +22,10 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "INSERT INTO @TABLENAME@"
-					+ " (@COLUMNLIST@)"
-					+ " VALUES(@STATEMENTHOLDER@)";
+			String qry = ""
+				+ "INSERT INTO @TABLENAME@"
+				+ " (@COLUMNLIST@)"
+				+ " VALUES(@STATEMENTHOLDER@)";
 			PreparedStatement stmt = conn.prepareStatement(qry, Statement.RETURN_GENERATED_KEYS);
 @STATEMENT_COLUMNLIST@
 			
@@ -52,6 +49,6 @@
 		}
 		return null;
 		
-	} /////////////////////////////////////////////////////////////////
+	}
 	
 	

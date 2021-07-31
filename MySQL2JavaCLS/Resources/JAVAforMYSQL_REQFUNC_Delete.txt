@@ -1,6 +1,5 @@
-	//////////////////////////////[ Delete ]//////////////////////////////
-	// Delete @CLASSNAME@ from database. //
-	//////////////////////////////////////////////////////////////////////
+@TITLE@
+/// Private ///
 	/**
 	 * 
 	 * @return True if deletion successful.
@@ -9,7 +8,9 @@
 		
 		return delete@CLASSNAME@(this.@PRIMARYKEY@);
 		
-	} ////////////////////////////////////////////////////////////////////
+	}
+
+	/// Static ///
 	/**
 	 * 
 	 * @param @PRIMARYKEY@ @CLASSNAME@ @PRIMARYKEY@ to be delete.
@@ -20,8 +21,9 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "DELETE FROM @TABLENAME@"
-					+ " WHERE @PRIMARYKEY@=?";
+			String qry = ""
+				+ "DELETE FROM @TABLENAME@"
+				+ " WHERE @PRIMARYKEY@=?";
 			PreparedStatement stmt = conn.prepareStatement(qry);
 			stmt.set@PRIMARYKEY_GETSETDATATYPE@(1, @PRIMARYKEY@);
 			
@@ -39,5 +41,5 @@
 			return false;
 		}
 		
-	} ////////////////////////////////////////////////////////////////////
+	}
 	

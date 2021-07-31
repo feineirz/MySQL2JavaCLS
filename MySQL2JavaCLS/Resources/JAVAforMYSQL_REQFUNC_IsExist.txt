@@ -1,6 +1,4 @@
-	//////////////////////////////[ IsExist ]//////////////////////////////
-	// Check if record(s) from the given condition is exist in a database. //
-	///////////////////////////////////////////////////////////////////////
+@TITLE@
 	/**
 	 * 
 	 * @param condition The condition to specify the record to be return.
@@ -15,9 +13,10 @@
 		
 		if(condition != "") condition = " WHERE " + condition;
 		try {
-			String qry = "SELECT *" 
-					+ " FROM @TABLENAME@"
-					+ condition;
+			String qry = ""
+				+ "SELECT *" 
+				+ " FROM @TABLENAME@"
+				+ condition;
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(qry);
 			while (rs.next()) {
@@ -38,5 +37,5 @@
 			return null;
 		}
 
-	} /////////////////////////////////////////////////////////////////////
+	}
 	

@@ -16,6 +16,7 @@ Public Class MySQL2JavaCLSBuilder
 		Next
 		Return C
 	End Function
+
 	Public Shared Function cTAB(Optional Number As Integer = 1) As String
 		Dim C As String = ""
 		For I = 1 To Number
@@ -23,6 +24,7 @@ Public Class MySQL2JavaCLSBuilder
 		Next
 		Return C
 	End Function
+
 	Public Shared Function cNewLine(Optional Number As Integer = 1)
 		Dim C As String = ""
 		For I = 1 To Number
@@ -31,6 +33,7 @@ Public Class MySQL2JavaCLSBuilder
 		Return C
 
 	End Function
+
 	Public Shared Function FirstCaps(src As String, Optional OtherIsLower As Boolean = False) As String
 
 		Dim rt As String = ""
@@ -48,31 +51,93 @@ Public Class MySQL2JavaCLSBuilder
 
 	End Function
 
-	Public Shared Function SectionHeader(Header As String, Optional UseSingleLine As Boolean = False) As String
+	Public Shared Function SectionHeader(Header As String, Optional UseSingleLine As Boolean = False, Optional LineCharacter As Char = "=", Optional DefaultWidth As Integer = 100) As String
 
 		Header = Header.Trim
 
 		Dim content As String = ""
-		Dim fixedLength As Integer = 100
-		Dim FullLine As String = ""
-		Dim SubLine As String = ""
+		Dim FullLine As String
+		Dim SubLineLeft As String
+		Dim SubLineRight As String = ""
+		Dim HeaderLine As String
 
-		For i = 1 To fixedLength
-			FullLine += "/"
+		FullLine = "/"
+		For i = 1 To DefaultWidth - 2
+			FullLine += LineCharacter
 		Next
+		FullLine += "/"
 
-		For i = 1 To (fixedLength - (Header.Length + 4)) / 2
-			SubLine += "/"
+		SubLineLeft = "/"
+		For i = 1 To ((DefaultWidth - (Header.Length + 4)) / 2) - 1
+			SubLineLeft += LineCharacter
+			SubLineRight += LineCharacter
 		Next
-		If Not UseSingleLine Then content += FullLine + vbCrLf
-		content += SubLine + "[ " + Header + " ]" + SubLine + vbCrLf
-		If content.Length < fixedLength Then
-			content = "/" + content
+		SubLineRight += "/"
+
+		If Not UseSingleLine Then content += FullLine + vbCrLf + FullLine + vbCrLf
+		HeaderLine = SubLineLeft + "[ " + Header + " ]" + SubLineRight
+		If HeaderLine.Length < DefaultWidth Then
+			HeaderLine = HeaderLine.Replace(LineCharacter + "/", LineCharacter + LineCharacter + "/")
 		End If
-		If Not UseSingleLine Then content += FullLine + vbCrLf
+		content += HeaderLine + vbCrLf
+		If Not UseSingleLine Then content += FullLine + vbCrLf + FullLine + vbCrLf
 
 		Return content
 
+	End Function
+
+	Public Shared Function SectionTitle(Title As String, Description As String, Optional LineCharacter As Char = "-", Optional DefaultWidth As Integer = 100) As String
+
+		Title = Title.Trim
+
+		Dim content As String
+		Dim FullLine As String
+		Dim SubLineLeft As String
+		Dim SubLineRight As String
+		Dim TitleLine As String
+		Dim DescLine As String
+
+		FullLine = "/"
+		For i = 1 To DefaultWidth - 2
+			FullLine += LineCharacter
+		Next
+		FullLine += "/"
+
+		content = FullLine + vbCrLf
+
+		' Title
+		SubLineLeft = "/"
+		SubLineRight = ""
+		For i = 1 To ((DefaultWidth - (Title.Length + 4)) / 2) - 1
+			SubLineLeft += LineCharacter
+			SubLineRight += LineCharacter
+		Next
+		SubLineRight += "/"
+
+		TitleLine = SubLineLeft + "[ " + Title + " ]" + SubLineRight
+		If TitleLine.Length < DefaultWidth Then
+			TitleLine = TitleLine.Replace(LineCharacter + "/", LineCharacter + LineCharacter + "/")
+		End If
+		content += TitleLine + vbCrLf
+		content += FullLine + vbCrLf
+
+		' Desc
+		SubLineLeft = "/"
+		SubLineRight = ""
+		For i = 1 To ((DefaultWidth - (Description.Length + 2)) / 2) - 1
+			SubLineLeft += LineCharacter
+			SubLineRight += LineCharacter
+		Next
+		SubLineRight += "/"
+
+		DescLine = SubLineLeft + " " + Description + " " + SubLineRight
+		If DescLine.Length < DefaultWidth Then
+			DescLine = DescLine.Replace(LineCharacter + "/", LineCharacter + LineCharacter + "/")
+		End If
+		content += DescLine + vbCrLf
+		content += FullLine + vbCrLf
+
+		Return content
 
 	End Function
 
@@ -200,6 +265,7 @@ Public Class MySQL2JavaCLSBuilder
 	Public Shared Function getSourceCode(DataTableInfo As MySQLDB.DataTableInfo, ClassInfo As ClassInfo) As String
 
 		Dim sb As New StringBuilder
+		Dim titleDesc As String
 
 		'------------- Credits ------------'
 		Dim Credits = My.Resources.JAVAforMYSQL_Credits
@@ -247,6 +313,10 @@ Public Class MySQL2JavaCLSBuilder
 		Next
 		Dim ClassConstructor As String = My.Resources.JAVAforMYSQL_ClassConstructor
 		ClassConstructor = ClassConstructor.Replace("@SECTIONSTART@", SectionHeader("CLASS CONSTRUCTOR"))
+
+		titleDesc = "Create a " + FirstCaps(ClassInfo.ClassName) + " object from the given " + ClassInfo.ClassPrimaryKey + "."
+		ClassConstructor = ClassConstructor.Replace("@TITLE@", SectionTitle("CONSTRUCTOR", titleDesc))
+
 		ClassConstructor = ClassConstructor.Replace("@CLASSNAME@", FirstCaps(ClassInfo.ClassName))
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
@@ -294,6 +364,10 @@ Public Class MySQL2JavaCLSBuilder
 
 		' List '
 		Dim rfListContents As String = My.Resources.JAVAforMYSQL_REQFUNC_List
+
+		titleDesc = "List " + FirstCaps(ClassInfo.ClassName) + " in database as " + FirstCaps(ClassInfo.ClassName) + " objects."
+		rfListContents = rfListContents.Replace("@TITLE@", SectionTitle("LIST", titleDesc))
+
 		rfListContents = rfListContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfListContents = rfListContents.Replace("@TABLENAME@", DataTableInfo.TableName)
 		rfListContents = rfListContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
@@ -312,7 +386,7 @@ Public Class MySQL2JavaCLSBuilder
 		For Each dci In DataTableInfo.ColumnList
 			' rfAdd_ColumnlistWithDatattype
 			If Not rfAdd_ColumnlistWithDatattype = "" Then rfAdd_ColumnlistWithDatattype += ", "
-			rfAdd_ColumnlistWithDatattype += ConvertDataType(dci.DataType) + " " + dci.ColumnName
+			rfAdd_ColumnlistWithDatattype += vbCrLf + cTAB(2) + ConvertDataType(dci.DataType) + " " + dci.ColumnName
 
 			' rfAdd_StructuredColomnList
 			If Not rfAdd_StructuredColomnList = "" Then rfAdd_StructuredColomnList += vbCrLf
@@ -333,6 +407,12 @@ Public Class MySQL2JavaCLSBuilder
 
 			rfAdd_StatementCount += 1
 		Next
+
+		titleDesc = "Add " + FirstCaps(ClassInfo.ClassName) + " to database by giving a raw information."
+		rfAddContents = rfAddContents.Replace("@TITLE_A@", SectionTitle("ADD (RAW)", titleDesc))
+
+		titleDesc = "Add " + FirstCaps(ClassInfo.ClassName) + " to database by giving a structured information."
+		rfAddContents = rfAddContents.Replace("@TITLE_B@", SectionTitle("ADD (STRUCTURED)", titleDesc))
 
 		rfAddContents = rfAddContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfAddContents = rfAddContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
@@ -358,9 +438,9 @@ Public Class MySQL2JavaCLSBuilder
 				' rfUpdate_UpdateColumnListNonePrimaryKey
 				If Not rfUpdate_UpdateColumnListNonePrimaryKey = "" Then rfUpdate_UpdateColumnListNonePrimaryKey += vbCrLf
 				If i < DataTableInfo.ColumnList.Count - 1 Then
-					rfUpdate_UpdateColumnListNonePrimaryKey += cTAB(5) + "+ " + dblQuote() + "  " + dci.ColumnName + " = ?," + dblQuote()
+					rfUpdate_UpdateColumnListNonePrimaryKey += cTAB(4) + "+ " + dblQuote() + " " + dci.ColumnName + " = ?," + dblQuote()
 				Else
-					rfUpdate_UpdateColumnListNonePrimaryKey += cTAB(5) + "+ " + dblQuote() + "  " + dci.ColumnName + " = ?" + dblQuote()
+					rfUpdate_UpdateColumnListNonePrimaryKey += cTAB(4) + "+ " + dblQuote() + " " + dci.ColumnName + " = ?" + dblQuote()
 				End If
 
 				' rfUpdate_StatementColumnListNonePrimaryKey
@@ -373,6 +453,15 @@ Public Class MySQL2JavaCLSBuilder
 
 		rfUpdate_StatementColumnListNonePrimaryKey += cTAB(3) + "stmt.set" + ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType) + "(" _
 			+ rfUpdate_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + ClassInfo.ClassPrimaryKey + ");" + vbCrLf
+
+		titleDesc = "Update " + FirstCaps(ClassInfo.ClassName) + " information in database by giving a raw information."
+		rfUpdateContents = rfUpdateContents.Replace("@TITLE_A@", SectionTitle("UPDATE (RAW)", titleDesc))
+
+		titleDesc = "Update " + FirstCaps(ClassInfo.ClassName) + " information in database by giving a structured information."
+		rfUpdateContents = rfUpdateContents.Replace("@TITLE_B@", SectionTitle("UPDATE (STRUCTURED)", titleDesc))
+
+		titleDesc = "Update a single property in database by the given ColumnName and Value."
+		rfUpdateContents = rfUpdateContents.Replace("@TITLE_C@", SectionTitle("UPDATE PROPERTY", titleDesc))
 
 		rfUpdateContents = rfUpdateContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfUpdateContents = rfUpdateContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
@@ -387,6 +476,10 @@ Public Class MySQL2JavaCLSBuilder
 
 		' Delete '
 		Dim rfDeleteContents As String = My.Resources.JAVAforMYSQL_REQFUNC_Delete
+
+		titleDesc = "Delete " + FirstCaps(ClassInfo.ClassName) + " from database."
+		rfDeleteContents = rfDeleteContents.Replace("@TITLE@", SectionTitle("DELETE", titleDesc))
+
 		rfDeleteContents = rfDeleteContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
@@ -397,6 +490,10 @@ Public Class MySQL2JavaCLSBuilder
 
 		' IsExist '
 		Dim rfIsExistContents As String = My.Resources.JAVAforMYSQL_REQFUNC_IsExist
+
+		titleDesc = "Check if record(s) from the given condition is exists in a database."
+		rfIsExistContents = rfIsExistContents.Replace("@TITLE@", SectionTitle("IsEXIST", titleDesc))
+
 		rfIsExistContents = rfIsExistContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfIsExistContents = rfIsExistContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
 		rfIsExistContents = rfIsExistContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
@@ -413,6 +510,9 @@ Public Class MySQL2JavaCLSBuilder
 			rfToClassInfo_ConvertList &= cTAB(2) & "ci." & dci.ColumnName & " = this." + dci.ColumnName & ";" & vbCrLf
 		Next
 
+		titleDesc = "Convert " + FirstCaps(ClassInfo.ClassName) + " class to the " + FirstCaps(ClassInfo.ClassName) + "Info class."
+		rfToClassInfo = rfToClassInfo.Replace("@TITLE@", SectionTitle("ToCLASSINFO", titleDesc))
+
 		rfToClassInfo = rfToClassInfo.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfToClassInfo = rfToClassInfo.Replace("@TOCLASSINFO_CONVERTLIST@", rfToClassInfo_ConvertList)
 
@@ -428,7 +528,10 @@ Public Class MySQL2JavaCLSBuilder
 		sb.AppendLine(ucFunctionContents)
 
 
-		sb.AppendLine("}" + vbCrLf + vbCrLf + "/*********************************************{{{ CLASS END }}}*********************************************/")
+		sb.AppendLine("}" + vbCrLf + vbCrLf)
+		sb.AppendLine("/*****************************************{{{ CLASS END }}}****************************************/")
+		sb.AppendLine(My.Resources.JAVAforMYSQL_EndCredits)
+
 		Return sb.ToString
 
 	End Function

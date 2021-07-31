@@ -11,16 +11,16 @@ public class MySQLDBConnector {
 		try{
 			Class.forName("com.@MySQLVersionShift@.jdbc.Driver");  
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://@HOST@:@PORT@/@DATABASE@"
-					+ "?useJDBCCompliantTimezoneShift=@useJDBCCompliantTimezoneShiftOption@"
-					+ "&useLegacyDatetimeCode=@useLegacyDatetimeCodeOption@"
-					+ "&useSSL=@useSSLOption@"
-					+ "&autoReconnect=@autoReconnectOption@"
-					+ "&useUnicode=@useUnicodeOption@"
-					+ "&characterEncoding=@characterEncodingOption@"
-					+ "&serverTimezone=@serverTimezoneOption@",
-					"@USER@",
-					"@PASS@" );
+				"jdbc:mysql://@HOST@:@PORT@/@DATABASE@"
+				+ "?useJDBCCompliantTimezoneShift=@useJDBCCompliantTimezoneShiftOption@"
+				+ "&useLegacyDatetimeCode=@useLegacyDatetimeCodeOption@"
+				+ "&useSSL=@useSSLOption@"
+				+ "&autoReconnect=@autoReconnectOption@"
+				+ "&useUnicode=@useUnicodeOption@"
+				+ "&characterEncoding=@characterEncodingOption@"
+				+ "&serverTimezone=@serverTimezoneOption@",
+				"@USER@",
+				"@PASS@" );
 
 		}catch(ClassNotFoundException e) {
 			e.printStackTrace();

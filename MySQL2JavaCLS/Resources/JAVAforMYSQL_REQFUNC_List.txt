@@ -1,6 +1,4 @@
-	//////////////////////////////[ List ]//////////////////////////////
-	// List @CLASSNAME@ in database as @CLASSNAME@ objects. //
-	////////////////////////////////////////////////////////////////////
+@TITLE@
 	/// Overload ///
 	/**
 	 * 
@@ -49,10 +47,11 @@
 		
 		Connection conn = new MySQLDBConnector().getDBConnection();
 		try {
-			String qry = "SELECT *"
-					+ " FROM @TABLENAME@"
-					+ condition
-					+ order;
+			String qry = ""
+				+ "SELECT *"
+				+ " FROM @TABLENAME@"
+				+ condition
+				+ order;
 			Statement stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(qry);
 			while(rs.next()) {
@@ -72,5 +71,5 @@
 		
 		return buff;
 		
-	} //////////////////////////////////////////////////////////////////
+	}
 	

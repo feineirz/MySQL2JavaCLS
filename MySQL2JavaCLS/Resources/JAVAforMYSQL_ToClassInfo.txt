@@ -1,9 +1,7 @@
-	/////////////////////////////[ ToClassInfo ]///////////////////////////
-	// Convert @CLASSNAME@ class to the @CLASSNAME@Info class. //
-	///////////////////////////////////////////////////////////////////////
+@TITLE@
 	/**
 	 * 
-	 * @return @CLASSNAME@info object.
+	 * @return @CLASSNAME@Info object.
 	 */
 	private @CLASSNAME@Info to@CLASSNAME@Info() {
         
@@ -11,4 +9,4 @@
 @TOCLASSINFO_CONVERTLIST@
 		return ci;
 
-	} /////////////////////////////////////////////////////////////////////
+	}

@@ -203,6 +203,7 @@
     <None Include="Resources\JAVAforMYSQL_UCFUNC.txt" />
     <Content Include="Resources\JAVAforMYSQL_Credits.txt" />
     <None Include="Resources\JAVAforMYSQL_ToClassInfo.txt" />
+    <None Include="Resources\JAVAforMYSQL_EndCredits.txt" />
     <Content Include="result.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
