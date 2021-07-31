@@ -61,23 +61,23 @@ Public Class MySQL2JavaCLSBuilder
 		Dim SubLineRight As String = ""
 		Dim HeaderLine As String
 
-		FullLine = "/"
-		For i = 1 To DefaultWidth - 2
+		FullLine = "/*"
+		For i = 1 To DefaultWidth - 4
 			FullLine += LineCharacter
 		Next
-		FullLine += "/"
+		FullLine += "*/"
 
-		SubLineLeft = "/"
-		For i = 1 To ((DefaultWidth - (Header.Length + 4)) / 2) - 1
+		SubLineLeft = "/*"
+		For i = 1 To ((DefaultWidth - (Header.Length + 4)) / 2) - 2
 			SubLineLeft += LineCharacter
 			SubLineRight += LineCharacter
 		Next
-		SubLineRight += "/"
+		SubLineRight += "*/"
 
 		If Not UseSingleLine Then content += FullLine + vbCrLf + FullLine + vbCrLf
 		HeaderLine = SubLineLeft + "[ " + Header + " ]" + SubLineRight
 		If HeaderLine.Length < DefaultWidth Then
-			HeaderLine = HeaderLine.Replace(LineCharacter + "/", LineCharacter + LineCharacter + "/")
+			HeaderLine = HeaderLine.Replace(LineCharacter + "*/", LineCharacter + LineCharacter + "*/")
 		End If
 		content += HeaderLine + vbCrLf
 		If Not UseSingleLine Then content += FullLine + vbCrLf + FullLine + vbCrLf
@@ -97,42 +97,42 @@ Public Class MySQL2JavaCLSBuilder
 		Dim TitleLine As String
 		Dim DescLine As String
 
-		FullLine = "/"
-		For i = 1 To DefaultWidth - 2
+		FullLine = "/*"
+		For i = 1 To DefaultWidth - 4
 			FullLine += LineCharacter
 		Next
-		FullLine += "/"
+		FullLine += "*/"
 
 		content = FullLine + vbCrLf
 
 		' Title
-		SubLineLeft = "/"
+		SubLineLeft = "/*"
 		SubLineRight = ""
-		For i = 1 To ((DefaultWidth - (Title.Length + 4)) / 2) - 1
+		For i = 1 To ((DefaultWidth - (Title.Length + 4)) / 2) - 2
 			SubLineLeft += LineCharacter
 			SubLineRight += LineCharacter
 		Next
-		SubLineRight += "/"
+		SubLineRight += "*/"
 
 		TitleLine = SubLineLeft + "[ " + Title + " ]" + SubLineRight
 		If TitleLine.Length < DefaultWidth Then
-			TitleLine = TitleLine.Replace(LineCharacter + "/", LineCharacter + LineCharacter + "/")
+			TitleLine = TitleLine.Replace(LineCharacter + "*/", LineCharacter + LineCharacter + "*/")
 		End If
 		content += TitleLine + vbCrLf
 		content += FullLine + vbCrLf
 
 		' Desc
-		SubLineLeft = "/"
+		SubLineLeft = "/*"
 		SubLineRight = ""
-		For i = 1 To ((DefaultWidth - (Description.Length + 2)) / 2) - 1
+		For i = 1 To ((DefaultWidth - (Description.Length + 2)) / 2) - 2
 			SubLineLeft += LineCharacter
 			SubLineRight += LineCharacter
 		Next
-		SubLineRight += "/"
+		SubLineRight += "*/"
 
 		DescLine = SubLineLeft + " " + Description + " " + SubLineRight
 		If DescLine.Length < DefaultWidth Then
-			DescLine = DescLine.Replace(LineCharacter + "/", LineCharacter + LineCharacter + "/")
+			DescLine = DescLine.Replace(LineCharacter + "*/", LineCharacter + LineCharacter + "*/")
 		End If
 		content += DescLine + vbCrLf
 		content += FullLine + vbCrLf
@@ -522,6 +522,10 @@ Public Class MySQL2JavaCLSBuilder
 
 		'---------- User Custom Functions ----------' 
 		Dim ucFunctionContents As String = My.Resources.JAVAforMYSQL_UCFUNC
+
+		titleDesc = "PLACE YOUR CUSTOM FUNCTIONS HERE"
+		ucFunctionContents = ucFunctionContents.Replace("@TITLE@", SectionTitle("USER CUSTOM FUNCTIONS", titleDesc))
+
 		ucFunctionContents = ucFunctionContents.Replace("@SECTIONSTART@", SectionHeader("USER CUSTOM FUNCTIONS"))
 		ucFunctionContents = ucFunctionContents.Replace("@SECTIONEND@", SectionHeader("END USER CUSTOM FUNCTIONS", True))
 

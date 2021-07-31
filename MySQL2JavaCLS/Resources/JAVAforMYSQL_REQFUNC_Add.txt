@@ -16,6 +16,7 @@
 	/**
 	 * 
 	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure that contains all @CLASSNAME@'s information.
+	 *
 	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
 	 */
 	public static @CLASSNAME@ add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {

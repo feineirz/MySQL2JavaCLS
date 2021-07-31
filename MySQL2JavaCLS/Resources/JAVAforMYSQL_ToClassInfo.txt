@@ -3,7 +3,7 @@
 	 * 
 	 * @return @CLASSNAME@Info object.
 	 */
-	private @CLASSNAME@Info to@CLASSNAME@Info() {
+	public @CLASSNAME@Info to@CLASSNAME@Info() {
         
 		@CLASSNAME@Info ci = new @CLASSNAME@Info();
 @TOCLASSINFO_CONVERTLIST@
