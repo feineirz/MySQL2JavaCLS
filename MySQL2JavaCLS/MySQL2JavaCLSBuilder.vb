@@ -66,6 +66,9 @@ Public Class MySQL2JavaCLSBuilder
 		Next
 		If Not UseSingleLine Then content += FullLine + vbCrLf
 		content += SubLine + "[ " + Header + " ]" + SubLine + vbCrLf
+		If content.Length < fixedLength Then
+			content = "/" + content
+		End If
 		If Not UseSingleLine Then content += FullLine + vbCrLf
 
 		Return content
@@ -402,6 +405,18 @@ Public Class MySQL2JavaCLSBuilder
 		rfIsExistContents = rfIsExistContents.Replace("@TABLENAME@", DataTableInfo.TableName)
 
 		sb.AppendLine(rfIsExistContents)
+
+		' ToClassInfo '
+		Dim rfToClassInfo As String = My.Resources.JAVAforMYSQL_REQFUNC_ToClassInfo
+		Dim rfToClassInfo_ConvertList As String = ""
+		For Each dci In DataTableInfo.ColumnList
+			rfToClassInfo_ConvertList &= cTAB(2) & "ci." & dci.ColumnName & " = this." + dci.ColumnName & ";" & vbCrLf
+		Next
+
+		rfToClassInfo = rfToClassInfo.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfToClassInfo = rfToClassInfo.Replace("@TOCLASSINFO_CONVERTLIST@", rfToClassInfo_ConvertList)
+
+		sb.AppendLine(rfToClassInfo)
 
 		sb.AppendLine(SectionHeader("END REQUIRED FUNCTIONS", True))
 
