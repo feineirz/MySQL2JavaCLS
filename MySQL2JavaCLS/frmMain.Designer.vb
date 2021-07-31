@@ -111,7 +111,7 @@ Partial Class frmMain
 		Me.Label16.Name = "Label16"
 		Me.Label16.Size = New System.Drawing.Size(76, 18)
 		Me.Label16.TabIndex = 100
-		Me.Label16.Text = "(Beta 2)"
+		Me.Label16.Text = "(Beta 3)"
 		'
 		'btnExit
 		'
