@@ -113,6 +113,7 @@ Public Class MySQL2JavaCLSBuilder
 			Case "longtext" : Return "String"
 			Case "ntext" : Return "String"
 			Case "string" : Return "String"
+			Case "enum" : Return "String"
 
 			Case "byte[]" : Return "byte[]"
 			Case "image" : Return "byte[]"
@@ -165,6 +166,7 @@ Public Class MySQL2JavaCLSBuilder
 			Case "longtext" : Return "String"
 			Case "ntext" : Return "String"
 			Case "string" : Return "String"
+			Case "enum" : Return "String"
 
 			Case "byte[]" : Return "Byte[]"
 			Case "image" : Return "Byte[]"
