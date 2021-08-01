@@ -47,7 +47,7 @@ Partial Class frmMain
 		Me.Label3 = New System.Windows.Forms.Label()
 		Me.Label2 = New System.Windows.Forms.Label()
 		Me.Label1 = New System.Windows.Forms.Label()
-		Me.btnGetDBConnector = New System.Windows.Forms.Button()
+		Me.btnExportDBConnector = New System.Windows.Forms.Button()
 		Me.picServerIcon = New System.Windows.Forms.PictureBox()
 		Me.pnlDatabaseProperties = New System.Windows.Forms.Panel()
 		Me.chkLowercaseColumnName = New System.Windows.Forms.CheckBox()
@@ -63,6 +63,8 @@ Partial Class frmMain
 		Me.Label7 = New System.Windows.Forms.Label()
 		Me.btnBuild = New System.Windows.Forms.Button()
 		Me.pnlClassProperties = New System.Windows.Forms.Panel()
+		Me.tbxPackageName = New System.Windows.Forms.TextBox()
+		Me.Label17 = New System.Windows.Forms.Label()
 		Me.lblPrimaryKeyDataType = New System.Windows.Forms.Label()
 		Me.Label14 = New System.Windows.Forms.Label()
 		Me.chkReadOnlyPrimaryKey = New System.Windows.Forms.CheckBox()
@@ -73,10 +75,12 @@ Partial Class frmMain
 		Me.Label12 = New System.Windows.Forms.Label()
 		Me.Label10 = New System.Windows.Forms.Label()
 		Me.pnlCommand = New System.Windows.Forms.Panel()
+		Me.picExportIcon = New System.Windows.Forms.PictureBox()
 		Me.btnSaveClassFile = New System.Windows.Forms.Button()
 		Me.Label15 = New System.Windows.Forms.Label()
 		Me.btnChangeFont = New System.Windows.Forms.Button()
 		Me.lblAppVersion = New System.Windows.Forms.Label()
+		Me.btnChangeTheme = New System.Windows.Forms.Button()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDatabaseConnection.SuspendLayout()
@@ -86,6 +90,7 @@ Partial Class frmMain
 		Me.pnlClassProperties.SuspendLayout()
 		CType(Me.picClassIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlCommand.SuspendLayout()
+		CType(Me.picExportIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.SuspendLayout()
 		'
 		'pnlHeader
@@ -166,11 +171,11 @@ Partial Class frmMain
 		Me.rtbSourceCode.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.rtbSourceCode.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.rtbSourceCode.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.rtbSourceCode.ForeColor = System.Drawing.Color.Black
+		Me.rtbSourceCode.ForeColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
 		Me.rtbSourceCode.Location = New System.Drawing.Point(12, 71)
 		Me.rtbSourceCode.Name = "rtbSourceCode"
 		Me.rtbSourceCode.ReadOnly = True
-		Me.rtbSourceCode.Size = New System.Drawing.Size(1102, 825)
+		Me.rtbSourceCode.Size = New System.Drawing.Size(1102, 886)
 		Me.rtbSourceCode.TabIndex = 1
 		Me.rtbSourceCode.Text = ""
 		'
@@ -366,19 +371,18 @@ Partial Class frmMain
 		Me.Label1.TabIndex = 0
 		Me.Label1.Text = "Connection Properties"
 		'
-		'btnGetDBConnector
+		'btnExportDBConnector
 		'
-		Me.btnGetDBConnector.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.btnGetDBConnector.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.btnGetDBConnector.Image = CType(resources.GetObject("btnGetDBConnector.Image"), System.Drawing.Image)
-		Me.btnGetDBConnector.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnGetDBConnector.Location = New System.Drawing.Point(18, 14)
-		Me.btnGetDBConnector.Name = "btnGetDBConnector"
-		Me.btnGetDBConnector.Size = New System.Drawing.Size(164, 29)
-		Me.btnGetDBConnector.TabIndex = 0
-		Me.btnGetDBConnector.Text = "Export DBConnector"
-		Me.btnGetDBConnector.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-		Me.btnGetDBConnector.UseVisualStyleBackColor = True
+		Me.btnExportDBConnector.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnExportDBConnector.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnExportDBConnector.Image = CType(resources.GetObject("btnExportDBConnector.Image"), System.Drawing.Image)
+		Me.btnExportDBConnector.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnExportDBConnector.Location = New System.Drawing.Point(180, 49)
+		Me.btnExportDBConnector.Name = "btnExportDBConnector"
+		Me.btnExportDBConnector.Size = New System.Drawing.Size(169, 29)
+		Me.btnExportDBConnector.TabIndex = 0
+		Me.btnExportDBConnector.Text = "Export Connector"
+		Me.btnExportDBConnector.UseVisualStyleBackColor = True
 		'
 		'picServerIcon
 		'
@@ -512,9 +516,9 @@ Partial Class frmMain
 		Me.btnBuild.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnBuild.Image = CType(resources.GetObject("btnBuild.Image"), System.Drawing.Image)
 		Me.btnBuild.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnBuild.Location = New System.Drawing.Point(188, 14)
+		Me.btnBuild.Location = New System.Drawing.Point(180, 14)
 		Me.btnBuild.Name = "btnBuild"
-		Me.btnBuild.Size = New System.Drawing.Size(161, 29)
+		Me.btnBuild.Size = New System.Drawing.Size(169, 29)
 		Me.btnBuild.TabIndex = 1
 		Me.btnBuild.Text = "Start Build"
 		Me.btnBuild.UseVisualStyleBackColor = True
@@ -523,6 +527,8 @@ Partial Class frmMain
 		'
 		Me.pnlClassProperties.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlClassProperties.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlClassProperties.Controls.Add(Me.tbxPackageName)
+		Me.pnlClassProperties.Controls.Add(Me.Label17)
 		Me.pnlClassProperties.Controls.Add(Me.lblPrimaryKeyDataType)
 		Me.pnlClassProperties.Controls.Add(Me.Label14)
 		Me.pnlClassProperties.Controls.Add(Me.chkReadOnlyPrimaryKey)
@@ -535,14 +541,34 @@ Partial Class frmMain
 		Me.pnlClassProperties.Enabled = False
 		Me.pnlClassProperties.Location = New System.Drawing.Point(1120, 654)
 		Me.pnlClassProperties.Name = "pnlClassProperties"
-		Me.pnlClassProperties.Size = New System.Drawing.Size(368, 143)
+		Me.pnlClassProperties.Size = New System.Drawing.Size(368, 170)
 		Me.pnlClassProperties.TabIndex = 2
+		'
+		'tbxPackageName
+		'
+		Me.tbxPackageName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.tbxPackageName.Location = New System.Drawing.Point(180, 36)
+		Me.tbxPackageName.Name = "tbxPackageName"
+		Me.tbxPackageName.Size = New System.Drawing.Size(169, 21)
+		Me.tbxPackageName.TabIndex = 15
+		Me.tbxPackageName.Text = "default"
+		'
+		'Label17
+		'
+		Me.Label17.AutoSize = True
+		Me.Label17.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.Label17.Location = New System.Drawing.Point(115, 39)
+		Me.Label17.Name = "Label17"
+		Me.Label17.Size = New System.Drawing.Size(64, 13)
+		Me.Label17.TabIndex = 16
+		Me.Label17.Text = "Package :"
 		'
 		'lblPrimaryKeyDataType
 		'
 		Me.lblPrimaryKeyDataType.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.lblPrimaryKeyDataType.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.lblPrimaryKeyDataType.Location = New System.Drawing.Point(180, 90)
+		Me.lblPrimaryKeyDataType.Location = New System.Drawing.Point(180, 117)
 		Me.lblPrimaryKeyDataType.Name = "lblPrimaryKeyDataType"
 		Me.lblPrimaryKeyDataType.Size = New System.Drawing.Size(169, 16)
 		Me.lblPrimaryKeyDataType.TabIndex = 14
@@ -551,7 +577,7 @@ Partial Class frmMain
 		'
 		Me.Label14.AutoSize = True
 		Me.Label14.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label14.Location = New System.Drawing.Point(105, 90)
+		Me.Label14.Location = New System.Drawing.Point(105, 117)
 		Me.Label14.Name = "Label14"
 		Me.Label14.Size = New System.Drawing.Size(74, 13)
 		Me.Label14.TabIndex = 13
@@ -562,7 +588,7 @@ Partial Class frmMain
 		Me.chkReadOnlyPrimaryKey.AutoSize = True
 		Me.chkReadOnlyPrimaryKey.Checked = True
 		Me.chkReadOnlyPrimaryKey.CheckState = System.Windows.Forms.CheckState.Checked
-		Me.chkReadOnlyPrimaryKey.Location = New System.Drawing.Point(180, 109)
+		Me.chkReadOnlyPrimaryKey.Location = New System.Drawing.Point(180, 136)
 		Me.chkReadOnlyPrimaryKey.Name = "chkReadOnlyPrimaryKey"
 		Me.chkReadOnlyPrimaryKey.Size = New System.Drawing.Size(156, 17)
 		Me.chkReadOnlyPrimaryKey.TabIndex = 2
@@ -576,7 +602,7 @@ Partial Class frmMain
 		Me.cmbPrimaryKey.BackColor = System.Drawing.Color.WhiteSmoke
 		Me.cmbPrimaryKey.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.cmbPrimaryKey.FormattingEnabled = True
-		Me.cmbPrimaryKey.Location = New System.Drawing.Point(180, 63)
+		Me.cmbPrimaryKey.Location = New System.Drawing.Point(180, 90)
 		Me.cmbPrimaryKey.Name = "cmbPrimaryKey"
 		Me.cmbPrimaryKey.Size = New System.Drawing.Size(169, 21)
 		Me.cmbPrimaryKey.TabIndex = 1
@@ -595,7 +621,7 @@ Partial Class frmMain
 		'
 		Me.tbxClassName.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
 			Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-		Me.tbxClassName.Location = New System.Drawing.Point(180, 36)
+		Me.tbxClassName.Location = New System.Drawing.Point(180, 63)
 		Me.tbxClassName.Name = "tbxClassName"
 		Me.tbxClassName.Size = New System.Drawing.Size(169, 21)
 		Me.tbxClassName.TabIndex = 0
@@ -604,7 +630,7 @@ Partial Class frmMain
 		'
 		Me.Label11.AutoSize = True
 		Me.Label11.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label11.Location = New System.Drawing.Point(92, 66)
+		Me.Label11.Location = New System.Drawing.Point(92, 93)
 		Me.Label11.Name = "Label11"
 		Me.Label11.Size = New System.Drawing.Size(87, 13)
 		Me.Label11.TabIndex = 6
@@ -614,7 +640,7 @@ Partial Class frmMain
 		'
 		Me.Label12.AutoSize = True
 		Me.Label12.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-		Me.Label12.Location = New System.Drawing.Point(95, 39)
+		Me.Label12.Location = New System.Drawing.Point(95, 66)
 		Me.Label12.Name = "Label12"
 		Me.Label12.Size = New System.Drawing.Size(84, 13)
 		Me.Label12.TabIndex = 5
@@ -634,14 +660,25 @@ Partial Class frmMain
 		'
 		Me.pnlCommand.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.pnlCommand.BackColor = System.Drawing.Color.Gainsboro
+		Me.pnlCommand.Controls.Add(Me.picExportIcon)
 		Me.pnlCommand.Controls.Add(Me.btnSaveClassFile)
-		Me.pnlCommand.Controls.Add(Me.btnGetDBConnector)
+		Me.pnlCommand.Controls.Add(Me.btnExportDBConnector)
 		Me.pnlCommand.Controls.Add(Me.btnBuild)
 		Me.pnlCommand.Enabled = False
-		Me.pnlCommand.Location = New System.Drawing.Point(1120, 803)
+		Me.pnlCommand.Location = New System.Drawing.Point(1120, 830)
 		Me.pnlCommand.Name = "pnlCommand"
-		Me.pnlCommand.Size = New System.Drawing.Size(368, 93)
+		Me.pnlCommand.Size = New System.Drawing.Size(368, 127)
 		Me.pnlCommand.TabIndex = 3
+		'
+		'picExportIcon
+		'
+		Me.picExportIcon.Image = CType(resources.GetObject("picExportIcon.Image"), System.Drawing.Image)
+		Me.picExportIcon.Location = New System.Drawing.Point(18, 14)
+		Me.picExportIcon.Name = "picExportIcon"
+		Me.picExportIcon.Size = New System.Drawing.Size(64, 64)
+		Me.picExportIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
+		Me.picExportIcon.TabIndex = 11
+		Me.picExportIcon.TabStop = False
 		'
 		'btnSaveClassFile
 		'
@@ -650,9 +687,9 @@ Partial Class frmMain
 		Me.btnSaveClassFile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnSaveClassFile.Image = CType(resources.GetObject("btnSaveClassFile.Image"), System.Drawing.Image)
 		Me.btnSaveClassFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnSaveClassFile.Location = New System.Drawing.Point(188, 49)
+		Me.btnSaveClassFile.Location = New System.Drawing.Point(180, 84)
 		Me.btnSaveClassFile.Name = "btnSaveClassFile"
-		Me.btnSaveClassFile.Size = New System.Drawing.Size(161, 29)
+		Me.btnSaveClassFile.Size = New System.Drawing.Size(169, 29)
 		Me.btnSaveClassFile.TabIndex = 2
 		Me.btnSaveClassFile.Text = "Save Class File"
 		Me.btnSaveClassFile.UseVisualStyleBackColor = True
@@ -661,7 +698,7 @@ Partial Class frmMain
 		'
 		Me.Label15.AutoSize = True
 		Me.Label15.ForeColor = System.Drawing.Color.Gray
-		Me.Label15.Location = New System.Drawing.Point(1267, 905)
+		Me.Label15.Location = New System.Drawing.Point(1267, 966)
 		Me.Label15.Name = "Label15"
 		Me.Label15.Size = New System.Drawing.Size(227, 13)
 		Me.Label15.TabIndex = 4
@@ -669,10 +706,11 @@ Partial Class frmMain
 		'
 		'btnChangeFont
 		'
+		Me.btnChangeFont.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
 		Me.btnChangeFont.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnChangeFont.Image = CType(resources.GetObject("btnChangeFont.Image"), System.Drawing.Image)
 		Me.btnChangeFont.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnChangeFont.Location = New System.Drawing.Point(997, 902)
+		Me.btnChangeFont.Location = New System.Drawing.Point(997, 963)
 		Me.btnChangeFont.Name = "btnChangeFont"
 		Me.btnChangeFont.Size = New System.Drawing.Size(117, 29)
 		Me.btnChangeFont.TabIndex = 5
@@ -682,20 +720,36 @@ Partial Class frmMain
 		'
 		'lblAppVersion
 		'
+		Me.lblAppVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
 		Me.lblAppVersion.AutoSize = True
 		Me.lblAppVersion.ForeColor = System.Drawing.Color.Gray
-		Me.lblAppVersion.Location = New System.Drawing.Point(12, 905)
+		Me.lblAppVersion.Location = New System.Drawing.Point(12, 966)
 		Me.lblAppVersion.Name = "lblAppVersion"
 		Me.lblAppVersion.Size = New System.Drawing.Size(28, 13)
 		Me.lblAppVersion.TabIndex = 6
 		Me.lblAppVersion.Text = "ver."
+		'
+		'btnChangeTheme
+		'
+		Me.btnChangeTheme.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnChangeTheme.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnChangeTheme.Image = CType(resources.GetObject("btnChangeTheme.Image"), System.Drawing.Image)
+		Me.btnChangeTheme.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnChangeTheme.Location = New System.Drawing.Point(858, 963)
+		Me.btnChangeTheme.Name = "btnChangeTheme"
+		Me.btnChangeTheme.Size = New System.Drawing.Size(133, 29)
+		Me.btnChangeTheme.TabIndex = 7
+		Me.btnChangeTheme.Text = "Change Theme"
+		Me.btnChangeTheme.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.btnChangeTheme.UseVisualStyleBackColor = True
 		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.Silver
-		Me.ClientSize = New System.Drawing.Size(1500, 937)
+		Me.ClientSize = New System.Drawing.Size(1500, 998)
+		Me.Controls.Add(Me.btnChangeTheme)
 		Me.Controls.Add(Me.lblAppVersion)
 		Me.Controls.Add(Me.btnChangeFont)
 		Me.Controls.Add(Me.Label15)
@@ -724,6 +778,7 @@ Partial Class frmMain
 		Me.pnlClassProperties.PerformLayout()
 		CType(Me.picClassIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.pnlCommand.ResumeLayout(False)
+		CType(Me.picExportIcon, System.ComponentModel.ISupportInitialize).EndInit()
 		Me.ResumeLayout(False)
 		Me.PerformLayout()
 
@@ -771,7 +826,7 @@ Partial Class frmMain
 	Friend WithEvents Label12 As Label
 	Friend WithEvents Label10 As Label
 	Friend WithEvents cmbPrimaryKey As ComboBox
-	Friend WithEvents btnGetDBConnector As Button
+	Friend WithEvents btnExportDBConnector As Button
 	Friend WithEvents chkReadOnlyPrimaryKey As CheckBox
 	Friend WithEvents Label13 As Label
 	Friend WithEvents pnlCommand As Panel
@@ -783,4 +838,8 @@ Partial Class frmMain
 	Friend WithEvents chkLowercaseColumnName As CheckBox
 	Friend WithEvents btnChangeFont As Button
 	Friend WithEvents lblAppVersion As Label
+	Friend WithEvents tbxPackageName As TextBox
+	Friend WithEvents Label17 As Label
+	Friend WithEvents picExportIcon As PictureBox
+	Friend WithEvents btnChangeTheme As Button
 End Class

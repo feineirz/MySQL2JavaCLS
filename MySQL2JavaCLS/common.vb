@@ -19,6 +19,17 @@
 
 	End Function
 
+	Public Function NameCamelCase(Name As String) As String
+
+		Dim buff As String = ""
+		For Each word In Name.Split("_")
+			buff += FirstCaps(word)
+		Next
+
+		Return buff
+
+	End Function
+
 End Module
 
 

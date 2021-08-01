@@ -118,10 +118,14 @@ Public Class frmMain
 					SetConnectionInput(False)
 					pnlDatabaseProperties.Enabled = True
 					pnlCommand.Enabled = True
-					btnGetDBConnector.Enabled = True
+					btnExportDBConnector.Enabled = True
 
 					MsgBox("Connection successful.")
 					btnConnect.Text = "Disconnect"
+
+					If cmbTableList.Items.Count > 0 Then
+						cmbTableList.SelectedIndex = 0
+					End If
 				Else
 					MsgBox("Connection failed.")
 				End If
@@ -132,7 +136,7 @@ Public Class frmMain
 			SetConnectionInput(True)
 			pnlDatabaseProperties.Enabled = False
 			pnlCommand.Enabled = False
-			btnGetDBConnector.Enabled = False
+			btnExportDBConnector.Enabled = False
 			btnConnect.Text = "Connect"
 
 		End If
@@ -151,7 +155,7 @@ Public Class frmMain
 		currentDataTableInfo = dti
 
 		lblTableCollation.Text = dti.Collation
-		tbxClassName.Text = FirstCaps(dti.TableName)
+		tbxClassName.Text = NameCamelCase(dti.TableName)
 
 		lvwColumnList.Items.Clear()
 		cmbPrimaryKey.Items.Clear()
@@ -188,7 +192,7 @@ Public Class frmMain
 
 	End Sub
 
-	Private Sub btnGetDBConnector_Click(sender As Object, e As EventArgs) Handles btnGetDBConnector.Click
+	Private Sub btnGetDBConnector_Click(sender As Object, e As EventArgs) Handles btnExportDBConnector.Click
 
 		frmExportConnectionSettings.ShowDialog()
 
@@ -197,6 +201,7 @@ Public Class frmMain
 	Private Sub btnBuild_Click(sender As Object, e As EventArgs) Handles btnBuild.Click
 
 		Dim classInfoA As MySQL2JavaCLSBuilder.ClassInfo
+		classInfoA.PackageName = tbxPackageName.Text.Trim
 		classInfoA.ClassName = tbxClassName.Text.Trim
 		classInfoA.ClassPrimaryKey = cmbPrimaryKey.Text
 		classInfoA.ClassPrimaryKeyDataType = lblPrimaryKeyDataType.Text
@@ -322,6 +327,34 @@ Public Class frmMain
 			tbxDatabase.Text = pfi.Database
 			tbxUser.Text = pfi.Username
 			tbxPass.Text = pfi.Password
+
+		End If
+
+	End Sub
+
+	Private Sub btnChangeTheme_Click(sender As Object, e As EventArgs) Handles btnChangeTheme.Click
+
+		If rtbSourceCode.BackColor = Color.WhiteSmoke Then
+			rtbSourceCode.BackColor = Color.FromArgb(40, 40, 40)
+			rtbSourceCode.ForeColor = Color.LightGoldenrodYellow
+
+		ElseIf rtbSourceCode.BackColor = Color.FromArgb(40, 40, 40) Then
+
+			Select Case rtbSourceCode.ForeColor
+				Case Color.LightGoldenrodYellow
+					rtbSourceCode.ForeColor = Color.Yellow
+				Case Color.Yellow
+					rtbSourceCode.ForeColor = Color.LawnGreen
+				Case Color.LawnGreen
+					rtbSourceCode.ForeColor = Color.DeepSkyBlue
+				Case Color.DeepSkyBlue
+					rtbSourceCode.ForeColor = Color.Pink
+				Case Color.Pink
+					rtbSourceCode.ForeColor = Color.Fuchsia
+				Case Else
+					rtbSourceCode.BackColor = Color.WhiteSmoke
+					rtbSourceCode.ForeColor = Color.FromArgb(40, 40, 40)
+			End Select
 
 		End If
 

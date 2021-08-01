@@ -3,6 +3,7 @@
 Public Class MySQL2JavaCLSBuilder
 
 	Public Structure ClassInfo
+		Dim PackageName As String
 		Dim ClassName As String
 		Dim ClassPrimaryKey As String
 		Dim ClassPrimaryKeyDataType As String
@@ -141,6 +142,30 @@ Public Class MySQL2JavaCLSBuilder
 
 	End Function
 
+	Public Shared Function SectionLine(LineContent As String, Optional LineCharacter As Char = "=", Optional DefaultWidth As Integer = 100) As String
+
+		LineContent = LineContent.Trim
+
+		Dim content As String
+		Dim SubLineLeft As String
+		Dim SubLineRight As String = ""
+
+		SubLineLeft = "//"
+		For i = 1 To ((DefaultWidth - (LineContent.Length + 2)) / 2) - 2
+			SubLineLeft += LineCharacter
+			SubLineRight += LineCharacter
+		Next
+		SubLineRight += "//"
+
+		content = SubLineLeft + " " + LineContent + " " + SubLineRight
+		If content.Length < DefaultWidth Then
+			content = content.Replace(LineCharacter + "//", LineCharacter + LineCharacter + "//")
+		End If
+
+		Return content
+
+	End Function
+
 	Shared Function ConvertDataType(SQLServerDataType As String) As String
 
 		Select Case SQLServerDataType.ToLower
@@ -269,6 +294,9 @@ Public Class MySQL2JavaCLSBuilder
 
 		'------------- Credits ------------'
 		Dim Credits = My.Resources.JAVAforMYSQL_Credits
+
+		Credits = Credits.Replace("@APP_VERSION@", SectionLine("< version " + Application.ProductVersion + " >", "-"))
+
 		sb.AppendLine(Credits)
 
 		'---------- Class Header ----------'
@@ -296,6 +324,7 @@ Public Class MySQL2JavaCLSBuilder
 
 		Dim ClassHeader = My.Resources.JAVAforMYSQL_ClassHeader
 		ClassHeader = ClassHeader.Replace("@SECTIONSTART@", SectionHeader("CLASS HEADER"))
+		ClassHeader = ClassHeader.Replace("@PACKAGENAME@", ClassInfo.PackageName)
 		ClassHeader = ClassHeader.Replace("@CLASSNAME@", FirstCaps(ClassInfo.ClassName))
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_PRIVATE_PROPERTIES@", chPrivateProperties)
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_STRUCTURE_PROPERTIES@", chStructureProperties)
@@ -533,7 +562,7 @@ Public Class MySQL2JavaCLSBuilder
 
 
 		sb.AppendLine("}" + vbCrLf + vbCrLf)
-		sb.AppendLine("/*****************************************{{{ CLASS END }}}****************************************/")
+		sb.AppendLine("/*--------------------------------------{{{ CLASS END }}}---------------------------------------*/")
 		sb.AppendLine(My.Resources.JAVAforMYSQL_EndCredits)
 
 		Return sb.ToString

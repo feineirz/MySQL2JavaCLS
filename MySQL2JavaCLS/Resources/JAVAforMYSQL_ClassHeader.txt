@@ -1,14 +1,17 @@
+
+package @PACKAGENAME@;
+
 import java.sql.*;
 import java.util.*;
 import java.util.Date;
 import java.lang.*;
 
+
+/*--------------------------------------{{{ CLASS START }}}---------------------------------------*/
+
 /**
- * @CLASSNAME@ class to manage @CLASSNAME@ in Database.
+ * @CLASSNAME@ class to manage @CLASSNAME@ in a Database.
  */
-
-/****************************************{{{ CLASS START }}}***************************************/
-
 public class @CLASSNAME@ {
 
 @SECTIONSTART@
