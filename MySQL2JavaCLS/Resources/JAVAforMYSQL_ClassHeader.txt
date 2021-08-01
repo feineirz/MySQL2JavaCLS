@@ -3,10 +3,12 @@ import java.util.*;
 import java.util.Date;
 import java.lang.*;
 
-/****************************************{{{ CLASS START }}}***************************************/
 /**
- * @CLASSNAME@ class to manage @CLASSNAME@ in the Database.
+ * @CLASSNAME@ class to manage @CLASSNAME@ in Database.
  */
+
+/****************************************{{{ CLASS START }}}***************************************/
+
 public class @CLASSNAME@ {
 
 @SECTIONSTART@

@@ -163,6 +163,7 @@
 	public boolean update@CLASSNAME@Property(String columnName, Float value) {
 		return update@CLASSNAME@Property(columnName, new Double(value));
 	}
+
 	/// Main Decimal ///
 	/**
 	 * 
