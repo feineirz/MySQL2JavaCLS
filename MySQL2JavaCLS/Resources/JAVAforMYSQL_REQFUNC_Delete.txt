@@ -4,7 +4,7 @@
 	 * 
 	 * @return True if deletion successful.
 	 */
-	private boolean delete@CLASSNAME@() {
+	public boolean delete@CLASSNAME@() {
 		
 		return delete@CLASSNAME@(this.@PRIMARYKEY@);
 		
