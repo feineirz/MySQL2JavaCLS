@@ -81,6 +81,7 @@ Partial Class frmMain
 		Me.btnChangeFont = New System.Windows.Forms.Button()
 		Me.lblAppVersion = New System.Windows.Forms.Label()
 		Me.btnChangeTheme = New System.Windows.Forms.Button()
+		Me.btnUglyFormat = New System.Windows.Forms.Button()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDatabaseConnection.SuspendLayout()
@@ -743,12 +744,27 @@ Partial Class frmMain
 		Me.btnChangeTheme.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnChangeTheme.UseVisualStyleBackColor = True
 		'
+		'btnUglyFormat
+		'
+		Me.btnUglyFormat.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnUglyFormat.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnUglyFormat.Image = CType(resources.GetObject("btnUglyFormat.Image"), System.Drawing.Image)
+		Me.btnUglyFormat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnUglyFormat.Location = New System.Drawing.Point(738, 963)
+		Me.btnUglyFormat.Name = "btnUglyFormat"
+		Me.btnUglyFormat.Size = New System.Drawing.Size(114, 29)
+		Me.btnUglyFormat.TabIndex = 8
+		Me.btnUglyFormat.Text = "Ugly Format"
+		Me.btnUglyFormat.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.btnUglyFormat.UseVisualStyleBackColor = True
+		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.Silver
 		Me.ClientSize = New System.Drawing.Size(1500, 998)
+		Me.Controls.Add(Me.btnUglyFormat)
 		Me.Controls.Add(Me.btnChangeTheme)
 		Me.Controls.Add(Me.lblAppVersion)
 		Me.Controls.Add(Me.btnChangeFont)
@@ -842,4 +858,5 @@ Partial Class frmMain
 	Friend WithEvents Label17 As Label
 	Friend WithEvents picExportIcon As PictureBox
 	Friend WithEvents btnChangeTheme As Button
+	Friend WithEvents btnUglyFormat As Button
 End Class
