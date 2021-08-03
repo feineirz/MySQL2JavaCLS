@@ -1,5 +1,5 @@
 @TITLE@
-/// Private ///
+	/// Local ///
 	/**
 	 * 
 	 * @return True if deletion successful.
