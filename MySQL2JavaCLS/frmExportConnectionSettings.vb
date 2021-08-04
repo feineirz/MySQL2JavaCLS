@@ -12,6 +12,9 @@
 
 		Dim content = MySQL2JavaCLSBuilder.getMySQLDBConnector(frmMain.ConnectionInfo)
 
+
+		content = content.Replace("@PACKAGENAME@", frmMain.tbxPackageName.Text.Trim)
+
 		If cmbForMySQLVersion.SelectedIndex = 0 Then
 			content = content.Replace("@MySQLVersionShift@", "mysql")
 		Else

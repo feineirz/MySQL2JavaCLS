@@ -326,6 +326,7 @@ Public Class MySQL2JavaCLSBuilder
 		ClassHeader = ClassHeader.Replace("@SECTIONSTART@", SectionHeader("CLASS HEADER"))
 		ClassHeader = ClassHeader.Replace("@PACKAGENAME@", ClassInfo.PackageName)
 		ClassHeader = ClassHeader.Replace("@CLASSNAME@", FirstCaps(ClassInfo.ClassName))
+		ClassHeader = ClassHeader.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_PRIVATE_PROPERTIES@", chPrivateProperties)
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_STRUCTURE_PROPERTIES@", chStructureProperties)
 		ClassHeader = ClassHeader.Replace("@CLASSHEADER_TABLENAME@", DataTableInfo.TableName)
@@ -347,6 +348,7 @@ Public Class MySQL2JavaCLSBuilder
 		ClassConstructor = ClassConstructor.Replace("@TITLE@", SectionTitle("CONSTRUCTOR", titleDesc))
 
 		ClassConstructor = ClassConstructor.Replace("@CLASSNAME@", FirstCaps(ClassInfo.ClassName))
+		ClassConstructor = ClassConstructor.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
 		ClassConstructor = ClassConstructor.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
@@ -394,10 +396,12 @@ Public Class MySQL2JavaCLSBuilder
 		' List '
 		Dim rfListContents As String = My.Resources.JAVAforMYSQL_REQFUNC_List
 
-		titleDesc = "List " + FirstCaps(ClassInfo.ClassName) + " in database as " + FirstCaps(ClassInfo.ClassName) + " objects."
+		titleDesc = "List " + FirstCaps(ClassInfo.ClassName) + " in a database as " + FirstCaps(ClassInfo.ClassName) + " objects."
 		rfListContents = rfListContents.Replace("@TITLE@", SectionTitle("LIST", titleDesc))
+		rfListContents = rfListContents.Replace("@DESC_A@", titleDesc)
 
 		rfListContents = rfListContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfListContents = rfListContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
 		rfListContents = rfListContents.Replace("@TABLENAME@", DataTableInfo.TableName)
 		rfListContents = rfListContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		rfListContents = rfListContents.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
@@ -439,12 +443,15 @@ Public Class MySQL2JavaCLSBuilder
 
 		titleDesc = "Add " + FirstCaps(ClassInfo.ClassName) + " to database by giving a raw information."
 		rfAddContents = rfAddContents.Replace("@TITLE_A@", SectionTitle("ADD (RAW)", titleDesc))
+		rfAddContents = rfAddContents.Replace("@DESC_A@", titleDesc)
 
 		titleDesc = "Add " + FirstCaps(ClassInfo.ClassName) + " to database by giving a structured information."
 		rfAddContents = rfAddContents.Replace("@TITLE_B@", SectionTitle("ADD (STRUCTURED)", titleDesc))
+		rfAddContents = rfAddContents.Replace("@DESC_B@", titleDesc)
 
 		rfAddContents = rfAddContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfAddContents = rfAddContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
+		rfAddContents = rfAddContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		rfAddContents = rfAddContents.Replace("@COLUMNLIST_WITHDATATYPE@", rfAdd_ColumnlistWithDatattype)
 		rfAddContents = rfAddContents.Replace("@STRUCTURED_COLUMNLIST@", rfAdd_StructuredColomnList)
 		rfAddContents = rfAddContents.Replace("@TABLENAME@", DataTableInfo.TableName)

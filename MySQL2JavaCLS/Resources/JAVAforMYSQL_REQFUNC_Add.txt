@@ -1,5 +1,10 @@
 @TITLE_A@
 	/**
+	 * <pre>
+	 * @DESC_A@
+	 * Usage:
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = add@CLASSNAME@(...);
+	 * </pre>
 	 * 
 	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
 	 */
@@ -14,6 +19,15 @@
 	
 @TITLE_B@
 	/**
+	 * <pre>
+	 * @DESC_B@
+	 * Usage:
+	 *  @CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
+	 *  @CLASSNAMELOWER@Info.@PRIMARYKEY@ = @PRIMARYKEY@;
+	 *  ...
+	 *
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = add@CLASSNAME@(@CLASSNAMELOWER@Info);
+	 * </pre>
 	 * 
 	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure that contains all @CLASSNAME@'s information.
 	 *

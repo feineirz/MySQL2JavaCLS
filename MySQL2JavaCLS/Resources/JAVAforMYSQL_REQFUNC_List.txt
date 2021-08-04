@@ -1,8 +1,11 @@
 @TITLE@
 	/// Overload ///
 	/**
-	 * 
-	 * Default List method to list all record of @CLASSNAME@ in the database.
+	 * <pre>
+	 * Default List method to list all records of @CLASSNAME@ in a database.
+	 * Usage:
+	 *  ArrayList<@CLASSNAME@> @CLASSNAMELOWER@List = list@CLASSNAME@();
+	 * </pre>
 	 * 
 	 * @return ArrayList of @CLASSNAME@ objects.
 	 * 
@@ -12,12 +15,16 @@
 	}
 
 	/**
+	 * <pre>
+	 * List record(s) of @CLASSNAME@ in a database matches the given condition.
+	 * Usage:
+	 *  ArrayList<@CLASSNAME@> @CLASSNAMELOWER@List = list@CLASSNAME@(condition);
+	 * </pre>
 	 * 
-	 * @param condition The condition to specify the record to be return.
+	 * @param condition The condition to specify the record to be return.<pre>
+	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"</pre>
 	 * 
-	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
-	 * 
-	 * @return ArrayList of @CLASSNAME@ objects matches to the given condition.
+	 * @return ArrayList of @CLASSNAME@ objects match the given condition.
 	 * 
 	 */
 	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(String condition){
@@ -26,16 +33,20 @@
 	
 	/// Main ///
 	/**
+	 * <pre>
+	 * List record(s) of @CLASSNAME@ in a database matches the given condition
+	 *  and sorted by the given order.
+	 * Usage:
+	 *  ArrayList<@CLASSNAME@> @CLASSNAMELOWER@List = list@CLASSNAME@(condition, order);
+	 * </pre>
 	 * 
-	 * @param condition The condition to specify the record to be return.
+	 * @param condition The condition to specify the record to be return.<pre>
+	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"</pre>
 	 * 
-	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
+	 * @param order The order to sort the returned list.<pre>
+	 *  Ex. "name desc"</pre>
 	 * 
-	 * @param order The order to sort the returned list.
-	 * 
-	 *  Ex. "name desc"
-	 * 
-	 * @return ArrayList of @CLASSNAME@ objects matches to the given condition.
+	 * @return ArrayList of @CLASSNAME@ objects match the given condition.
 	 * 
 	 */
 	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(String condition, String order) {

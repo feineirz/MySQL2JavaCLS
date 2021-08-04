@@ -361,34 +361,34 @@ Public Class frmMain
 
 	End Sub
 
-	Private Sub btnUglyFormat_Click(sender As Object, e As EventArgs) Handles btnUglyFormat.Click
+	'Private Sub btnUglyFormat_Click(sender As Object, e As EventArgs) Handles btnUglyFormat.Click
 
-		Dim sb As New StringBuilder()
-		Dim ln As Integer
-		Dim maxLn = 100
-		Dim tabSize As Integer = 4
-		Dim appendText As String
-
-
-		For Each line In rtbSourceCode.Lines
-			line = line.TrimEnd
-			ln = line.Length
-
-			For Each c In line
-				If c = Chr(9) Then ln += tabSize
-			Next
-
-			appendText = ""
-			If line.EndsWith("*") Then
-				appendText = " "
-				ln += 1
-			End If
-			appendText &= StrDup(maxLn - ln, "/")
-			sb.AppendLine(line + appendText)
-		Next
-
-		rtbSourceCode.Text = sb.ToString
+	'	Dim sb As New StringBuilder()
+	'	Dim ln As Integer
+	'	Dim maxLn = 100
+	'	Dim tabSize As Integer = 4
+	'	Dim appendText As String
 
 
-	End Sub
+	'	For Each line In rtbSourceCode.Lines
+	'		line = line.TrimEnd
+	'		ln = line.Length
+
+	'		For Each c In line
+	'			If c = Chr(9) Then ln += tabSize
+	'		Next
+
+	'		appendText = ""
+	'		If line.EndsWith("*") Then
+	'			appendText = " "
+	'			ln += 1
+	'		End If
+	'		appendText &= StrDup(maxLn - ln, "/")
+	'		sb.AppendLine(line + appendText)
+	'	Next
+
+	'	rtbSourceCode.Text = sb.ToString
+
+	'End Sub
+
 End Class

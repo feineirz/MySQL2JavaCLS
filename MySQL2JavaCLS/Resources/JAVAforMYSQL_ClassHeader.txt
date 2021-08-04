@@ -25,6 +25,13 @@ public class @CLASSNAME@ {
 @CLASSHEADER_COLUMNLIST@;
 
 	/// CLASS STRUCTURE ///
+	/**
+	 * <pre>
+	 * @CLASSNAME@ structure class to collect or prepare @CLASSNAME@ information.
+	 * Usage:
+	 *  @CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
+	 * </pre>
+	 */
 	public static class @CLASSNAME@Info {
 @CLASSHEADER_STRUCTURE_PROPERTIES@
 	}
