@@ -387,7 +387,7 @@ Public Class MySQL2JavaCLSBuilder
 			JavadocsTemplate = """
 	/**
 	 * <pre>
-	 * Get " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " from a database.
+	 * Get " + ClassInfo.ClassName + "." + CamelCase(dci.ColumnName) + " from a database.
 	 * 
 	 * Usage:
 	 *  " + ClassInfo.ClassName + " " + ClassInfo.ClassName.ToLower + " = New " + ClassInfo.ClassName + "(" + ClassInfo.ClassPrimaryKey + ");
@@ -412,7 +412,7 @@ Public Class MySQL2JavaCLSBuilder
 			JavadocsTemplate = """
 	/**
 	 * <pre>
-	 * Update " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " to a database.
+	 * Update " + ClassInfo.ClassName + "." + CamelCase(dci.ColumnName) + " in a database.
 	 * 
 	 * Usage:
 	 *  " + ClassInfo.ClassName + " " + ClassInfo.ClassName.ToLower + " = New " + ClassInfo.ClassName + "(" + ClassInfo.ClassPrimaryKey + ");
@@ -421,7 +421,7 @@ Public Class MySQL2JavaCLSBuilder
 	 * 
 	 * @param value " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " to update to the database.
 	 * 
-	 * @return True if successful.
+	 * @return True if update successful.
 	 */
 """
 			chClassSetPropertyList += JavadocsTemplate.Replace(dblQuote, "")

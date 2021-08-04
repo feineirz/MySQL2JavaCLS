@@ -17,7 +17,7 @@
 
 	/**
 	 * <pre>
-	 * List record(s) of @CLASSNAME@ in a database matches the given condition.
+	 * List record(s) of @CLASSNAME@ in a database match the given condition.
 	 *
 	 * Usage:
 	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = list@CLASSNAME@(condition);
@@ -36,7 +36,7 @@
 	/// Main ///
 	/**
 	 * <pre>
-	 * List record(s) of @CLASSNAME@ in a database matches the given condition
+	 * List record(s) of @CLASSNAME@ in a database match the given condition
 	 *  and sorted by the given order.
 	 *
 	 * Usage:
