@@ -81,6 +81,7 @@ Partial Class frmMain
 		Me.btnChangeFont = New System.Windows.Forms.Button()
 		Me.lblAppVersion = New System.Windows.Forms.Label()
 		Me.btnChangeTheme = New System.Windows.Forms.Button()
+		Me.btnUglyFormat = New System.Windows.Forms.Button()
 		Me.pnlHeader.SuspendLayout()
 		CType(Me.picIcon, System.ComponentModel.ISupportInitialize).BeginInit()
 		Me.pnlDatabaseConnection.SuspendLayout()
@@ -172,7 +173,7 @@ Partial Class frmMain
 		Me.rtbSourceCode.BorderStyle = System.Windows.Forms.BorderStyle.None
 		Me.rtbSourceCode.Font = New System.Drawing.Font("Lucida Console", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.rtbSourceCode.ForeColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-		Me.rtbSourceCode.Location = New System.Drawing.Point(12, 71)
+		Me.rtbSourceCode.Location = New System.Drawing.Point(13, 71)
 		Me.rtbSourceCode.Name = "rtbSourceCode"
 		Me.rtbSourceCode.ReadOnly = True
 		Me.rtbSourceCode.Size = New System.Drawing.Size(1102, 886)
@@ -710,7 +711,7 @@ Partial Class frmMain
 		Me.btnChangeFont.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnChangeFont.Image = CType(resources.GetObject("btnChangeFont.Image"), System.Drawing.Image)
 		Me.btnChangeFont.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnChangeFont.Location = New System.Drawing.Point(997, 963)
+		Me.btnChangeFont.Location = New System.Drawing.Point(998, 963)
 		Me.btnChangeFont.Name = "btnChangeFont"
 		Me.btnChangeFont.Size = New System.Drawing.Size(117, 29)
 		Me.btnChangeFont.TabIndex = 5
@@ -723,7 +724,7 @@ Partial Class frmMain
 		Me.lblAppVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
 		Me.lblAppVersion.AutoSize = True
 		Me.lblAppVersion.ForeColor = System.Drawing.Color.Gray
-		Me.lblAppVersion.Location = New System.Drawing.Point(12, 966)
+		Me.lblAppVersion.Location = New System.Drawing.Point(12, 1083)
 		Me.lblAppVersion.Name = "lblAppVersion"
 		Me.lblAppVersion.Size = New System.Drawing.Size(28, 13)
 		Me.lblAppVersion.TabIndex = 6
@@ -735,7 +736,7 @@ Partial Class frmMain
 		Me.btnChangeTheme.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnChangeTheme.Image = CType(resources.GetObject("btnChangeTheme.Image"), System.Drawing.Image)
 		Me.btnChangeTheme.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnChangeTheme.Location = New System.Drawing.Point(858, 963)
+		Me.btnChangeTheme.Location = New System.Drawing.Point(859, 963)
 		Me.btnChangeTheme.Name = "btnChangeTheme"
 		Me.btnChangeTheme.Size = New System.Drawing.Size(133, 29)
 		Me.btnChangeTheme.TabIndex = 7
@@ -743,12 +744,27 @@ Partial Class frmMain
 		Me.btnChangeTheme.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnChangeTheme.UseVisualStyleBackColor = True
 		'
+		'btnUglyFormat
+		'
+		Me.btnUglyFormat.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+		Me.btnUglyFormat.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+		Me.btnUglyFormat.Image = CType(resources.GetObject("btnUglyFormat.Image"), System.Drawing.Image)
+		Me.btnUglyFormat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+		Me.btnUglyFormat.Location = New System.Drawing.Point(720, 963)
+		Me.btnUglyFormat.Name = "btnUglyFormat"
+		Me.btnUglyFormat.Size = New System.Drawing.Size(133, 29)
+		Me.btnUglyFormat.TabIndex = 8
+		Me.btnUglyFormat.Text = "Change Theme"
+		Me.btnUglyFormat.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+		Me.btnUglyFormat.UseVisualStyleBackColor = True
+		'
 		'frmMain
 		'
 		Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 13.0!)
 		Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
 		Me.BackColor = System.Drawing.Color.Silver
-		Me.ClientSize = New System.Drawing.Size(1500, 881)
+		Me.ClientSize = New System.Drawing.Size(1500, 998)
+		Me.Controls.Add(Me.btnUglyFormat)
 		Me.Controls.Add(Me.btnChangeTheme)
 		Me.Controls.Add(Me.lblAppVersion)
 		Me.Controls.Add(Me.btnChangeFont)
@@ -842,4 +858,5 @@ Partial Class frmMain
 	Friend WithEvents Label17 As Label
 	Friend WithEvents picExportIcon As PictureBox
 	Friend WithEvents btnChangeTheme As Button
+	Friend WithEvents btnUglyFormat As Button
 End Class
