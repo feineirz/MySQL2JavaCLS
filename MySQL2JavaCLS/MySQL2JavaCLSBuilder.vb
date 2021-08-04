@@ -52,6 +52,23 @@ Public Class MySQL2JavaCLSBuilder
 
 	End Function
 
+	Public Shared Function CamelCase(Name As String) As String
+
+		Dim buff As String = ""
+		Dim count As Integer = 0
+		For Each word In Name.Split("_")
+			If count = 0 Then
+				buff += word
+			Else
+				buff += FirstCaps(word)
+			End If
+			count += 1
+		Next
+
+		Return buff
+
+	End Function
+
 	Public Shared Function SectionHeader(Header As String, Optional UseSingleLine As Boolean = False, Optional LineCharacter As Char = "=", Optional DefaultWidth As Integer = 100) As String
 
 		Header = Header.Trim
@@ -308,11 +325,11 @@ Public Class MySQL2JavaCLSBuilder
 
 			' CLASSHEADER_PRIVATE_PROPERTIES
 			If Not chPrivateProperties = "" Then chPrivateProperties += vbCrLf
-			chPrivateProperties += cTAB() + "private " + ConvertDataType(dci.DataType) + " " + dci.ColumnName + ";"
+			chPrivateProperties += cTAB() + "private " + ConvertDataType(dci.DataType) + " " + CamelCase(dci.ColumnName) + ";"
 
 			' CLASSHEADER_STRUCTURE_PROPERTIES
 			If Not chStructureProperties = "" Then chStructureProperties += vbCrLf
-			chStructureProperties += cTAB(2) + "public " + ConvertDataType(dci.DataType) + " " + dci.ColumnName + ";"
+			chStructureProperties += cTAB(2) + "public " + ConvertDataType(dci.DataType) + " " + CamelCase(dci.ColumnName) + ";"
 
 			If Not chColumnList = "" Then chColumnList += vbCrLf
 			If i < DataTableInfo.ColumnList.Count - 1 Then
@@ -339,7 +356,7 @@ Public Class MySQL2JavaCLSBuilder
 		Dim chClassConstructorPropertyLst As String = ""
 		For Each dci In DataTableInfo.ColumnList
 			If Not chClassConstructorPropertyLst = "" Then chClassConstructorPropertyLst += vbCrLf
-			chClassConstructorPropertyLst += cTAB(4) + "this." + dci.ColumnName + " = rs.get" + ConvertGetSetDataType(dci.DataType) + "(" + dblQuote() + dci.ColumnName + dblQuote() + ");"
+			chClassConstructorPropertyLst += cTAB(4) + "this." + CamelCase(dci.ColumnName) + " = rs.get" + ConvertGetSetDataType(dci.DataType) + "(" + dblQuote() + dci.ColumnName + dblQuote() + ");"
 		Next
 		Dim ClassConstructor As String = My.Resources.JAVAforMYSQL_ClassConstructor
 		ClassConstructor = ClassConstructor.Replace("@SECTIONSTART@", SectionHeader("CLASS CONSTRUCTOR"))
@@ -370,20 +387,20 @@ Public Class MySQL2JavaCLSBuilder
 			JavadocsTemplate = """
 	/**
 	 * <pre>
-	 * Get " + ClassInfo.ClassName + " " + dci.ColumnName + " from a database.
+	 * Get " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " from a database.
 	 * 
 	 * Usage:
 	 *  " + ClassInfo.ClassName + " " + ClassInfo.ClassName.ToLower + " = New " + ClassInfo.ClassName + "(" + ClassInfo.ClassPrimaryKey + ");
-	 *  " + ConvertDataType(dci.DataType) + " " + dci.ColumnName + " = " + ClassInfo.ClassName.ToLower + ".get" + FirstCaps(dci.ColumnName) + "();
+	 *  " + ConvertDataType(dci.DataType) + " " + CamelCase(dci.ColumnName) + " = " + ClassInfo.ClassName.ToLower + ".get" + CamelCase(FirstCaps(dci.ColumnName)) + "();
 	 * </pre>
 	 * 
-	 * @return " + ClassInfo.ClassName + " " + dci.ColumnName + ".
+	 * @return " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + ".
 	 */
 """
 			chClassGetPropertyList += JavadocsTemplate.Replace(dblQuote, "")
 
-			chClassGetPropertyList += cTAB() + "public " + ConvertDataType(dci.DataType) + " get" + FirstCaps(dci.ColumnName) + "() { " + vbCrLf
-			chClassGetPropertyList += cTAB(2) + "return this." + dci.ColumnName + ";" + vbCrLf
+			chClassGetPropertyList += cTAB() + "public " + ConvertDataType(dci.DataType) + " get" + CamelCase(FirstCaps(dci.ColumnName)) + "() { " + vbCrLf
+			chClassGetPropertyList += cTAB(2) + "return this." + CamelCase(dci.ColumnName) + ";" + vbCrLf
 			chClassGetPropertyList += cTAB() + "}" + vbCrLf
 
 			' chClassSetPropertyList
@@ -395,22 +412,22 @@ Public Class MySQL2JavaCLSBuilder
 			JavadocsTemplate = """
 	/**
 	 * <pre>
-	 * Update " + ClassInfo.ClassName + " " + dci.ColumnName + " to a database.
+	 * Update " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " to a database.
 	 * 
 	 * Usage:
 	 *  " + ClassInfo.ClassName + " " + ClassInfo.ClassName.ToLower + " = New " + ClassInfo.ClassName + "(" + ClassInfo.ClassPrimaryKey + ");
-	 *  boolean result = " + ClassInfo.ClassName.ToLower + ".set" + FirstCaps(dci.ColumnName) + "(value);
+	 *  boolean result = " + ClassInfo.ClassName.ToLower + ".set" + CamelCase(FirstCaps(dci.ColumnName)) + "(value);
 	 * </pre>
      * 
-     * @param value " + ClassInfo.ClassName + " " + dci.ColumnName + " to update to the database.
+     * @param value " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " to update to the database.
      * 
      * @return True if successful.
      */
 """
 			chClassSetPropertyList += JavadocsTemplate.Replace(dblQuote, "")
-			chClassSetPropertyList += cTAB() + "public boolean" + " set" + FirstCaps(dci.ColumnName) + "(" + ConvertDataType(dci.DataType) + " value) {" + vbCrLf
+			chClassSetPropertyList += cTAB() + "public boolean" + " set" + CamelCase(FirstCaps(dci.ColumnName)) + "(" + ConvertDataType(dci.DataType) + " value) {" + vbCrLf
 			chClassSetPropertyList += cTAB(2) + "if (update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value)) {" + vbCrLf
-			chClassSetPropertyList += cTAB(3) + "this." + dci.ColumnName + " = value;" + vbCrLf
+			chClassSetPropertyList += cTAB(3) + "this." + CamelCase(dci.ColumnName) + " = value;" + vbCrLf
 			chClassSetPropertyList += cTAB(3) + "return true;" + vbCrLf
 			chClassSetPropertyList += cTAB(2) + "} else { " + vbCrLf
 			chClassSetPropertyList += cTAB(3) + "return false;" + vbCrLf
@@ -459,7 +476,7 @@ Public Class MySQL2JavaCLSBuilder
 
 			' rfAdd_StructuredColomnList
 			If Not rfAdd_StructuredColomnList = "" Then rfAdd_StructuredColomnList += vbCrLf
-			rfAdd_StructuredColomnList += cTAB(2) + ClassInfo.ClassName.ToLower + "Info." + dci.ColumnName + " = " + dci.ColumnName + ";"
+			rfAdd_StructuredColomnList += cTAB(2) + ClassInfo.ClassName.ToLower + "Info." + CamelCase(dci.ColumnName) + " = " + dci.ColumnName + ";"
 
 			' rfAdd_ColumnList
 			If Not rfAdd_ColumnList = "" Then rfAdd_ColumnList += ", "
@@ -472,7 +489,7 @@ Public Class MySQL2JavaCLSBuilder
 			' rfAdd_Statement_ColumnList
 			If Not rfAdd_Statement_ColumnList = "" Then rfAdd_Statement_ColumnList += vbCrLf
 			rfAdd_Statement_ColumnList += cTAB(3) + "stmt.set" + ConvertGetSetDataType(dci.DataType) _
-				+ "(" + rfAdd_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + dci.ColumnName + ");"
+				+ "(" + rfAdd_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + CamelCase(dci.ColumnName) + ");"
 
 			rfAdd_StatementCount += 1
 		Next
@@ -517,7 +534,7 @@ Public Class MySQL2JavaCLSBuilder
 
 				' rfUpdate_StatementColumnListNonePrimaryKey
 				rfUpdate_StatementColumnListNonePrimaryKey += cTAB(3) + "stmt.set" + ConvertGetSetDataType(dci.DataType) + "(" _
-				+ rfUpdate_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + dci.ColumnName + ");" + vbCrLf
+				+ rfUpdate_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + CamelCase(dci.ColumnName) + ");" + vbCrLf
 
 				rfUpdate_StatementCount += 1
 			End If
@@ -585,7 +602,7 @@ Public Class MySQL2JavaCLSBuilder
 		Dim rfToClassInfo As String = My.Resources.JAVAforMYSQL_REQFUNC_ToClassInfo
 		Dim rfToClassInfo_ConvertList As String = ""
 		For Each dci In DataTableInfo.ColumnList
-			rfToClassInfo_ConvertList &= cTAB(2) & "ci." & dci.ColumnName & " = this." + dci.ColumnName & ";" & vbCrLf
+			rfToClassInfo_ConvertList += cTAB(2) + "ci." + CamelCase(dci.ColumnName) + " = this." + CamelCase(dci.ColumnName) + ";" + vbCrLf
 		Next
 
 		titleDesc = "Convert " + FirstCaps(ClassInfo.ClassName) + " class to a " + FirstCaps(ClassInfo.ClassName) + "Info class."

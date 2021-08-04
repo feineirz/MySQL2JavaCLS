@@ -146,7 +146,7 @@ Public Class MySQLDB
 
 	End Function
 
-	Public Function ListColumn(TableName As String, Optional LowercaseColumnName As Boolean = False) As List(Of DataColumnInfo)
+	Public Function ListColumn(TableName As String, Optional LowercaseColumnName As Boolean = False, Optional CamelCase As Boolean = True) As List(Of DataColumnInfo)
 
 		Dim conn = MySQLConnector.getConnection(connectionInfo)
 		Dim cmd As MySqlCommand
@@ -185,6 +185,17 @@ Public Class MySQLDB
 		End Try
 
 		Return res
+
+	End Function
+
+	Public Function CamelCase(Name As String) As String
+
+		Dim buff As String = ""
+		For Each word In Name.Split("_")
+			buff += FirstCaps(word)
+		Next
+
+		Return buff
 
 	End Function
 

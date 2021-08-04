@@ -5,7 +5,7 @@
 	 * @DESC@
 	 *
 	 * Usage:
-	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@();
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(@PRIMARYKEY@);
 	 *  ...
 	 *  
 	 *  boolean result = @CLASSNAMELOWER@.delete@CLASSNAME@();
@@ -25,7 +25,10 @@
 	 * @DESC@
 	 *
 	 * Usage:
-	 *  boolean result = @CLASSNAME@.delete@CLASSNAME@(@PRIMARYKEY@);
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@();
+	 *  ...
+	 *  
+	 *  boolean result = @CLASSNAMELOWER@.delete@CLASSNAME@(@PRIMARYKEY@);
 	 * </pre>
 	 * 
 	 * @param @PRIMARYKEY@ @CLASSNAME@ @PRIMARYKEY@ to be delete.
