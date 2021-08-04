@@ -418,11 +418,11 @@ Public Class MySQL2JavaCLSBuilder
 	 *  " + ClassInfo.ClassName + " " + ClassInfo.ClassName.ToLower + " = New " + ClassInfo.ClassName + "(" + ClassInfo.ClassPrimaryKey + ");
 	 *  boolean result = " + ClassInfo.ClassName.ToLower + ".set" + CamelCase(FirstCaps(dci.ColumnName)) + "(value);
 	 * </pre>
-     * 
-     * @param value " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " to update to the database.
-     * 
-     * @return True if successful.
-     */
+	 * 
+	 * @param value " + ClassInfo.ClassName + " " + CamelCase(dci.ColumnName) + " to update to the database.
+	 * 
+	 * @return True if successful.
+	 */
 """
 			chClassSetPropertyList += JavadocsTemplate.Replace(dblQuote, "")
 			chClassSetPropertyList += cTAB() + "public boolean" + " set" + CamelCase(FirstCaps(dci.ColumnName)) + "(" + ConvertDataType(dci.DataType) + " value) {" + vbCrLf
