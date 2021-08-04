@@ -2,6 +2,7 @@
 	/**
 	 * <pre>
 	 * @DESC_A@
+	 *
 	 * Usage:
 	 *  @CLASSNAME@ @CLASSNAMELOWER@ = add@CLASSNAME@(...);
 	 * </pre>
@@ -21,6 +22,7 @@
 	/**
 	 * <pre>
 	 * @DESC_B@
+	 *
 	 * Usage:
 	 *  @CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
 	 *  @CLASSNAMELOWER@Info.@PRIMARYKEY@ = @PRIMARYKEY@;

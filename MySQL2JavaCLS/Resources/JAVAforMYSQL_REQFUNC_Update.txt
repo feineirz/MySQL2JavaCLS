@@ -1,5 +1,11 @@
 @TITLE_A@
 	/**
+	 * <pre>
+	 * @DESC_A@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Info(...);
+	 * </pre>
 	 * 
 	 * @return True if update successful.
 	 */
@@ -14,6 +20,16 @@
 	
 @TITLE_B@
 	/**
+	 * <pre>
+	 * @DESC_B@
+	 *
+	 * Usage:
+	 *  @CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
+	 *  @CLASSNAMELOWER@Info.@PRIMARYKEY@ = @PRIMARYKEY@;
+	 *  ...
+	 *
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Info(@CLASSNAMELOWER@Info);
+	 * </pre>
 	 * 
 	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure contains all @CLASSNAME@'s information.
 	 *
@@ -50,6 +66,12 @@
 
 @TITLE_C@
 	/**
+	 * <pre>
+	 * @DESC_C@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Property(columnName, value);
+	 * </pre>
 	 * 
 	 * @param columnName Column name in database's table to be update.
 	 * @param value The value to be update to the given column name.
@@ -86,6 +108,12 @@
 	
 	/// Overload Integer ///
 	/**
+	 * <pre>
+	 * @DESC_C@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Property(columnName, value);
+	 * </pre>
 	 * 
 	 * @param columnName Column name in database's table to be update.
 	 * @param value The value to be update to the given column name.
@@ -95,7 +123,14 @@
 	public boolean update@CLASSNAME@Property(String columnName, byte value) {
 		return update@CLASSNAME@Property(columnName, new Long(value));
 	}
+
 	/**
+	 * <pre>
+	 * @DESC_C@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Property(columnName, value);
+	 * </pre>
 	 * 
 	 * @param columnName Column name in database's table to be update.
 	 * @param value The value to be update to the given column name.
@@ -105,7 +140,14 @@
 	public boolean update@CLASSNAME@Property(String columnName, Short value) {
 		return update@CLASSNAME@Property(columnName, new Long(value));
 	}
+
 	/**
+	 * <pre>
+	 * @DESC_C@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Property(columnName, value);
+	 * </pre>
 	 * 
 	 * @param columnName Column name in database's table to be update.
 	 * @param value The value to be update to the given column name.
@@ -118,6 +160,12 @@
 
 	/// Main Integer ///
 	/**
+	 * <pre>
+	 * @DESC_C@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Property(columnName, value);
+	 * </pre>
 	 * 
 	 * @param columnName Column name in database's table to be update.
 	 * @param value The value to be update to the given column name.
@@ -154,6 +202,12 @@
 	
 	/// Overload Decimal ///
 	/**
+	 * <pre>
+	 * @DESC_C@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Property(columnName, value);
+	 * </pre>
 	 * 
 	 * @param columnName Column name in database's table to be update.
 	 * @param value The value to be update to the given column name.
@@ -166,6 +220,12 @@
 
 	/// Main Decimal ///
 	/**
+	 * <pre>
+	 * @DESC_C@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.update@CLASSNAME@Property(columnName, value);
+	 * </pre>
 	 * 
 	 * @param columnName Column name in database's table to be update.
 	 * @param value The value to be update to the given column name.

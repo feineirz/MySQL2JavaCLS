@@ -361,9 +361,27 @@ Public Class MySQL2JavaCLSBuilder
 		Dim ClassProperties As String = My.Resources.JAVAforMYSQL_ClassProperties
 		Dim chClassGetPropertyList As String = ""
 		Dim chClassSetPropertyList As String = ""
+		Dim JavadocsTemplate As String
 		For Each dci In DataTableInfo.ColumnList
 			' chClassGetPropertyList
 			If Not chClassGetPropertyList = "" Then chClassGetPropertyList += vbCrLf
+
+			' Javadocs
+			JavadocsTemplate = """
+	/**
+	 * <pre>
+	 * Get " + ClassInfo.ClassName + " " + dci.ColumnName + " from a database.
+	 * 
+	 * Usage:
+	 *  " + ClassInfo.ClassName + " " + ClassInfo.ClassName.ToLower + " = New " + ClassInfo.ClassName + "(" + ClassInfo.ClassPrimaryKey + ");
+	 *  " + ConvertDataType(dci.DataType) + " " + dci.ColumnName + " = " + ClassInfo.ClassName.ToLower + ".get" + FirstCaps(dci.ColumnName) + "();
+	 * </pre>
+	 * 
+	 * @return " + ClassInfo.ClassName + " " + dci.ColumnName + ".
+	 */
+"""
+			chClassGetPropertyList += JavadocsTemplate.Replace(dblQuote, "")
+
 			chClassGetPropertyList += cTAB() + "public " + ConvertDataType(dci.DataType) + " get" + FirstCaps(dci.ColumnName) + "() { " + vbCrLf
 			chClassGetPropertyList += cTAB(2) + "return this." + dci.ColumnName + ";" + vbCrLf
 			chClassGetPropertyList += cTAB() + "}" + vbCrLf
@@ -372,6 +390,24 @@ Public Class MySQL2JavaCLSBuilder
 			If ClassInfo.IsPrimaryKeyReadOnly And dci.ColumnName = ClassInfo.ClassPrimaryKey Then Continue For
 
 			If Not chClassSetPropertyList = "" Then chClassSetPropertyList += vbCrLf
+
+			' Javadocs
+			JavadocsTemplate = """
+	/**
+	 * <pre>
+	 * Update " + ClassInfo.ClassName + " " + dci.ColumnName + " to a database.
+	 * 
+	 * Usage:
+	 *  " + ClassInfo.ClassName + " " + ClassInfo.ClassName.ToLower + " = New " + ClassInfo.ClassName + "(" + ClassInfo.ClassPrimaryKey + ");
+	 *  boolean result = " + ClassInfo.ClassName.ToLower + ".set" + FirstCaps(dci.ColumnName) + "(value);
+	 * </pre>
+     * 
+     * @param value " + ClassInfo.ClassName + " " + dci.ColumnName + " to update to the database.
+     * 
+     * @return True if successful.
+     */
+"""
+			chClassSetPropertyList += JavadocsTemplate.Replace(dblQuote, "")
 			chClassSetPropertyList += cTAB() + "public boolean" + " set" + FirstCaps(dci.ColumnName) + "(" + ConvertDataType(dci.DataType) + " value) {" + vbCrLf
 			chClassSetPropertyList += cTAB(2) + "if (update" + ClassInfo.ClassName + "Property(" + dblQuote() + dci.ColumnName + dblQuote() + ", value)) {" + vbCrLf
 			chClassSetPropertyList += cTAB(3) + "this." + dci.ColumnName + " = value;" + vbCrLf
@@ -490,14 +526,17 @@ Public Class MySQL2JavaCLSBuilder
 		rfUpdate_StatementColumnListNonePrimaryKey += cTAB(3) + "stmt.set" + ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType) + "(" _
 			+ rfUpdate_StatementCount.ToString + ", " + ClassInfo.ClassName.ToLower + "Info." + ClassInfo.ClassPrimaryKey + ");" + vbCrLf
 
-		titleDesc = "Update " + FirstCaps(ClassInfo.ClassName) + " information in database by giving a raw information."
+		titleDesc = "Update " + FirstCaps(ClassInfo.ClassName) + " information in a database by giving a raw information."
 		rfUpdateContents = rfUpdateContents.Replace("@TITLE_A@", SectionTitle("UPDATE (RAW)", titleDesc))
+		rfUpdateContents = rfUpdateContents.Replace("@DESC_A@", titleDesc)
 
-		titleDesc = "Update " + FirstCaps(ClassInfo.ClassName) + " information in database by giving a structured information."
+		titleDesc = "Update " + FirstCaps(ClassInfo.ClassName) + " information in a database by giving a structured information."
 		rfUpdateContents = rfUpdateContents.Replace("@TITLE_B@", SectionTitle("UPDATE (STRUCTURED)", titleDesc))
+		rfUpdateContents = rfUpdateContents.Replace("@DESC_B@", titleDesc)
 
-		titleDesc = "Update a single property in database by the given ColumnName and Value."
+		titleDesc = "Update a single property in a database by the given ColumnName and Value."
 		rfUpdateContents = rfUpdateContents.Replace("@TITLE_C@", SectionTitle("UPDATE PROPERTY", titleDesc))
+		rfUpdateContents = rfUpdateContents.Replace("@DESC_C@", titleDesc)
 
 		rfUpdateContents = rfUpdateContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfUpdateContents = rfUpdateContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
@@ -513,10 +552,12 @@ Public Class MySQL2JavaCLSBuilder
 		' Delete '
 		Dim rfDeleteContents As String = My.Resources.JAVAforMYSQL_REQFUNC_Delete
 
-		titleDesc = "Delete " + FirstCaps(ClassInfo.ClassName) + " from database."
+		titleDesc = "Delete " + FirstCaps(ClassInfo.ClassName) + " from a database."
 		rfDeleteContents = rfDeleteContents.Replace("@TITLE@", SectionTitle("DELETE", titleDesc))
+		rfDeleteContents = rfDeleteContents.Replace("@DESC@", titleDesc)
 
 		rfDeleteContents = rfDeleteContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfDeleteContents = rfDeleteContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
 		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY_DATATYPE@", ConvertDataType(ClassInfo.ClassPrimaryKeyDataType))
 		rfDeleteContents = rfDeleteContents.Replace("@PRIMARYKEY_GETSETDATATYPE@", ConvertGetSetDataType(ClassInfo.ClassPrimaryKeyDataType))
@@ -529,6 +570,7 @@ Public Class MySQL2JavaCLSBuilder
 
 		titleDesc = "Check if record(s) from the given condition is exists in a database."
 		rfIsExistContents = rfIsExistContents.Replace("@TITLE@", SectionTitle("IsEXIST", titleDesc))
+		rfIsExistContents = rfIsExistContents.Replace("@DESC@", titleDesc)
 
 		rfIsExistContents = rfIsExistContents.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfIsExistContents = rfIsExistContents.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
@@ -546,10 +588,12 @@ Public Class MySQL2JavaCLSBuilder
 			rfToClassInfo_ConvertList &= cTAB(2) & "ci." & dci.ColumnName & " = this." + dci.ColumnName & ";" & vbCrLf
 		Next
 
-		titleDesc = "Convert " + FirstCaps(ClassInfo.ClassName) + " class to the " + FirstCaps(ClassInfo.ClassName) + "Info class."
+		titleDesc = "Convert " + FirstCaps(ClassInfo.ClassName) + " class to a " + FirstCaps(ClassInfo.ClassName) + "Info class."
 		rfToClassInfo = rfToClassInfo.Replace("@TITLE@", SectionTitle("ToCLASSINFO", titleDesc))
+		rfToClassInfo = rfToClassInfo.Replace("@DESC@", titleDesc)
 
 		rfToClassInfo = rfToClassInfo.Replace("@CLASSNAME@", ClassInfo.ClassName)
+		rfToClassInfo = rfToClassInfo.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
 		rfToClassInfo = rfToClassInfo.Replace("@TOCLASSINFO_CONVERTLIST@", rfToClassInfo_ConvertList)
 
 		sb.AppendLine(rfToClassInfo)

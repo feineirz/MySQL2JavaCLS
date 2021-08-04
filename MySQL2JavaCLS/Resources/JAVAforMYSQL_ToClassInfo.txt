@@ -1,6 +1,15 @@
 @TITLE@
 	/**
-	 * 
+	 * <pre>
+	 * @DESC@
+	 *
+	 * Usage:
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@();
+	 *  ...
+	 *  
+	 *  @CLASSNAME@Info @CLASSNAMELOWER@Info = @CLASSNAMELOWER@.to@CLASSNAME@Info();
+	 * </pre>
+	 *
 	 * @return @CLASSNAME@Info object.
 	 */
 	public @CLASSNAME@Info to@CLASSNAME@Info() {

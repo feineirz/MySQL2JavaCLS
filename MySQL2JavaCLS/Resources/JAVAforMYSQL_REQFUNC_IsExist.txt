@@ -1,9 +1,14 @@
 @TITLE@
 	/**
+	 * <pre>
+	 * @DESC@
+	 *
+	 * Usage:
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = @CLASSNAME@.isExist(condition);
+	 * </pre>
 	 * 
-	 * @param condition The condition to specify the record to be return.
-	 * 
-	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"
+	 * @param condition The condition to specify the record to be return.<pre>
+	 *  Ex. "name = 'Foo' AND date BETWEEN '2021-01-01' AND '2021-12-31'"</pre>
 	 * 
 	 * @return The first @CLASSNAME@ object matches the given condition.
 	 */

@@ -28,6 +28,7 @@ public class @CLASSNAME@ {
 	/**
 	 * <pre>
 	 * @CLASSNAME@ structure class to collect or prepare @CLASSNAME@ information.
+	 *
 	 * Usage:
 	 *  @CLASSNAME@Info @CLASSNAMELOWER@Info = new @CLASSNAME@Info();
 	 * </pre>

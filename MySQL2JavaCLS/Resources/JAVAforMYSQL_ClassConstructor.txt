@@ -5,7 +5,9 @@
 	/**
 	 * <pre>
 	 * Default constructor for @CLASSNAME@ class to use a private helpful methods.
-	 * Usage: @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@();
+	 *
+	 * Usage:
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@();
 	 * </pre>
 	 */
 	public @CLASSNAME@() {}
@@ -14,7 +16,9 @@
 	/**
 	 * <pre>
 	 * Class constructor for @CLASSNAME@ class by giving a Primary key.
-	 * Usage: @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(@PRIMARYKEY@);
+	 *
+	 * Usage:
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(@PRIMARYKEY@);
 	 * </pre>
 	 *
 	 * @param @PRIMARYKEY@ A Primary key of @CLASSNAME@ to be instances.
@@ -26,6 +30,7 @@
 	/**
 	 * <pre>
 	 * Class constructor for @CLASSNAME@ class by giving a Primary key and a MySQL connector.
+	 *
 	 * Usage:
 	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(@PRIMARYKEY@, conn);
 	 * </pre>
@@ -41,7 +46,8 @@
 	/**
 	 * <pre>
 	 * Class constructor for @CLASSNAME@ class by giving a Primary key, MySQL connector
-	 * and Auto close connection option.
+	 *  and Auto close connection option.
+	 *
 	 * Usage:
 	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(@PRIMARYKEY@, conn, true);
 	 * </pre>

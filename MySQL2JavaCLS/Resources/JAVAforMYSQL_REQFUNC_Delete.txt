@@ -1,6 +1,15 @@
 @TITLE@
 	/// Local ///
 	/**
+	 * <pre>
+	 * @DESC@
+	 *
+	 * Usage:
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@();
+	 *  ...
+	 *  
+	 *  boolean result = @CLASSNAMELOWER@.delete@CLASSNAME@();
+	 * </pre>
 	 * 
 	 * @return True if deletion successful.
 	 */
@@ -12,6 +21,12 @@
 
 	/// Static ///
 	/**
+	 * <pre>
+	 * @DESC@
+	 *
+	 * Usage:
+	 *  boolean result = @CLASSNAME@.delete@CLASSNAME@(@PRIMARYKEY@);
+	 * </pre>
 	 * 
 	 * @param @PRIMARYKEY@ @CLASSNAME@ @PRIMARYKEY@ to be delete.
 	 *

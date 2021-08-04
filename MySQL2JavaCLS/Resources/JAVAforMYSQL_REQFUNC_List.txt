@@ -3,8 +3,9 @@
 	/**
 	 * <pre>
 	 * Default List method to list all records of @CLASSNAME@ in a database.
+	 *
 	 * Usage:
-	 *  ArrayList<@CLASSNAME@> @CLASSNAMELOWER@List = list@CLASSNAME@();
+	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = list@CLASSNAME@();
 	 * </pre>
 	 * 
 	 * @return ArrayList of @CLASSNAME@ objects.
@@ -17,8 +18,9 @@
 	/**
 	 * <pre>
 	 * List record(s) of @CLASSNAME@ in a database matches the given condition.
+	 *
 	 * Usage:
-	 *  ArrayList<@CLASSNAME@> @CLASSNAMELOWER@List = list@CLASSNAME@(condition);
+	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = list@CLASSNAME@(condition);
 	 * </pre>
 	 * 
 	 * @param condition The condition to specify the record to be return.<pre>
@@ -36,8 +38,9 @@
 	 * <pre>
 	 * List record(s) of @CLASSNAME@ in a database matches the given condition
 	 *  and sorted by the given order.
+	 *
 	 * Usage:
-	 *  ArrayList<@CLASSNAME@> @CLASSNAMELOWER@List = list@CLASSNAME@(condition, order);
+	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = list@CLASSNAME@(condition, order);
 	 * </pre>
 	 * 
 	 * @param condition The condition to specify the record to be return.<pre>
