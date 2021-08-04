@@ -214,7 +214,7 @@ Partial Class frmMain
 		Me.btnSaveProfile.Location = New System.Drawing.Point(92, 210)
 		Me.btnSaveProfile.Name = "btnSaveProfile"
 		Me.btnSaveProfile.Size = New System.Drawing.Size(132, 29)
-		Me.btnSaveProfile.TabIndex = 16
+		Me.btnSaveProfile.TabIndex = 7
 		Me.btnSaveProfile.Text = "Save Profile"
 		Me.btnSaveProfile.UseVisualStyleBackColor = True
 		'
@@ -237,7 +237,7 @@ Partial Class frmMain
 		Me.cmbConnectionProfile.Location = New System.Drawing.Point(160, 35)
 		Me.cmbConnectionProfile.Name = "cmbConnectionProfile"
 		Me.cmbConnectionProfile.Size = New System.Drawing.Size(189, 21)
-		Me.cmbConnectionProfile.TabIndex = 14
+		Me.cmbConnectionProfile.TabIndex = 0
 		'
 		'picLinkIcon
 		'
@@ -256,7 +256,7 @@ Partial Class frmMain
 		Me.tbxDatabase.Location = New System.Drawing.Point(160, 121)
 		Me.tbxDatabase.Name = "tbxDatabase"
 		Me.tbxDatabase.Size = New System.Drawing.Size(189, 21)
-		Me.tbxDatabase.TabIndex = 2
+		Me.tbxDatabase.TabIndex = 3
 		Me.tbxDatabase.Text = "database"
 		'
 		'Label6
@@ -278,7 +278,7 @@ Partial Class frmMain
 		Me.btnConnect.Location = New System.Drawing.Point(230, 210)
 		Me.btnConnect.Name = "btnConnect"
 		Me.btnConnect.Size = New System.Drawing.Size(119, 29)
-		Me.btnConnect.TabIndex = 5
+		Me.btnConnect.TabIndex = 6
 		Me.btnConnect.Text = "Connect"
 		Me.btnConnect.UseVisualStyleBackColor = True
 		'
@@ -290,7 +290,7 @@ Partial Class frmMain
 		Me.tbxPass.Name = "tbxPass"
 		Me.tbxPass.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
 		Me.tbxPass.Size = New System.Drawing.Size(189, 21)
-		Me.tbxPass.TabIndex = 4
+		Me.tbxPass.TabIndex = 5
 		'
 		'tbxUser
 		'
@@ -299,7 +299,7 @@ Partial Class frmMain
 		Me.tbxUser.Location = New System.Drawing.Point(160, 148)
 		Me.tbxUser.Name = "tbxUser"
 		Me.tbxUser.Size = New System.Drawing.Size(189, 21)
-		Me.tbxUser.TabIndex = 3
+		Me.tbxUser.TabIndex = 4
 		Me.tbxUser.Text = "root"
 		'
 		'tbxPort
@@ -309,7 +309,7 @@ Partial Class frmMain
 		Me.tbxPort.Location = New System.Drawing.Point(160, 94)
 		Me.tbxPort.Name = "tbxPort"
 		Me.tbxPort.Size = New System.Drawing.Size(189, 21)
-		Me.tbxPort.TabIndex = 1
+		Me.tbxPort.TabIndex = 2
 		Me.tbxPort.Text = "3306"
 		'
 		'tbxHost
@@ -319,7 +319,7 @@ Partial Class frmMain
 		Me.tbxHost.Location = New System.Drawing.Point(160, 67)
 		Me.tbxHost.Name = "tbxHost"
 		Me.tbxHost.Size = New System.Drawing.Size(189, 21)
-		Me.tbxHost.TabIndex = 0
+		Me.tbxHost.TabIndex = 1
 		Me.tbxHost.Text = "localhost"
 		'
 		'Label5
@@ -381,7 +381,7 @@ Partial Class frmMain
 		Me.btnExportDBConnector.Location = New System.Drawing.Point(180, 49)
 		Me.btnExportDBConnector.Name = "btnExportDBConnector"
 		Me.btnExportDBConnector.Size = New System.Drawing.Size(169, 29)
-		Me.btnExportDBConnector.TabIndex = 0
+		Me.btnExportDBConnector.TabIndex = 1
 		Me.btnExportDBConnector.Text = "Export Connector"
 		Me.btnExportDBConnector.UseVisualStyleBackColor = True
 		'
@@ -421,7 +421,7 @@ Partial Class frmMain
 		Me.chkLowercaseColumnName.Location = New System.Drawing.Point(185, 92)
 		Me.chkLowercaseColumnName.Name = "chkLowercaseColumnName"
 		Me.chkLowercaseColumnName.Size = New System.Drawing.Size(171, 17)
-		Me.chkLowercaseColumnName.TabIndex = 14
+		Me.chkLowercaseColumnName.TabIndex = 1
 		Me.chkLowercaseColumnName.Text = "Lowercase column name."
 		Me.chkLowercaseColumnName.UseVisualStyleBackColor = True
 		'
@@ -467,6 +467,7 @@ Partial Class frmMain
 		Me.lvwColumnList.Name = "lvwColumnList"
 		Me.lvwColumnList.Size = New System.Drawing.Size(331, 182)
 		Me.lvwColumnList.TabIndex = 1
+		Me.lvwColumnList.TabStop = False
 		Me.lvwColumnList.UseCompatibleStateImageBehavior = False
 		Me.lvwColumnList.View = System.Windows.Forms.View.Details
 		'
@@ -520,7 +521,7 @@ Partial Class frmMain
 		Me.btnBuild.Location = New System.Drawing.Point(180, 14)
 		Me.btnBuild.Name = "btnBuild"
 		Me.btnBuild.Size = New System.Drawing.Size(169, 29)
-		Me.btnBuild.TabIndex = 1
+		Me.btnBuild.TabIndex = 0
 		Me.btnBuild.Text = "Start Build"
 		Me.btnBuild.UseVisualStyleBackColor = True
 		'
@@ -552,7 +553,7 @@ Partial Class frmMain
 		Me.tbxPackageName.Location = New System.Drawing.Point(180, 36)
 		Me.tbxPackageName.Name = "tbxPackageName"
 		Me.tbxPackageName.Size = New System.Drawing.Size(169, 21)
-		Me.tbxPackageName.TabIndex = 15
+		Me.tbxPackageName.TabIndex = 0
 		Me.tbxPackageName.Text = "default"
 		'
 		'Label17
@@ -592,7 +593,7 @@ Partial Class frmMain
 		Me.chkReadOnlyPrimaryKey.Location = New System.Drawing.Point(180, 136)
 		Me.chkReadOnlyPrimaryKey.Name = "chkReadOnlyPrimaryKey"
 		Me.chkReadOnlyPrimaryKey.Size = New System.Drawing.Size(156, 17)
-		Me.chkReadOnlyPrimaryKey.TabIndex = 2
+		Me.chkReadOnlyPrimaryKey.TabIndex = 3
 		Me.chkReadOnlyPrimaryKey.Text = "ReadOnly Primary Key"
 		Me.chkReadOnlyPrimaryKey.UseVisualStyleBackColor = True
 		'
@@ -606,7 +607,7 @@ Partial Class frmMain
 		Me.cmbPrimaryKey.Location = New System.Drawing.Point(180, 90)
 		Me.cmbPrimaryKey.Name = "cmbPrimaryKey"
 		Me.cmbPrimaryKey.Size = New System.Drawing.Size(169, 21)
-		Me.cmbPrimaryKey.TabIndex = 1
+		Me.cmbPrimaryKey.TabIndex = 2
 		'
 		'picClassIcon
 		'
@@ -625,7 +626,7 @@ Partial Class frmMain
 		Me.tbxClassName.Location = New System.Drawing.Point(180, 63)
 		Me.tbxClassName.Name = "tbxClassName"
 		Me.tbxClassName.Size = New System.Drawing.Size(169, 21)
-		Me.tbxClassName.TabIndex = 0
+		Me.tbxClassName.TabIndex = 1
 		'
 		'Label11
 		'
@@ -714,7 +715,7 @@ Partial Class frmMain
 		Me.btnChangeFont.Location = New System.Drawing.Point(998, 963)
 		Me.btnChangeFont.Name = "btnChangeFont"
 		Me.btnChangeFont.Size = New System.Drawing.Size(117, 29)
-		Me.btnChangeFont.TabIndex = 5
+		Me.btnChangeFont.TabIndex = 6
 		Me.btnChangeFont.Text = "Change Font"
 		Me.btnChangeFont.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnChangeFont.UseVisualStyleBackColor = True
@@ -724,7 +725,7 @@ Partial Class frmMain
 		Me.lblAppVersion.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
 		Me.lblAppVersion.AutoSize = True
 		Me.lblAppVersion.ForeColor = System.Drawing.Color.Gray
-		Me.lblAppVersion.Location = New System.Drawing.Point(12, 1083)
+		Me.lblAppVersion.Location = New System.Drawing.Point(12, 960)
 		Me.lblAppVersion.Name = "lblAppVersion"
 		Me.lblAppVersion.Size = New System.Drawing.Size(28, 13)
 		Me.lblAppVersion.TabIndex = 6
@@ -739,7 +740,7 @@ Partial Class frmMain
 		Me.btnChangeTheme.Location = New System.Drawing.Point(859, 963)
 		Me.btnChangeTheme.Name = "btnChangeTheme"
 		Me.btnChangeTheme.Size = New System.Drawing.Size(133, 29)
-		Me.btnChangeTheme.TabIndex = 7
+		Me.btnChangeTheme.TabIndex = 5
 		Me.btnChangeTheme.Text = "Change Theme"
 		Me.btnChangeTheme.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnChangeTheme.UseVisualStyleBackColor = True
@@ -750,11 +751,11 @@ Partial Class frmMain
 		Me.btnUglyFormat.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnUglyFormat.Image = CType(resources.GetObject("btnUglyFormat.Image"), System.Drawing.Image)
 		Me.btnUglyFormat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnUglyFormat.Location = New System.Drawing.Point(720, 963)
+		Me.btnUglyFormat.Location = New System.Drawing.Point(739, 963)
 		Me.btnUglyFormat.Name = "btnUglyFormat"
-		Me.btnUglyFormat.Size = New System.Drawing.Size(133, 29)
-		Me.btnUglyFormat.TabIndex = 8
-		Me.btnUglyFormat.Text = "Change Theme"
+		Me.btnUglyFormat.Size = New System.Drawing.Size(114, 29)
+		Me.btnUglyFormat.TabIndex = 4
+		Me.btnUglyFormat.Text = "Ugly Format"
 		Me.btnUglyFormat.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnUglyFormat.UseVisualStyleBackColor = True
 		'
