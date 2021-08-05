@@ -369,6 +369,23 @@ Public Class frmMain
 		Dim tabSize As Integer = 4
 		Dim appendText As String
 
+		Dim insertContent As String() = {
+			"////////////////",
+			"////////////////",
+			"  _.........._  ",
+			" | |iomega  | | ",
+			" | |100mb   | | ",
+			" | |windows | | ",
+			" | |98      | | ",
+			" |   ______   | ",
+			" |  |    | |  | ",
+			" |__|____|_|__| ",
+			"                ",
+			"////////////////",
+			"////////////////"
+		}
+		Dim insertCount As Integer = 0
+		Dim insertWidth As Integer = insertContent(0).Length
 
 		For Each line In rtbSourceCode.Lines
 			line = line.TrimEnd
@@ -383,7 +400,17 @@ Public Class frmMain
 				appendText = " "
 				ln += 1
 			End If
-			appendText &= StrDup(maxLn - ln, "/")
+
+			If maxLn - ln >= insertWidth Then
+				appendText &= StrDup(maxLn - ln - insertWidth, "/")
+				appendText &= insertContent(insertCount)
+			Else
+				appendText &= StrDup(maxLn - ln, "/")
+			End If
+
+			insertCount += 1
+			If insertCount = insertContent.Length Then insertCount = 0
+
 			sb.AppendLine(line + appendText)
 		Next
 

@@ -630,7 +630,7 @@ Public Class MySQL2JavaCLSBuilder
 
 
 		sb.AppendLine("}" + vbCrLf + vbCrLf)
-		sb.AppendLine("/*--------------------------------------{{{ CLASS END }}}---------------------------------------*/")
+		sb.AppendLine("/*---------------------------------------{{{ CLASS END }}}----------------------------------------*/")
 		sb.AppendLine(My.Resources.JAVAforMYSQL_EndCredits)
 
 		Return sb.ToString
