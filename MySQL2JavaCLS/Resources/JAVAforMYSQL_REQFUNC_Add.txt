@@ -4,7 +4,7 @@
 	 * @DESC_A@
 	 *
 	 * Usage:
-	 *  @CLASSNAME@ @CLASSNAMELOWER@ = add@CLASSNAME@(...);
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = @CLASSNAME@.add@CLASSNAME@(...);
 	 * </pre>
 	 * 
 	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
@@ -28,7 +28,7 @@
 	 *  @CLASSNAMELOWER@Info.@PRIMARYKEY@ = @PRIMARYKEY@;
 	 *  ...
 	 *
-	 *  @CLASSNAME@ @CLASSNAMELOWER@ = add@CLASSNAME@(@CLASSNAMELOWER@Info);
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = @CLASSNAME@.add@CLASSNAME@(@CLASSNAMELOWER@Info);
 	 * </pre>
 	 * 
 	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure that contains all @CLASSNAME@'s information.
