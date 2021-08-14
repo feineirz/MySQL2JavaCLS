@@ -551,7 +551,7 @@ Public Class MySQL2JavaCLSBuilder
 		rfUpdateContents = rfUpdateContents.Replace("@TITLE_B@", SectionTitle("UPDATE (STRUCTURED)", titleDesc))
 		rfUpdateContents = rfUpdateContents.Replace("@DESC_B@", titleDesc)
 
-		titleDesc = "Update a single property in a database by the given ColumnName and Value."
+		titleDesc = "Update single property in a database by the given ColumnName and Value."
 		rfUpdateContents = rfUpdateContents.Replace("@TITLE_C@", SectionTitle("UPDATE PROPERTY", titleDesc))
 		rfUpdateContents = rfUpdateContents.Replace("@DESC_C@", titleDesc)
 
@@ -605,12 +605,13 @@ Public Class MySQL2JavaCLSBuilder
 			rfToClassInfo_ConvertList += cTAB(2) + "ci." + CamelCase(dci.ColumnName) + " = this." + CamelCase(dci.ColumnName) + ";" + vbCrLf
 		Next
 
-		titleDesc = "Convert " + FirstCaps(ClassInfo.ClassName) + " class to a " + FirstCaps(ClassInfo.ClassName) + "Info class."
+		titleDesc = "Convert " + FirstCaps(ClassInfo.ClassName) + " object to a " + FirstCaps(ClassInfo.ClassName) + "Info object."
 		rfToClassInfo = rfToClassInfo.Replace("@TITLE@", SectionTitle("ToCLASSINFO", titleDesc))
 		rfToClassInfo = rfToClassInfo.Replace("@DESC@", titleDesc)
 
 		rfToClassInfo = rfToClassInfo.Replace("@CLASSNAME@", ClassInfo.ClassName)
 		rfToClassInfo = rfToClassInfo.Replace("@CLASSNAMELOWER@", ClassInfo.ClassName.ToLower)
+		rfToClassInfo = rfToClassInfo.Replace("@PRIMARYKEY@", ClassInfo.ClassPrimaryKey)
 		rfToClassInfo = rfToClassInfo.Replace("@TOCLASSINFO_CONVERTLIST@", rfToClassInfo_ConvertList)
 
 		sb.AppendLine(rfToClassInfo)

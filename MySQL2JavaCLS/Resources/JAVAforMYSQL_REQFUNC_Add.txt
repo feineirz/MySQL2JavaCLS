@@ -7,7 +7,7 @@
 	 *  @CLASSNAME@ @CLASSNAMELOWER@ = @CLASSNAME@.add@CLASSNAME@(...);
 	 * </pre>
 	 * 
-	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
+	 * @return @CLASSNAME@ object of new created @CLASSNAME@ if success or null if fail.
 	 */
 	public static @CLASSNAME@ add@CLASSNAME@(@COLUMNLIST_WITHDATATYPE@) {
 		
@@ -33,7 +33,7 @@
 	 * 
 	 * @param @CLASSNAMELOWER@Info @CLASSNAME@ information structure that contains all @CLASSNAME@'s information.
 	 *
-	 * @return @CLASSNAME@ object of new created @CLASSNAME@.
+	 * @return @CLASSNAME@ object of new created @CLASSNAME@ if success or null if fail.
 	 */
 	public static @CLASSNAME@ add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		

@@ -5,7 +5,7 @@
 	 * Default List method to list all records of @CLASSNAME@ in a database.
 	 *
 	 * Usage:
-	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = list@CLASSNAME@();
+	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = @CLASSNAME@.list@CLASSNAME@();
 	 * </pre>
 	 * 
 	 * @return ArrayList of @CLASSNAME@ objects.
@@ -20,7 +20,7 @@
 	 * List record(s) of @CLASSNAME@ in a database match the given condition.
 	 *
 	 * Usage:
-	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = list@CLASSNAME@(condition);
+	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = @CLASSNAME@.list@CLASSNAME@(condition);
 	 * </pre>
 	 * 
 	 * @param condition The condition to specify the record to be return.<pre>
@@ -40,7 +40,7 @@
 	 *  and sorted by the given order.
 	 *
 	 * Usage:
-	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = list@CLASSNAME@(condition, order);
+	 *  ArrayList&lt;@CLASSNAME@&gt; @CLASSNAMELOWER@List = @CLASSNAME@.list@CLASSNAME@(condition, order);
 	 * </pre>
 	 * 
 	 * @param condition The condition to specify the record to be return.<pre>

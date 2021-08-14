@@ -4,7 +4,7 @@
 	 * @DESC@
 	 *
 	 * Usage:
-	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@();
+	 *  @CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(@PRIMARYKEY@);
 	 *  ...
 	 *  
 	 *  @CLASSNAME@Info @CLASSNAMELOWER@Info = @CLASSNAMELOWER@.to@CLASSNAME@Info();
