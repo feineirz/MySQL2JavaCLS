@@ -378,11 +378,11 @@ Partial Class frmMain
 		Me.btnExportDBConnector.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnExportDBConnector.Image = CType(resources.GetObject("btnExportDBConnector.Image"), System.Drawing.Image)
 		Me.btnExportDBConnector.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnExportDBConnector.Location = New System.Drawing.Point(180, 49)
+		Me.btnExportDBConnector.Location = New System.Drawing.Point(160, 49)
 		Me.btnExportDBConnector.Name = "btnExportDBConnector"
-		Me.btnExportDBConnector.Size = New System.Drawing.Size(169, 29)
+		Me.btnExportDBConnector.Size = New System.Drawing.Size(189, 29)
 		Me.btnExportDBConnector.TabIndex = 1
-		Me.btnExportDBConnector.Text = "Export Connector"
+		Me.btnExportDBConnector.Text = "Export MySQLDB Class"
 		Me.btnExportDBConnector.UseVisualStyleBackColor = True
 		'
 		'picServerIcon
@@ -518,9 +518,9 @@ Partial Class frmMain
 		Me.btnBuild.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnBuild.Image = CType(resources.GetObject("btnBuild.Image"), System.Drawing.Image)
 		Me.btnBuild.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnBuild.Location = New System.Drawing.Point(180, 14)
+		Me.btnBuild.Location = New System.Drawing.Point(160, 14)
 		Me.btnBuild.Name = "btnBuild"
-		Me.btnBuild.Size = New System.Drawing.Size(169, 29)
+		Me.btnBuild.Size = New System.Drawing.Size(189, 29)
 		Me.btnBuild.TabIndex = 0
 		Me.btnBuild.Text = "Start Build"
 		Me.btnBuild.UseVisualStyleBackColor = True
@@ -689,9 +689,9 @@ Partial Class frmMain
 		Me.btnSaveClassFile.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnSaveClassFile.Image = CType(resources.GetObject("btnSaveClassFile.Image"), System.Drawing.Image)
 		Me.btnSaveClassFile.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnSaveClassFile.Location = New System.Drawing.Point(180, 84)
+		Me.btnSaveClassFile.Location = New System.Drawing.Point(160, 84)
 		Me.btnSaveClassFile.Name = "btnSaveClassFile"
-		Me.btnSaveClassFile.Size = New System.Drawing.Size(169, 29)
+		Me.btnSaveClassFile.Size = New System.Drawing.Size(189, 29)
 		Me.btnSaveClassFile.TabIndex = 2
 		Me.btnSaveClassFile.Text = "Save Class File"
 		Me.btnSaveClassFile.UseVisualStyleBackColor = True

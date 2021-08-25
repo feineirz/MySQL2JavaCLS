@@ -226,7 +226,7 @@ Partial Class frmExportConnectionSettings
 		'
 		Me.cmbForMySQLVersion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
 		Me.cmbForMySQLVersion.FormattingEnabled = True
-		Me.cmbForMySQLVersion.Items.AddRange(New Object() {"Version 5.x", "Version 8.x"})
+		Me.cmbForMySQLVersion.Items.AddRange(New Object() {"Version 8.x", "Version 5.x"})
 		Me.cmbForMySQLVersion.Location = New System.Drawing.Point(233, 11)
 		Me.cmbForMySQLVersion.Name = "cmbForMySQLVersion"
 		Me.cmbForMySQLVersion.Size = New System.Drawing.Size(96, 21)
@@ -254,11 +254,11 @@ Partial Class frmExportConnectionSettings
 		Me.btnGetDBConnector.Font = New System.Drawing.Font("Verdana", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
 		Me.btnGetDBConnector.Image = CType(resources.GetObject("btnGetDBConnector.Image"), System.Drawing.Image)
 		Me.btnGetDBConnector.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-		Me.btnGetDBConnector.Location = New System.Drawing.Point(149, 316)
+		Me.btnGetDBConnector.Location = New System.Drawing.Point(180, 316)
 		Me.btnGetDBConnector.Name = "btnGetDBConnector"
-		Me.btnGetDBConnector.Size = New System.Drawing.Size(208, 29)
+		Me.btnGetDBConnector.Size = New System.Drawing.Size(177, 29)
 		Me.btnGetDBConnector.TabIndex = 26
-		Me.btnGetDBConnector.Text = "Export MySQLDBConnector"
+		Me.btnGetDBConnector.Text = "Export MySQLDB Class"
 		Me.btnGetDBConnector.TextAlign = System.Drawing.ContentAlignment.MiddleRight
 		Me.btnGetDBConnector.UseVisualStyleBackColor = True
 		'

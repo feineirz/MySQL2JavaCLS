@@ -123,8 +123,9 @@ public final class MySQLDatabase {
             
         }
         
-        public static Boolean isExists(String databaseName, String tableName, String columnName, Connection conn) {
+        public Boolean isExists(String databaseName, String tableName, String columnName) {
             
+            Connection conn = connection;
             String qry = ""
 				+ "SELECT *"
 				+ " FROM INFORMATION_SCHEMA.COLUMNS"
@@ -231,8 +232,9 @@ public final class MySQLDatabase {
             
         }
         
-        public static Boolean isExists(String databaseName, String tableName, Connection conn) {
+        public Boolean isExists(String databaseName, String tableName) {
             
+            Connection conn = connection;
             String qry = ""
 				+ "SELECT *"
 				+ " FROM INFORMATION_SCHEMA.TABLES"
@@ -315,8 +317,9 @@ public final class MySQLDatabase {
             
         }
         
-        public static Boolean isExists(String databaseName, Connection conn) {
+        public Boolean isExists(String databaseName) {
             
+            Connection conn = connection;
             String qry = ""
 				+ "SELECT *"
 				+ " FROM INFORMATION_SCHEMA.SCHEMATA"
