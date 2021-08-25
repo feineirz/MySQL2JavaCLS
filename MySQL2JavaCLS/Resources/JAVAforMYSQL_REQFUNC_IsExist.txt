@@ -14,12 +14,12 @@
 	 */
 	public static @CLASSNAME@ isExist(String condition) {
 		
-		Connection conn = new MySQLDBConnector().getDBConnection();
+		Connection conn = new MySQLDatabase().getConnection();
 		
-		if(condition != "") condition = " WHERE " + condition;
+		if(!"".equals(condition)) condition = " WHERE " + condition;
 		try {
 			String qry = ""
-				+ "SELECT *" 
+				+ "SELECT *"
 				+ " FROM @TABLENAME@"
 				+ condition;
 			Statement stmt = conn.createStatement();
@@ -28,7 +28,7 @@
 				@CLASSNAME@ @CLASSNAMELOWER@ = new @CLASSNAME@(rs.get@PRIMARYKEY_GETSETDATATYPE@("@PRIMARYKEY@"), conn);
 				conn.close();
 				return @CLASSNAMELOWER@;
-			}			
+			}
 			conn.close();
 			return null;
 			

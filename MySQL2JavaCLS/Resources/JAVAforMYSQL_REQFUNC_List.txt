@@ -54,12 +54,12 @@
 	 */
 	public static ArrayList<@CLASSNAME@> list@CLASSNAME@(String condition, String order) {
 		
-		ArrayList<@CLASSNAME@> buff = new ArrayList<@CLASSNAME@>();
+		ArrayList<@CLASSNAME@> buff = new ArrayList<>();
 		
-		if(condition != "") condition = " WHERE " + condition;
-		if(order != "") order = " ORDER BY " + order;
+		if(!"".equals(condition)) condition = " WHERE " + condition;
+		if(!"".equals(order)) order = " ORDER BY " + order;
 		
-		Connection conn = new MySQLDBConnector().getDBConnection();
+		Connection conn = new MySQLDatabase().getConnection();
 		try {
 			String qry = ""
 				+ "SELECT *"

@@ -37,7 +37,7 @@
 	 */
 	public static boolean update@CLASSNAME@Info(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		
-		Connection conn = new MySQLDBConnector().getDBConnection();
+		Connection conn = new MySQLDatabase().getConnection();
 		try {
 			String qry = ""
 				+ "UPDATE @TABLENAME@"
@@ -80,7 +80,7 @@
 	 */
 	public boolean update@CLASSNAME@Property(String columnName, String value) {
 		
-		Connection conn = new MySQLDBConnector().getDBConnection();
+		Connection conn = new MySQLDatabase().getConnection();
 		try {
 			String qry = ""
 				+ "UPDATE @TABLENAME@"
@@ -174,7 +174,7 @@
 	 */
 	public boolean update@CLASSNAME@Property(String columnName, long value) {
 		
-		Connection conn = new MySQLDBConnector().getDBConnection();
+		Connection conn = new MySQLDatabase().getConnection();
 		try {
 			String qry = ""
 				+ "UPDATE @TABLENAME@"
@@ -234,7 +234,7 @@
 	 */
 	public boolean update@CLASSNAME@Property(String columnName, Double value) {
 		
-		Connection conn = new MySQLDBConnector().getDBConnection();
+		Connection conn = new MySQLDatabase().getConnection();
 		try {
 			String qry = ""
 				+ "UPDATE @TABLENAME@"

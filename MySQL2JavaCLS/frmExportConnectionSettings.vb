@@ -8,7 +8,7 @@
 	Private Sub btnGetDBConnector_Click(sender As Object, e As EventArgs) Handles btnGetDBConnector.Click
 
 		Dim dlg As New SaveFileDialog
-		dlg.FileName = "MySQLDBConnector.java"
+		dlg.FileName = "MySQLDatabase.java"
 
 		Dim content = MySQL2JavaCLSBuilder.getMySQLDBConnector(frmMain.ConnectionInfo)
 

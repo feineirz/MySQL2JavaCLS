@@ -291,16 +291,25 @@ Public Class MySQL2JavaCLSBuilder
 
 	Public Shared Function getMySQLDBConnector(ConnectionInfoA As MySQLConnector.ConnectionInfo) As String
 
-		Dim rt = My.Resources.JAVAforMYSQL_MySQLDBConnector.ToString
+		Dim sb As New StringBuilder
+		Dim Credits = My.Resources.JAVAforMYSQL_Credits
 
-		' Fill Data
+		Credits = Credits.Replace("@APP_VERSION@", SectionLine("< version " + Application.ProductVersion + " >", "-"))
+		sb.AppendLine(Credits)
+
+		Dim rt = My.Resources.JAVAforMYSQL_MySQLDatabaseClass.ToString
 		rt = rt.Replace("@HOST@", ConnectionInfoA.Host)
 		rt = rt.Replace("@PORT@", ConnectionInfoA.Port)
 		rt = rt.Replace("@DATABASE@", ConnectionInfoA.Database)
 		rt = rt.Replace("@USER@", ConnectionInfoA.User)
 		rt = rt.Replace("@PASS@", ConnectionInfoA.Password)
+		sb.AppendLine(rt)
 
-		Return rt
+		sb.AppendLine(vbCrLf + vbCrLf)
+		sb.AppendLine("/*---------------------------------------{{{ CLASS END }}}----------------------------------------*/")
+		sb.AppendLine(My.Resources.JAVAforMYSQL_EndCredits)
+
+		Return sb.ToString
 
 	End Function
 

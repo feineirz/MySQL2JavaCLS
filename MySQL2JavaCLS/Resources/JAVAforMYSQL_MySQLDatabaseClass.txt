@@ -1,0 +1,485 @@
+
+package @PACKAGENAME@;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+
+/*--------------------------------------{{{ CLASS START }}}---------------------------------------*/
+
+public final class MySQLDatabase {
+    
+    private Connection connection;
+    public ConnectionInfo connectionInfo;
+    public ConnectionOption connectionOption;
+    
+    public static class ConnectionInfo {
+        public String host;
+        public String port;
+        public String username;
+        public String password;
+        public String database;
+        public Boolean forMySQL8;
+    }
+    
+    public static class ConnectionOption {
+        public Boolean useJDBCCompliantTimezoneShift;
+        public Boolean useLegacyDatetimeCode;
+        public Boolean useSSL;
+        public Boolean useUnicode;
+        public String characterEncoding;
+        public String serverTimezone;
+        public Boolean autoReconnect;
+    }
+    
+    public class DataColumn{
+        
+        public String tableSchema;
+        public String tableName;
+        public String columnName;
+        public String dataType;
+        public String columnDefault;
+        public String characterSet;
+        public String collation;
+        public String columnType;
+        public String key;
+        public String extra;
+        public String comment;
+        public boolean isPrimaryKey;
+        
+        /// Default Constructor ///
+        public DataColumn(){}
+        
+        /// Main Constructor ///
+        public DataColumn(String databaseName, String tableName, String columnName) {
+            Connection conn = connection;
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.COLUMNS"
+				+ " WHERE TABLE_SCHEMA = ?"
+                + "  AND TABLE_NAME = ?"
+                + "  AND COLUMN_NAME = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                ptmt.setString(2, tableName);
+                ptmt.setString(3, columnName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    this.tableSchema = rs.getString("TABLE_SCHEMA");
+                    this.tableName = rs.getString("TABLE_NAME");
+                    this.columnName = rs.getString("COLUMN_NAME");
+                    this.dataType = rs.getString("DATA_TYPE");
+                    this.columnDefault = rs.getString("COLUMN_DEFAULT");
+                    this.characterSet = rs.getString("CHARACTER_SET_NAME");
+                    this.collation = rs.getString("COLLATION_NAME");
+                    this.columnType = rs.getString("COLUMN_TYPE");
+                    this.key = rs.getString("COLUMN_KEY");
+                    this.extra = rs.getString("EXTRA");
+                    this.comment = rs.getString("COLUMN_COMMENT");                    
+                    this.isPrimaryKey = "PRI".equals(this.key);
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                
+            }
+            
+        }
+        
+        private ArrayList<DataColumn> listDataColumn(String databaseName, String tableName) {
+            
+            ArrayList<DataColumn> buff = new ArrayList<>();
+            Connection conn = connection;
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.COLUMNS"
+				+ " WHERE TABLE_SCHEMA = ?"
+                + "  AND TABLE_NAME = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                ptmt.setString(2, tableName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    buff.add(new DataColumn(databaseName, tableName, rs.getString("COLUMN_NAME")));
+                }                
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                
+            }
+            
+            return buff;
+            
+        }
+        
+        public static Boolean isExists(String databaseName, String tableName, String columnName, Connection conn) {
+            
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.COLUMNS"
+				+ " WHERE TABLE_SCHEMA = ?"
+                + "  AND TABLE_NAME = ?"
+                + "  AND COLUMN_NAME = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                ptmt.setString(2, tableName);
+                ptmt.setString(3, columnName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                return rs.next();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+                
+            }
+        }
+        
+    }
+    
+    public class DataTable{
+        
+        public String schemaName;
+        public String tableName;
+        public ArrayList<String> primaryKeys;
+        public String collation;
+        
+        public ArrayList<DataColumn> dataColumns;
+        
+        /// Default Cinstructor ///
+        public DataTable(){}
+        
+        /// Main Constructor ///        
+        public DataTable(String databaseName, String tableName) {
+            
+            Connection conn = connection;
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.TABLES"
+				+ " WHERE TABLE_SCHEMA = ?"
+                + "  AND TABLE_NAME = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                ptmt.setString(2, tableName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    this.schemaName = rs.getString("TABLE_SCHEMA");
+                    this.tableName = rs.getString("TABLE_NAME");
+                    this.collation = rs.getString("TABLE_COLLATION");
+                    this.dataColumns = new DataColumn().listDataColumn(databaseName, tableName);
+                    this.primaryKeys = getPrimaryKeys(this.dataColumns);
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                
+            }
+            
+        }
+        
+        private ArrayList<String> getPrimaryKeys(ArrayList<DataColumn> dataColumns) {
+            
+            ArrayList<String>buff = new ArrayList<>();
+            dataColumns.stream().filter(dc -> (dc.isPrimaryKey)).forEachOrdered(dc -> {
+                buff.add(dc.columnName);
+            });
+            
+            return buff;
+            
+        }
+        
+        private ArrayList<DataTable> listDataTables(String databaseName) {
+            
+            ArrayList<DataTable> buff = new ArrayList<>();
+            Connection conn = getConnection();
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.TABLES"
+				+ " WHERE TABLE_SCHEMA = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    buff.add(new DataTable(databaseName, rs.getString("TABLE_NAME")));
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                
+            }
+            
+            return buff;            
+            
+        }
+        
+        public static Boolean isExists(String databaseName, String tableName, Connection conn) {
+            
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.TABLES"
+				+ " WHERE TABLE_SCHEMA = ?"
+                + "  AND TABLE_NAME = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                ptmt.setString(2, tableName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                return rs.next();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+                
+            }
+            
+        }
+        
+        public ArrayList<String> getColumnNames() {
+            
+            ArrayList<String> buff = new ArrayList<>();
+            this.dataColumns.forEach(dc -> {
+                buff.add(dc.columnName);
+            });
+            
+            return buff;
+            
+        }
+        
+    }
+    
+    public class Database{
+        
+        public String databaseName;
+        public String defaultCharacterSet;
+        public String defaultCollation;
+        
+        public ArrayList<DataTable> dataTables;
+        
+        /// Main Constructor ///
+        public Database(String databaseName) {
+            
+            Connection conn = connection;
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.SCHEMATA"
+				+ " WHERE SCHEMA_NAME = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                while (rs.next()) {
+                    this.databaseName = rs.getString("SCHEMA_NAME");
+                    this.defaultCharacterSet = rs.getString("DEFAULT_CHARACTER_SET_NAME");
+                    this.defaultCollation = rs.getString("DEFAULT_COLLATION_NAME");
+                    this.dataTables = new DataTable().listDataTables(databaseName);
+                }
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                
+            }
+        
+        }
+        
+        public ArrayList<String> getTableNames() {
+            
+            ArrayList<String> buff = new ArrayList<>();
+            this.dataTables.forEach(dt -> {
+                buff.add(dt.tableName);
+            });
+            
+            return buff;
+            
+        }
+        
+        public static Boolean isExists(String databaseName, Connection conn) {
+            
+            String qry = ""
+				+ "SELECT *"
+				+ " FROM INFORMATION_SCHEMA.SCHEMATA"
+				+ " WHERE SCHEMA_NAME = ?";
+            
+            try {
+                PreparedStatement ptmt = conn.prepareStatement(qry);
+                ptmt.setString(1, databaseName);
+                
+                ResultSet rs = ptmt.executeQuery();
+                return rs.next();
+                
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+            
+        }
+        
+    }
+    
+    public Database getDatabase(String databaseName) {
+        
+        return new Database(databaseName);
+        
+    }
+    
+    public DataTable getDataTable(String databaseName, String tableName) {
+        
+        return new DataTable(databaseName, tableName);
+        
+    }
+    
+    public DataColumn getDataColumn(String databaseName, String tableName, String columnName) {
+        
+        return new DataColumn(databaseName, tableName, columnName);
+        
+    }
+    
+    /// Default Constructor ///
+    public MySQLDatabase() {
+        ConnectionInfo ci = new ConnectionInfo();
+        ci.host = "@HOST@";
+        ci.port = "@PORT@";
+        ci.username = "@USER@";
+        ci.password = "@PASS@";
+        ci.database = "@DATABASE@";
+        ci.forMySQL8 = true;
+        
+        ConnectionOption co = new ConnectionOption();
+        co.useJDBCCompliantTimezoneShift = @useJDBCCompliantTimezoneShiftOption@;
+        co.useLegacyDatetimeCode = @useLegacyDatetimeCodeOption@;
+        co.useSSL = @useSSLOption@;
+        co.useUnicode = @useUnicodeOption@;
+        co.characterEncoding = "@characterEncodingOption@";
+        co.serverTimezone = "@serverTimezoneOption@";
+        co.autoReconnect = @autoReconnectOption@;
+        
+        this.connectionInfo = ci;
+        this.connectionOption = co;
+        this.connection = getConnection();
+    }
+    
+    /// Overload Constructor ///
+    public MySQLDatabase(ConnectionInfo ci) {
+        ConnectionOption co = new ConnectionOption();
+        co.useJDBCCompliantTimezoneShift = @useJDBCCompliantTimezoneShiftOption@;
+        co.useLegacyDatetimeCode = @useLegacyDatetimeCodeOption@;
+        co.useSSL = @useSSLOption@;
+        co.useUnicode = @useUnicodeOption@;
+        co.characterEncoding = "@characterEncodingOption@";
+        co.serverTimezone = "@serverTimezoneOption@";
+        co.autoReconnect = @autoReconnectOption@;
+        
+        this.connectionInfo = ci;
+        this.connectionOption = co;
+        this.connection = getConnection();
+    }
+    
+    public MySQLDatabase(ConnectionOption co) {
+        ConnectionInfo ci = new ConnectionInfo();
+        ci.host = "@HOST@";
+        ci.port = "@PORT@";
+        ci.username = "@USER@";
+        ci.password = "@PASS@";
+        ci.database = "@DATABASE@";
+        ci.forMySQL8 = true;
+        
+        this.connectionInfo = ci;
+        this.connectionOption = co;
+        this.connection = getConnection();
+    }
+    
+    /// Main Constructor ///
+    public MySQLDatabase(ConnectionInfo ci, ConnectionOption co) {
+        
+        this.connectionInfo = ci;
+        this.connectionOption = co;
+        this.connection = getConnection();
+        
+    }
+    
+    /// Get Connection ///
+    public Connection getConnection() {
+        
+        Connection conn = null;
+        try {
+            if (connectionInfo.forMySQL8) {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+            } else {
+                Class.forName("com.mysql.jdbc.Driver");
+            }
+            conn = DriverManager.getConnection(
+				"jdbc:mysql://"+connectionInfo.host+":"+connectionInfo.port+"/"+connectionInfo.database
+				+ "?useJDBCCompliantTimezoneShift="+connectionOption.useJDBCCompliantTimezoneShift
+				+ "&useLegacyDatetimeCode="+connectionOption.useLegacyDatetimeCode
+				+ "&useSSL="+connectionOption.useSSL
+				+ "&useUnicode="+connectionOption.useUnicode
+				+ "&characterEncoding="+connectionOption.characterEncoding
+				+ "&serverTimezone="+connectionOption.serverTimezone
+				+ "&autoReconnect="+connectionOption.autoReconnect,
+				connectionInfo.username,
+				connectionInfo.password);
+            
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return conn;
+    }
+    
+    public boolean createDatabase(String createQuery) {
+        
+        Connection conn = getConnection();
+        if (conn == null) return false;
+        
+        try {
+            Statement stmt = conn.createStatement();
+            return stmt.execute(createQuery);
+                    
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+        
+    }
+    
+    public boolean createTable(String createQuery) {
+        
+        Connection conn = getConnection();
+        if (conn == null) return false;
+        
+        try {
+            Statement stmt = conn.createStatement();
+            return stmt.execute(createQuery);
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return false;
+        
+    }
+    
+}

@@ -37,7 +37,7 @@
 	 */
 	public static @CLASSNAME@ add@CLASSNAME@(@CLASSNAME@Info @CLASSNAMELOWER@Info) {
 		
-		Connection conn = new MySQLDBConnector().getDBConnection();
+		Connection conn = new MySQLDatabase().getConnection();
 		try {
 			String qry = ""
 				+ "INSERT INTO @TABLENAME@"
